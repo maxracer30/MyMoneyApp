@@ -1,10 +1,10 @@
-package ru.maxstelmakh.mymoney.data.models
+package ru.maxstelmakh.mymoney.domain.model
 
-data class EventModel(
+data class EventModelDomain(
     var id: Long = 0,
     var title: String,
-    var giveOrTake: Boolean,
+    var isExpense: Boolean,
     var description: String,
     var category: String,
     var account: String,
-    )
+)
