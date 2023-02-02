@@ -2,7 +2,6 @@ package ru.maxstelmakh.mymoney.domain.repository
 
 import androidx.room.*
 import ru.maxstelmakh.mymoney.data.models.EventModelData
-import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 
 @Dao
 interface EventsRepositoryDao {

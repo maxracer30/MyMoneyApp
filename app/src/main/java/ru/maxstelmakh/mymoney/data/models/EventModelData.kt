@@ -2,6 +2,7 @@ package ru.maxstelmakh.mymoney.data.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import javax.inject.Inject
 
 @Entity
 data class EventModelData(

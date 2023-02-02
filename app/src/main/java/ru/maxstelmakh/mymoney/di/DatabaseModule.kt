@@ -11,8 +11,8 @@ import ru.maxstelmakh.mymoney.data.localrepository.cashrepository.EventsDatabase
 import ru.maxstelmakh.mymoney.domain.repository.EventsRepositoryDao
 
 
-@InstallIn(SingletonComponent::class)
 @Module
+@InstallIn(SingletonComponent::class)
 class DatabaseModule {
 
     @Provides
