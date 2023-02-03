@@ -16,7 +16,7 @@ interface EventsRepositoryDao {
     suspend fun updateEvent(event: EventModelData)
 
     @Query("SELECT * FROM eventmodeldata")
-    suspend fun getAllEvents(): List<EventModelData>
+    fun getAllEvents(): List<EventModelData>
 
 
 }

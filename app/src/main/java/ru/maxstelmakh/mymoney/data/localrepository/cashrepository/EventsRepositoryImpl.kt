@@ -12,7 +12,7 @@ class EventsRepositoryImpl @Inject constructor(
 ){
 
     suspend fun getAllEvents(): List<EventModelDomain> {
-        return eventMapper.mapFromEntityList(eventsRepositoryDao.getAllEvents())
+        return eventMapper.mapFromEntityList(eventsRepositoryDao.getAllEvents()) ?: emptyList()
     }
 
     suspend fun insertEvent(event: EventModelDomain) {

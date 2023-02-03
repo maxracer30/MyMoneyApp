@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import ru.maxstelmakh.mymoney.data.models.EventModelData
 import ru.maxstelmakh.mymoney.domain.repository.EventsRepositoryDao
 
-@Database(entities = [EventModelData::class], version = 1)
+@Database(entities = [EventModelData::class], version = 1, exportSchema = false)
 abstract class EventsDatabase : RoomDatabase() {
     abstract fun eventsDao(): EventsRepositoryDao
 }
