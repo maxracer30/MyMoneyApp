@@ -39,6 +39,7 @@ android {
 
 dependencies {
 
+    implementation 'androidx.preference:preference:1.2.0'
     def room_version = "2.5.0"
     def hilt_version = "2.44.2"
     def nav_version = "2.5.3"

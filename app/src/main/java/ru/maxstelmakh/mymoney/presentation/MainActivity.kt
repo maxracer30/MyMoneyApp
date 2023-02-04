@@ -2,25 +2,29 @@ package ru.maxstelmakh.mymoney.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import dagger.hilt.android.AndroidEntryPoint
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import ru.maxstelmakh.mymoney.R
 import ru.maxstelmakh.mymoney.databinding.ActivityMainBinding
 
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var navController: NavController
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val navController = findNavController(R.id.fragmentContainerView)
 
-        navController = Navigation.findNavController(
-            activity = this,
-            viewId = binding.navHostFragment.id
-        )
+        val appBarConfiguration = AppBarConfiguration(setOf(
+            R.id.mainFragment,
+            R.id.plansFragment,
+            R.id.splashFragment
+        ))
+        setupActionBarWithNavController(navController, appBarConfiguration)
+
+        binding.mainBottomNavigationView.setupWithNavController(navController)
     }
 }

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="ru.maxstelmakh.mymoney.presentation.main.MainFragment"
-        android:label="fragment_main"
+        android:label="@string/home"
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_plansFragment"
@@ -17,6 +17,22 @@
     <fragment
         android:id="@+id/plansFragment"
         android:name="ru.maxstelmakh.mymoney.presentation.myplans.PlansFragment"
-        android:label="fragment_plans"
+        android:label="@string/plans"
         tools:layout="@layout/fragment_plans" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="ru.maxstelmakh.mymoney.presentation.splashscreen.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@navigation/nav_graph"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="ru.maxstelmakh.mymoney.presentation.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@xml/root_preferences"/>
 </navigation>
