@@ -26,9 +26,19 @@
     <string name="monday">MON</string>
     <string name="tuesday">TUE</string>
     <string name="wednesday">WED</string>
-    <string name="thurday">THUR</string>
+    <string name="thursday">THUR</string>
     <string name="friday">FRI</string>
     <string name="saturday">SAT</string>
-    <string name="sanday">SUN</string>
     <string name="new_event">New Event</string>
+    <string name="next"><![CDATA[->]]></string>
+    <string name="preview"><![CDATA[<-]]></string>
+    <string name="choose_period">Choose period</string>
+    <string name="day"><u>Day</u>.</string>
+    <string name="week"><u>Week</u></string>
+    <string name="month"><u>Month</u></string>
+    <string name="year"><u>Year</u></string>
+    <string name="period"><u>Period...</u></string>
+    <string name="today">5 February, Sunday</string>
+    <string name="main">Main</string>
+    <string name="categories">Categories</string>
 </resources>

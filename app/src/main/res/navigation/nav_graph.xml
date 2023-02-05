@@ -20,16 +20,10 @@
         android:label="@string/plans"
         tools:layout="@layout/fragment_plans" />
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="ru.maxstelmakh.mymoney.presentation.splashscreen.SplashFragment"
-        android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
-        <action
-            android:id="@+id/action_splashFragment_to_mainFragment"
-            app:destination="@id/mainFragment"
-            app:popUpTo="@navigation/nav_graph"
-            app:popUpToInclusive="true"/>
-    </fragment>
+        android:id="@+id/categoriesFragment"
+        android:name="ru.maxstelmakh.mymoney.presentation.categories.CategoriesFragment"
+        android:label="My categories"
+        tools:layout="@layout/fragment_categories" />
     <fragment
         android:id="@+id/settingsFragment"
         android:name="ru.maxstelmakh.mymoney.presentation.settings.SettingsFragment"

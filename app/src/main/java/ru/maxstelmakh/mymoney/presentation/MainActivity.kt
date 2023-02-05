@@ -16,12 +16,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
+
         val navController = findNavController(R.id.fragmentContainerView)
 
         val appBarConfiguration = AppBarConfiguration(setOf(
             R.id.mainFragment,
             R.id.plansFragment,
-            R.id.splashFragment
+            R.id.categoriesFragment,
+            R.id.settingsFragment
         ))
         setupActionBarWithNavController(navController, appBarConfiguration)
 
