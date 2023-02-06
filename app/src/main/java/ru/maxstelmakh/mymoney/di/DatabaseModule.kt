@@ -9,6 +9,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import ru.maxstelmakh.mymoney.data.localrepository.cashrepository.EventsDatabase
 import ru.maxstelmakh.mymoney.domain.repository.EventsRepositoryDao
+import javax.inject.Singleton
 
 
 @Module
@@ -16,6 +17,7 @@ import ru.maxstelmakh.mymoney.domain.repository.EventsRepositoryDao
 class DatabaseModule {
 
     @Provides
+    @Singleton
     fun provideLocalDatabase(@ApplicationContext context: Context): EventsDatabase {
         return Room.databaseBuilder(
             context = context,
@@ -25,6 +27,7 @@ class DatabaseModule {
     }
 
     @Provides
+    @Singleton
     fun provideEventsDao(eventsDatabase: EventsDatabase): EventsRepositoryDao {
         return eventsDatabase.eventsDao()
     }

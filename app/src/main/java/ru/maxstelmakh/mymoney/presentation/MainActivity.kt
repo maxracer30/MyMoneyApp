@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import ru.maxstelmakh.mymoney.R
 import ru.maxstelmakh.mymoney.databinding.ActivityMainBinding
 
@@ -20,14 +19,25 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.fragmentContainerView)
 
-        val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.mainFragment,
-            R.id.plansFragment,
-            R.id.categoriesFragment,
-            R.id.settingsFragment
-        ))
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.mainFragment,
+                R.id.plansFragment,
+                R.id.categoriesFragment,
+                R.id.settingsFragment
+            )
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.mainBottomNavigationView.setupWithNavController(navController)
+//        binding.apply {
+//            mainBottomNavigationView.setupWithNavController(navController)
+//            btnAdd.setOnClickListener {
+//                supportFragmentManager.beginTransaction().replace(
+//                    R.id.fragmentContainerView,
+//
+//                ).commit()
+//            }
+//        }
+
     }
 }

@@ -1,10 +1,10 @@
 package ru.maxstelmakh.mymoney.domain.usecases
 
-import ru.maxstelmakh.mymoney.data.localrepository.cashrepository.EventsRepositoryImpl
+import ru.maxstelmakh.mymoney.domain.repository.EventsRepositoryDao
 import javax.inject.Inject
 
 class GetAllEventsUseCase @Inject constructor(
-    private val eventsRepositoryImpl: EventsRepositoryImpl
+    private val eventsRepository: EventsRepositoryDao
 ) {
-    suspend operator fun invoke() = eventsRepositoryImpl.getAllEvents()
+    suspend operator fun invoke() = eventsRepository.getAllEvents()
 }

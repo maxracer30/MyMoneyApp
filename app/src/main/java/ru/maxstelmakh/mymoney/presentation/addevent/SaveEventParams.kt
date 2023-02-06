@@ -1,9 +1,9 @@
-package ru.maxstelmakh.mymoney.domain.model
+package ru.maxstelmakh.mymoney.presentation.addevent
 
-data class EventModelDomain(
-    var id: Long = 0,
+class SaveEventParams(
     var title: String,
     var expense: Int,
     var description: String,
     var category: String,
-)
+) {
+}

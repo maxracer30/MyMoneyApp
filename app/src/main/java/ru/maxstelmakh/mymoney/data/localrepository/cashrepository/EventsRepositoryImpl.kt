@@ -9,21 +9,21 @@ import javax.inject.Inject
 class EventsRepositoryImpl @Inject constructor(
     private val eventsRepositoryDao: EventsRepositoryDao,
     private val eventMapper: EventMapper
-){
+) : EventsRepository {
 
-    suspend fun getAllEvents(): List<EventModelDomain> {
+    override suspend fun getAllEvents(): List<EventModelDomain> {
         return eventMapper.mapFromEntityList(eventsRepositoryDao.getAllEvents()) ?: emptyList()
     }
 
-    suspend fun insertEvent(event: EventModelDomain) {
+    override suspend fun insertEvent(event: EventModelDomain) {
         eventsRepositoryDao.insertEvent(eventMapper.mapToEntity(event))
     }
 
-    suspend fun deleteEvent(event: EventModelDomain) {
+    override suspend fun deleteEvent(event: EventModelDomain) {
         eventsRepositoryDao.deleteEvent(eventMapper.mapToEntity(event))
     }
 
-    suspend fun updateEvent(event: EventModelDomain) {
+    override suspend fun updateEvent(event: EventModelDomain) {
         eventsRepositoryDao.updateEvent(eventMapper.mapToEntity(event))
     }
 }

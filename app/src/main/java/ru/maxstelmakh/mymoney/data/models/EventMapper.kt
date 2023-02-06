@@ -9,10 +9,9 @@ class EventMapper @Inject constructor(): EntityMapper<EventModelData, EventModel
         return EventModelDomain(
             id = entity.primaryKey,
             title = entity.title,
-            isExpense = entity.isExpense,
+            expense = entity.expense,
             description = entity.description,
             category = entity.category,
-            account = entity.account
         )
     }
 
@@ -20,10 +19,9 @@ class EventMapper @Inject constructor(): EntityMapper<EventModelData, EventModel
         return EventModelData(
             primaryKey = domainModel.id,
             title = domainModel.title,
-            isExpense = domainModel.isExpense,
+            expense = domainModel.expense,
             description = domainModel.description,
             category = domainModel.category,
-            account = domainModel.account
         )
     }
 
