@@ -11,14 +11,14 @@
         android:label="@string/home"
         tools:layout="@layout/fragment_main">
         <action
-            android:id="@+id/action_mainFragment_to_plansFragment"
-            app:destination="@id/plansFragment" />
+            android:id="@+id/action_mainFragment_to_addNewEventFragment"
+            app:destination="@id/addNewEventFragment" />
     </fragment>
     <fragment
         android:id="@+id/plansFragment"
-        android:name="ru.maxstelmakh.mymoney.presentation.myplans.PlansFragment"
-        android:label="@string/plans"
-        tools:layout="@layout/fragment_plans" />
+        android:name="ru.maxstelmakh.mymoney.presentation.myplans.StatisticFragment"
+        android:label="@string/statistic"
+        tools:layout="@layout/fragment_statistic" />
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="ru.maxstelmakh.mymoney.presentation.categories.CategoriesFragment"
@@ -29,4 +29,9 @@
         android:name="ru.maxstelmakh.mymoney.presentation.settings.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@xml/root_preferences"/>
+    <fragment
+        android:id="@+id/addNewEventFragment"
+        android:name="ru.maxstelmakh.mymoney.presentation.addevent.AddNewEventFragment"
+        android:label="fragment_add_new_event"
+        tools:layout="@layout/fragment_add_new_event" />
 </navigation>

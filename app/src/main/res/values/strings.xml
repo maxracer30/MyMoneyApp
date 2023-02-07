@@ -38,7 +38,19 @@
     <string name="month"><u>Month</u></string>
     <string name="year"><u>Year</u></string>
     <string name="period"><u>Period...</u></string>
-    <string name="today">5 February, Sunday</string>
+    <string name="dayInfo">8 February, Sunday</string>
+    <string name="today">280 / 900</string>
     <string name="main">Main</string>
     <string name="categories">Categories</string>
+    <string name="next_period">Next period</string>
+    <string name="preview_period">Preview period</string>
+    <string name="addnewevent">AddNewEvent</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="statistic">Statistic</string>
+    <string name="enter_description">Enter description</string>
+    <string name="enter_title_of_the_expense">Enter title of the expense</string>
+    <string name="enter_expense">Enter expense</string>
+    <string name="enter_category">Enter category</string>
+    <string name="prise_check">Prise check</string>
 </resources>

@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import dagger.hilt.android.AndroidEntryPoint
 import ru.maxstelmakh.mymoney.R
 import ru.maxstelmakh.mymoney.databinding.ActivityMainBinding
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,15 +31,6 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-//        binding.apply {
-//            mainBottomNavigationView.setupWithNavController(navController)
-//            btnAdd.setOnClickListener {
-//                supportFragmentManager.beginTransaction().replace(
-//                    R.id.fragmentContainerView,
-//
-//                ).commit()
-//            }
-//        }
-
+        binding.mainBottomNavigationView.setupWithNavController(navController)
     }
 }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,98 +7,78 @@
     android:orientation="vertical"
     tools:context=".presentation.main.">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/internalConstrainLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnPreviewWeek"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:textSize="20sp"
-            android:layout_height="match_parent"
-            app:icon="@drawable/baseline_navigate_before_24"
-            app:iconGravity="start"/>
+        android:layout_margin="15dp"
+        app:circularflow_radiusInDP="12dp"
+        android:background="@drawable/rounded_corners_ui"
+        android:backgroundTint="@color/green2"
+        app:circularflow_angles="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progressBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:progress="32"
+            android:padding="15dp"
+            app:trackCornerRadius="7dp"
+            app:trackThickness="15dp"
+            app:layout_constraintEnd_toStartOf="@id/btnPriseCheck"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/todayInfo" />
+
         <TextView
-            android:id="@+id/weekInfo"
+            android:id="@+id/todayInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:gravity="center"
             android:text="@string/today"
-            android:gravity="center"
+            android:textColor="@color/black"
             android:textSize="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="10"/>
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnNextWeek"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnPriseCheck"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btnPriseCheck"
+            android:layout_width="40dp"
+            android:layout_height="0dp"
             android:layout_margin="10dp"
-            android:textSize="20sp"
-            android:layout_weight="1"
-            app:icon="@drawable/baseline_navigate_next_24"
-            app:iconGravity="end"/>
-    </LinearLayout>
+            android:contentDescription="@string/prise_check"
+            android:gravity="center"
+            app:icon="@drawable/baseline_price_check_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="7dp"
-        android:text="@string/choose_period"/>
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/day"
-            android:gravity="center"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/week"
-            android:gravity="center"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/month"
-            android:gravity="center"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/year"
-            android:gravity="center"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/period"
-            android:gravity="center"
-            android:layout_weight="1"/>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/activity_main_piechart"
-        android:layout_width="match_parent"
-        android:layout_height="330dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_margin="7dp"
-
-        app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/eventsRecyclerView"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/internalConstrainLayout" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/green3"
+        android:contentDescription="@string/addnewevent"
+        android:src="@drawable/baseline_add_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

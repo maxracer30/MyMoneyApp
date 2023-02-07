@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.datepicker.MaterialDatePicker
+import dagger.hilt.android.AndroidEntryPoint
 import ru.maxstelmakh.mymoney.R
 import ru.maxstelmakh.mymoney.databinding.FragmentMainBinding
-import ru.maxstelmakh.mymoney.presentation.adapter.piechartadapter.PieChartDiagram
-import javax.inject.Inject
 
-class MainFragment @Inject constructor(
+@AndroidEntryPoint
+class MainFragment(
 ) : Fragment(R.layout.fragment_main) {
 
     private var _binding: FragmentMainBinding? = null
@@ -30,8 +31,10 @@ class MainFragment @Inject constructor(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.activityMainPiechart.apply {
-            PieChartDiagram(this).getChart()
+        binding?.apply {
+            btnAdd.setOnClickListener {
+                findNavController().navigate(R.id.action_mainFragment_to_addNewEventFragment)
+            }
         }
     }
 
@@ -48,19 +51,9 @@ class MainFragment @Inject constructor(
 
     }
 
-    private fun init() {
-
-
-//        val recyclerView = binding?.rvEvents
-//        recyclerView?.adapter = adapter
-//        viewModel.events.observe(viewLifecycleOwner) {
-//            adapter.setList(it)
-//        }
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }

@@ -9,7 +9,7 @@
     <item
         android:id="@id/plansFragment"
         android:icon="@drawable/baseline_equalizer_24"
-        android:title="@string/plans" />
+        android:title="@string/statistic" />
     <item
         android:id="@id/categoriesFragment"
         android:icon="@drawable/baseline_auto_awesome_motion_24"
