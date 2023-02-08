@@ -1,13 +1,14 @@
 package ru.maxstelmakh.mymoney.presentation.adapter.eventsadapter
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.maxstelmakh.mymoney.databinding.EventItemLayoutBinding
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 
-class Adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class EventsAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var eventsList = emptyList<EventModelDomain>()
 
@@ -22,13 +23,13 @@ class Adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         (holder as EventsViewHolder).refreshList(eventsList[position])
     }
 
+    override fun getItemCount() = eventsList.size
+
     @SuppressLint("NotifyDataSetChanged")
     fun setList(list: List<EventModelDomain>){
+
         eventsList = list
         notifyDataSetChanged()
-    }
-
-    override fun getItemCount(): Int {
-        return eventsList.size
+        Log.d("StatesOfApp", "list = ${list.size}, eventslist = ${eventsList.size}")
     }
 }

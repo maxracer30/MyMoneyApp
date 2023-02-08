@@ -14,7 +14,7 @@ class DomainModule {
 
     @Provides
     fun provideGetAllEventsUseCase(eventsRepositoryImpl: EventsRepositoryImpl): GetAllEventsUseCase {
-        return GetAllEventsUseCase(eventsRepository = eventsRepositoryImpl)
+        return GetAllEventsUseCase(eventsRepositoryImpl = eventsRepositoryImpl)
     }
 
     @Provides
