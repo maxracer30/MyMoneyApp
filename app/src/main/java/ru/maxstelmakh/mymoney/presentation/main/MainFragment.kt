@@ -26,7 +26,7 @@ import ru.maxstelmakh.mymoney.presentation.adapter.swipegesture.SwipeGesture
 class MainFragment : Fragment(R.layout.fragment_main) {
 
     private var _binding: FragmentMainBinding? = null
-    private val binding get() = _binding
+    private val binding get() = _binding!!
     private val viewModel by viewModels<MainViewModel>()
     private val eventsAdapter = EventsAdapter()
 
@@ -122,7 +122,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                         }
                     }
                 } catch (e: Exception) {
-                    Toast.makeText(this@MainFragment.context, "${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@MainFragment.context, "${e.message}", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
         }
