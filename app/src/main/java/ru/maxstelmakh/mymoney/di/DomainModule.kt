@@ -25,4 +25,6 @@ class DomainModule {
             eventsRepositoryImpl = eventsRepositoryImpl
         )
     }
+
+
 }

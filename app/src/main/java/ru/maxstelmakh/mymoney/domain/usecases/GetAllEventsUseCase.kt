@@ -1,16 +1,14 @@
 package ru.maxstelmakh.mymoney.domain.usecases
 
-import android.util.Log
-import ru.maxstelmakh.mymoney.data.localrepository.cashrepository.EventsRepositoryImpl
+import kotlinx.coroutines.flow.Flow
+import ru.maxstelmakh.mymoney.data.localrepository.cashrepository.EventsRepository
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 import javax.inject.Inject
 
 class GetAllEventsUseCase @Inject constructor(
-    private val eventsRepositoryImpl: EventsRepositoryImpl
+    private val eventsRepositoryImpl: EventsRepository
 ) {
-    suspend fun invoke(): List<EventModelDomain>{
-        val list = eventsRepositoryImpl.getAllEvents()
-        Log.d("StatesOfApp", "listInUseCase = ${list.size}")
-        return list
+    suspend operator fun invoke(): Flow<List<EventModelDomain>> {
+        return eventsRepositoryImpl.getAllEvents()
     }
 }

@@ -1,6 +1,7 @@
 package ru.maxstelmakh.mymoney.domain.repository
 
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 import ru.maxstelmakh.mymoney.data.models.EventModelData
 
 @Dao
@@ -16,7 +17,7 @@ interface EventsRepositoryDao {
     suspend fun updateEvent(event: EventModelData)
 
     @Query("SELECT * FROM EventModelData")
-    suspend fun getAllEvents(): List<EventModelData>
+    fun getAllEvents(): Flow<List<EventModelData>>
 
 
 }

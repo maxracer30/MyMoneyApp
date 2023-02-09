@@ -53,4 +53,8 @@
     <string name="enter_expense">Enter expense</string>
     <string name="enter_category">Enter category</string>
     <string name="prise_check">Prise check</string>
+    <string name="item_deleted">Item deleted</string>
+    <string name="undo">UNDO</string>
+    <string name="delete">Delete</string>
+    <string name="change">Change</string>
 </resources>
