@@ -3,13 +3,14 @@ package ru.maxstelmakh.mymoney.presentation.main
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,7 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import ru.maxstelmakh.mymoney.R
 import ru.maxstelmakh.mymoney.databinding.FragmentMainBinding
 import ru.maxstelmakh.mymoney.presentation.adapter.eventsadapter.EventsAdapter
@@ -55,31 +57,31 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
 
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.events
-//                .onEach(eventsAdapter::setList)
-//
+        viewModel.events.observe(viewLifecycleOwner) {
+            viewModel.viewModelScope.launch {
+                eventsAdapter.setList(it)
+            }
         }
 
         swipeToGesture()
     }
 
     private fun swipeToGesture() {
-        val swipeGesture = object : SwipeGesture(context = binding?.root?.context!!) {
+        val swipeGesture = object : SwipeGesture(context = binding.root.context) {
             @SuppressLint("ResourceType", "ShowToast")
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.oldPosition
+                val position = viewHolder.bindingAdapterPosition
                 var actionButtonTapped = false
-
+                Log.d("StatesOfApp", "abt before $actionButtonTapped")
                 try {
 
                     when (direction) {
                         ItemTouchHelper.LEFT -> {
                             val eventModelDomain =
-                                eventsAdapter.eventsList.get(position)
+                                eventsAdapter.oldEventsList[position]
 //                            То самое удаление из базы данных!!!!!!!!!!
-//                            viewModel.deleteEvent(eventModelDomain)
-                            eventsAdapter.notifyItemRemoved(position)
+                            viewModel.deleteEvent(eventModelDomain)
+//                            eventsAdapter.notifyItemRemoved(position)
 
                             Snackbar.make(
                                 activity!!.findViewById(R.id.activity_main),
@@ -98,21 +100,18 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
                                     transientBottomBar?.setAction(getString(R.string.undo)) {
 //                                        Добавление удалённого
-//                                        viewModel.addEvent(eventModelDomain)
-                                        eventsAdapter.eventsList.add(eventModelDomain)
-                                        eventsAdapter.notifyItemInserted(position)
+                                        viewModel.addEvent(eventModelDomain)
+//                                        eventsAdapter.oldEventsList.add(eventModelDomain)
+//                                        eventsAdapter.notifyItemInserted(position)
                                         actionButtonTapped = true
                                     }
-
                                     super.onShown(transientBottomBar)
                                 }
                             }).apply {
                                 animationMode = Snackbar.ANIMATION_MODE_SLIDE
                             }
 
-                                .setActionTextColor(
-                                    Color.RED
-                                )
+                                .setActionTextColor(Color.RED)
                                 .show()
                         }
 
@@ -130,7 +129,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
         val touchHelper = ItemTouchHelper(swipeGesture)
 
-        touchHelper.attachToRecyclerView(binding?.eventsRecyclerView)
+        touchHelper.attachToRecyclerView(binding.eventsRecyclerView)
     }
 
     private fun showDataRangePicker() {

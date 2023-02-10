@@ -1,7 +1,5 @@
 package ru.maxstelmakh.mymoney.data.models
 
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 import ru.maxstelmakh.mymoney.domain.util.EntityMapper
 import javax.inject.Inject
@@ -14,6 +12,7 @@ class EventMapper @Inject constructor(): EntityMapper<EventModelData, EventModel
             expense = entity.expense,
             description = entity.description,
             category = entity.category,
+            joined_date = entity.joined_date
         )
     }
 
@@ -24,11 +23,12 @@ class EventMapper @Inject constructor(): EntityMapper<EventModelData, EventModel
             expense = domainModel.expense,
             description = domainModel.description,
             category = domainModel.category,
+            joined_date = domainModel.joined_date
         )
     }
 
-    suspend fun mapFromEntityList(initial: Flow<List<EventModelData>>): Flow<List<EventModelDomain>> {
-        return initial.map { list -> list.map { mapFromEntity(it) } }
+    suspend fun mapFromEntityList(initial: List<EventModelData>): List<EventModelDomain> {
+        return initial.map { mapFromEntity(it) }
     }
 
     fun mapToEntityList(initial: List<EventModelDomain>): List<EventModelData> {

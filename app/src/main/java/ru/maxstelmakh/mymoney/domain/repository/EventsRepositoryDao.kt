@@ -16,7 +16,7 @@ interface EventsRepositoryDao {
     @Update
     suspend fun updateEvent(event: EventModelData)
 
-    @Query("SELECT * FROM EventModelData")
+    @Query("SELECT * FROM EventModelData ORDER BY datetime(joined_date)")
     fun getAllEvents(): Flow<List<EventModelData>>
 
 

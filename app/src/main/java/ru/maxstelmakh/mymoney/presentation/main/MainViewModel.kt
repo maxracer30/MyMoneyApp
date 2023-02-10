@@ -1,11 +1,12 @@
 package ru.maxstelmakh.mymoney.presentation.main
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 import ru.maxstelmakh.mymoney.domain.usecases.DeleteEventUseCase
@@ -21,17 +22,15 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
 
 
-    private val _events = MutableSharedFlow<List<EventModelDomain>>(replay = 1)
-    val events: SharedFlow<List<EventModelDomain>> = _events.asSharedFlow()
+    private val _events = MutableLiveData<List<EventModelDomain>>()
+    val events: LiveData<List<EventModelDomain>> = _events
 
 
     init {
         viewModelScope.launch {
-            _events.emitAll(
-                flow {
-                    emit(getAllEventsUseCase())
-                }
-            )
+            getAllEventsUseCase().collect {
+                _events.postValue(it)
+            }
         }
     }
 
@@ -44,14 +43,17 @@ class MainViewModel @Inject constructor(
     fun addEvent(event: EventModelDomain) {
         try {
             viewModelScope.launch(Dispatchers.IO) {
-                saveNewEventUseCase(eventModelDomain = EventModelDomain(
-                    id = event.id,
-                    title = event.title,
-                    expense = event.expense,
-                    description = event.description,
-                    category = event.category
+                saveNewEventUseCase(
+                    eventModelDomain = EventModelDomain(
+                        id = event.id,
+                        title = event.title,
+                        expense = event.expense,
+                        description = event.description,
+                        category = event.category,
+                        joined_date = event.joined_date
+                    )
                 )
-                )
+                Log.d("StatesOfApp", event.joined_date.toString())
             }
         } catch (nullPointerException: NullPointerException) {
             Log.d("StatesOfApp", "$nullPointerException")

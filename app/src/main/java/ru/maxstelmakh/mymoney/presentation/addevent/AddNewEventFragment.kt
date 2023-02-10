@@ -1,5 +1,6 @@
 package ru.maxstelmakh.mymoney.presentation.addevent
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +30,7 @@ class AddNewEventFragment @Inject constructor(
         return _binding!!.root
     }
 
+    @SuppressLint("NewApi")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
