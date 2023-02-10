@@ -7,7 +7,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import ru.maxstelmakh.mymoney.data.localrepository.cashrepository.EventsDatabase
+import ru.maxstelmakh.mymoney.data.repository.cashrepository.EventsDatabase
 import ru.maxstelmakh.mymoney.domain.repository.EventsRepositoryDao
 import javax.inject.Singleton
 

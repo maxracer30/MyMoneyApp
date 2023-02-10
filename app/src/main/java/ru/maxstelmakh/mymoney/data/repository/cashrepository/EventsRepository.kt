@@ -1,4 +1,4 @@
-package ru.maxstelmakh.mymoney.data.localrepository.cashrepository
+package ru.maxstelmakh.mymoney.data.repository.cashrepository
 
 import kotlinx.coroutines.flow.Flow
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain

@@ -1,6 +1,6 @@
 package ru.maxstelmakh.mymoney.domain.usecases
 
-import ru.maxstelmakh.mymoney.data.localrepository.cashrepository.EventsRepositoryImpl
+import ru.maxstelmakh.mymoney.data.repository.cashrepository.EventsRepositoryImpl
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 import javax.inject.Inject
 

@@ -12,7 +12,18 @@
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_addNewEventFragment"
-            app:destination="@id/addNewEventFragment" />
+            app:destination="@id/addNewEventFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_mainFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/plansFragment"
@@ -34,4 +45,9 @@
         android:name="ru.maxstelmakh.mymoney.presentation.addevent.AddNewEventFragment"
         android:label="fragment_add_new_event"
         tools:layout="@layout/fragment_add_new_event" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="ru.maxstelmakh.mymoney.presentation.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
 </navigation>

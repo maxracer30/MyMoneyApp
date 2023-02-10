@@ -3,7 +3,6 @@ package ru.maxstelmakh.mymoney.presentation.main
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,8 +54,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             findNavController().navigate(R.id.action_mainFragment_to_addNewEventFragment)
         }
 
-
-
         viewModel.events.observe(viewLifecycleOwner) {
             viewModel.viewModelScope.launch {
                 eventsAdapter.setList(it)
@@ -71,17 +68,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             @SuppressLint("ResourceType", "ShowToast")
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.bindingAdapterPosition
-                var actionButtonTapped = false
-                Log.d("StatesOfApp", "abt before $actionButtonTapped")
                 try {
 
                     when (direction) {
                         ItemTouchHelper.LEFT -> {
-                            val eventModelDomain =
-                                eventsAdapter.oldEventsList[position]
-//                            То самое удаление из базы данных!!!!!!!!!!
+                            val eventModelDomain = eventsAdapter.oldEventsList[position]
+
                             viewModel.deleteEvent(eventModelDomain)
-//                            eventsAdapter.notifyItemRemoved(position)
 
                             Snackbar.make(
                                 activity!!.findViewById(R.id.activity_main),
@@ -95,29 +88,22 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                                     super.onDismissed(transientBottomBar, event)
                                 }
 
-                                @SuppressLint("NotifyDataSetChanged")
                                 override fun onShown(transientBottomBar: Snackbar?) {
 
                                     transientBottomBar?.setAction(getString(R.string.undo)) {
-//                                        Добавление удалённого
                                         viewModel.addEvent(eventModelDomain)
-//                                        eventsAdapter.oldEventsList.add(eventModelDomain)
-//                                        eventsAdapter.notifyItemInserted(position)
-                                        actionButtonTapped = true
                                     }
                                     super.onShown(transientBottomBar)
                                 }
                             }).apply {
                                 animationMode = Snackbar.ANIMATION_MODE_SLIDE
                             }
-
                                 .setActionTextColor(Color.RED)
                                 .show()
                         }
 
                         ItemTouchHelper.RIGHT -> {
-                            Toast.makeText(context, "kuku", Toast.LENGTH_SHORT).show()
-                            TODO("Update swipe event realisation")
+                            findNavController().navigate(R.id.action_mainFragment_to_detailsFragment)
                         }
                     }
                 } catch (e: Exception) {

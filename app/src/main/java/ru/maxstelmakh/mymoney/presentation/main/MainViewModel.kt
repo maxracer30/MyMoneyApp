@@ -21,10 +21,8 @@ class MainViewModel @Inject constructor(
     private val saveNewEventUseCase: SaveNewEventUseCase
 ) : ViewModel() {
 
-
     private val _events = MutableLiveData<List<EventModelDomain>>()
     val events: LiveData<List<EventModelDomain>> = _events
-
 
     init {
         viewModelScope.launch {
@@ -53,7 +51,6 @@ class MainViewModel @Inject constructor(
                         joined_date = event.joined_date
                     )
                 )
-                Log.d("StatesOfApp", event.joined_date.toString())
             }
         } catch (nullPointerException: NullPointerException) {
             Log.d("StatesOfApp", "$nullPointerException")

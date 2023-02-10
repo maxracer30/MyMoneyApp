@@ -1,7 +1,7 @@
 package ru.maxstelmakh.mymoney.domain.usecases
 
 import kotlinx.coroutines.flow.Flow
-import ru.maxstelmakh.mymoney.data.localrepository.cashrepository.EventsRepository
+import ru.maxstelmakh.mymoney.data.repository.cashrepository.EventsRepository
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 import javax.inject.Inject
 

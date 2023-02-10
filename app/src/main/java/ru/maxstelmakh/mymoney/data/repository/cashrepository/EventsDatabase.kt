@@ -1,4 +1,4 @@
-package ru.maxstelmakh.mymoney.data.localrepository.cashrepository
+package ru.maxstelmakh.mymoney.data.repository.cashrepository
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

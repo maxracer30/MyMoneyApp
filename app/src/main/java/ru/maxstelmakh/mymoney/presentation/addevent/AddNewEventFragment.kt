@@ -1,11 +1,10 @@
 package ru.maxstelmakh.mymoney.presentation.addevent
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,11 +14,11 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class AddNewEventFragment @Inject constructor(
-) : DialogFragment() {
+) : Fragment() {
 
 
     private var _binding: FragmentAddNewEventBinding? = null
-    private val binding get() = _binding
+    private val binding get() = _binding!!
     private val viewModel by viewModels<AddNewEventViewModel>()
 
     override fun onCreateView(
@@ -30,11 +29,11 @@ class AddNewEventFragment @Inject constructor(
         return _binding!!.root
     }
 
-    @SuppressLint("NewApi")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding?.apply {
+        with(binding) {
+
             btnSave.setOnClickListener {
                 viewModel.insert(
                     eventModelDomain = EventModelDomain(
@@ -46,6 +45,7 @@ class AddNewEventFragment @Inject constructor(
                 )
                 findNavController().navigateUp()
             }
+
             btnCancel.setOnClickListener { findNavController().navigateUp() }
         }
     }
