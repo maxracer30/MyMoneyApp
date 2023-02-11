@@ -49,7 +49,7 @@ abstract class SwipeGesture(
             .addSwipeRightActionIcon(updateIcon)
             .addSwipeRightBackgroundColor(context.getColor(R.color.lightblue))
             .addSwipeLeftLabel(context.getString(R.string.delete))
-            .addSwipeRightLabel(context.getString(R.string.change))
+            .addSwipeRightLabel(context.getString(R.string.change_operation))
             .addSwipeLeftCornerRadius(0, 1f)
             .create()
             .decorate()

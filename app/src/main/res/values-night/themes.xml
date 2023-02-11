@@ -2,6 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.MyMoney" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
+        <item name="android:colorBackground">@color/backgroundNight</item>
         <item name="colorPrimary">@color/green3</item>
         <item name="colorPrimaryVariant">@color/green6</item>
         <item name="colorOnPrimary">@color/black</item>

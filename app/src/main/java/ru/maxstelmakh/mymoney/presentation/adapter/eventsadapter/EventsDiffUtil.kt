@@ -19,7 +19,6 @@ class EventsDiffUtil(
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         return when {
             oldList[oldItemPosition].id != newList[newItemPosition].id -> false
-            oldList[oldItemPosition].title != newList[newItemPosition].title -> false
             oldList[oldItemPosition].expense != newList[newItemPosition].expense -> false
             oldList[oldItemPosition].category != newList[newItemPosition].category -> false
             oldList[oldItemPosition].description != newList[newItemPosition].description -> false

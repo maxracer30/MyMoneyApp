@@ -48,7 +48,7 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="statistic">Statistic</string>
-    <string name="enter_description">Enter description</string>
+    <string name="enter_comment">Enter comment</string>
     <string name="enter_title_of_the_expense">Enter title of the expense</string>
     <string name="enter_expense">Enter expense</string>
     <string name="enter_category">Enter category</string>
@@ -56,5 +56,11 @@
     <string name="item_deleted">Item deleted</string>
     <string name="undo">UNDO</string>
     <string name="delete">Delete</string>
-    <string name="change">Change</string>
+    <string name="change_operation">Change operation</string>
+    <string name="add_operation">Add operation</string>
+    <string name="spent">Spent</string>
+    <string name="category">Category</string>
+    <string name="comment">Comment</string>
+    <string name="RUB">₽</string>
+    <string name="_45">45</string>
 </resources>

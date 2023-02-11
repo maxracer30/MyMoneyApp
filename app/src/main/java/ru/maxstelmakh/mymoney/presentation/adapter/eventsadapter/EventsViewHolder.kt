@@ -10,7 +10,6 @@ class EventsViewHolder(
 ) : RecyclerView.ViewHolder(eventBinding.root) {
     fun refreshList(event: EventModelDomain) {
         eventBinding.apply {
-            eventTitle.text = event.title
             eventCategory.text = event.category
             eventDescription.text = event.description
             eventExpense.text = event.expense.toString()

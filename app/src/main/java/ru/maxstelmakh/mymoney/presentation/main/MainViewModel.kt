@@ -44,7 +44,6 @@ class MainViewModel @Inject constructor(
                 saveNewEventUseCase(
                     eventModelDomain = EventModelDomain(
                         id = event.id,
-                        title = event.title,
                         expense = event.expense,
                         description = event.description,
                         category = event.category,

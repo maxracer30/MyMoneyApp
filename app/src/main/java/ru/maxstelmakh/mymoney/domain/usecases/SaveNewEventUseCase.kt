@@ -12,7 +12,6 @@ class SaveNewEventUseCase @Inject constructor(
     suspend operator fun invoke(eventModelDomain: EventModelDomain) {
         eventsRepositoryImpl.insertEvent(
             EventModelDomain(
-                title = eventModelDomain.title,
                 expense = eventModelDomain.expense,
                 description = eventModelDomain.description,
                 category = eventModelDomain.category,

@@ -49,5 +49,7 @@
         android:id="@+id/detailsFragment"
         android:name="ru.maxstelmakh.mymoney.presentation.details.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_add_new_event" >
+
+    </fragment>
 </navigation>

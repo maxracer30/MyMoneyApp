@@ -68,12 +68,11 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             @SuppressLint("ResourceType", "ShowToast")
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.bindingAdapterPosition
+                val eventModelDomain = eventsAdapter.oldEventsList[position]
                 try {
 
                     when (direction) {
                         ItemTouchHelper.LEFT -> {
-                            val eventModelDomain = eventsAdapter.oldEventsList[position]
-
                             viewModel.deleteEvent(eventModelDomain)
 
                             Snackbar.make(
@@ -103,7 +102,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                         }
 
                         ItemTouchHelper.RIGHT -> {
-                            findNavController().navigate(R.id.action_mainFragment_to_detailsFragment)
+                            findNavController()
+                                .navigate(R.id.action_mainFragment_to_detailsFragment)
                         }
                     }
                 } catch (e: Exception) {

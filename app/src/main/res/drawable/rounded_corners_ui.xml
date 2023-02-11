@@ -8,6 +8,7 @@
         android:color="@color/black" />
     <!-- stroke for defining a border for view -->
 
+
     <size
         android:width="40dp"
         android:height="40dp" />

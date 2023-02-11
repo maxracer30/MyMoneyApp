@@ -15,10 +15,12 @@
     <color name="green4">#92D57B</color>
     <color name="green5">#4B8E53</color>
     <color name="green6">#558156</color>
-    <color name="green7">#4EB324</color>
-    <color name="green8">#008A06</color>
+    <color name="green7">#7FB589</color>
+    <color name="green8">#80D57E</color>
     <color name="red">#FF0000</color>
     <color name="lightblue">#008eff</color>
     <color name="orangered">#ff5d00</color>
+    <color name="backgroundDay">#F8F5DE</color>
+    <color name="backgroundNight">#373736</color>
 
 </resources>

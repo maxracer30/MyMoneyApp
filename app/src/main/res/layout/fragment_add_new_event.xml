@@ -1,86 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
+    tools:context=".presentation.MainActivity">
 
-    tools:context=".presentation.addevent.AddNewEventFragment">
 
-    <EditText
-        android:id="@+id/title"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:textSize="14sp"
-        android:hint="@string/enter_title_of_the_expense"
-        android:autofillHints="Expense"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="LabelFor" />
-    <EditText
-        android:id="@+id/expense"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:textSize="14sp"
-        android:hint="@string/enter_expense"
-        android:autofillHints="category"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="LabelFor" />
-    <EditText
-        android:id="@+id/category"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:autofillHints="category"
-        android:textSize="14sp"
-        android:hint="@string/enter_category"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/expense"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="LabelFor" />
-    <EditText
-        android:id="@+id/description"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:autofillHints="description"
-        android:textSize="14sp"
-        android:hint="@string/enter_description"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/category"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="LabelFor" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/internalConstrainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/my_custom_shape_soft"
+        android:backgroundTint="@color/green7"
+        android:padding="20dp"
+        app:circularflow_angles="10dp"
+        app:circularflow_radiusInDP="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/tvNameOfOperation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="10dp"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:text="@string/add_operation"/>
+
+
+        <TextView
+            android:id="@+id/tvExpense"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNameOfOperation"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="20dp"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:text="@string/spent"/>
+
+
+        <EditText
+            android:id="@+id/expense"
+            android:layout_marginHorizontal="30sp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:autofillHints="category"
+            android:hint="@string/enter_expense"
+            android:inputType="number"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvExpense"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/expense"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="20dp"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:text="@string/category"/>
+
+        <EditText
+            android:id="@+id/category"
+            android:layout_marginHorizontal="30sp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:autofillHints="category"
+            android:hint="@string/enter_category"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCategory"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/category"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="20dp"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:text="@string/comment"/>
+
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_marginHorizontal="30sp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:autofillHints="description"
+            android:hint="@string/enter_comment"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription"
+            tools:ignore="LabelFor" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/description"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="30dp"
+        android:background="@drawable/my_custom_shape_soft"
+
+        android:backgroundTint="@color/green7"
+        android:paddingHorizontal="100dp"
+        android:paddingVertical="25dp"
+
+        android:shadowColor="@color/green4"
+        android:shadowRadius="7"
+
+        android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cancel"
-            android:layout_weight="1"
-            tools:ignore="ButtonStyle" />
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/save"
-            android:layout_weight="1"
-            tools:ignore="ButtonStyle" />
-
-
-    </LinearLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

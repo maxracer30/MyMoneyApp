@@ -37,7 +37,6 @@ class AddNewEventFragment @Inject constructor(
             btnSave.setOnClickListener {
                 viewModel.insert(
                     eventModelDomain = EventModelDomain(
-                        title = title.text.toString(),
                         expense = Integer.parseInt(expense.text.toString()),
                         description = description.text.toString(),
                         category = category.text.toString()
@@ -45,8 +44,6 @@ class AddNewEventFragment @Inject constructor(
                 )
                 findNavController().navigateUp()
             }
-
-            btnCancel.setOnClickListener { findNavController().navigateUp() }
         }
     }
 

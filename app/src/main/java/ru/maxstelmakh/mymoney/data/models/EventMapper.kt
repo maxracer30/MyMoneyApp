@@ -8,7 +8,6 @@ class EventMapper @Inject constructor(): EntityMapper<EventModelData, EventModel
     override suspend fun mapFromEntity(entity: EventModelData): EventModelDomain {
         return EventModelDomain(
             id = entity.primaryKey,
-            title = entity.title,
             expense = entity.expense,
             description = entity.description,
             category = entity.category,
@@ -19,7 +18,6 @@ class EventMapper @Inject constructor(): EntityMapper<EventModelData, EventModel
     override fun mapToEntity(domainModel: EventModelDomain): EventModelData {
         return EventModelData(
             primaryKey = domainModel.id,
-            title = domainModel.title,
             expense = domainModel.expense,
             description = domainModel.description,
             category = domainModel.category,
