@@ -102,8 +102,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                         }
 
                         ItemTouchHelper.RIGHT -> {
-                            findNavController()
-                                .navigate(R.id.action_mainFragment_to_detailsFragment)
+                            findNavController().navigate(
+                                R.id.action_mainFragment_to_detailsFragment)
                         }
                     }
                 } catch (e: Exception) {
