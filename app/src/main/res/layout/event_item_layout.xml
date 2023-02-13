@@ -31,19 +31,25 @@
         android:id="@+id/event_description"
         android:layout_gravity="start"
         android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
 
         android:layout_marginBottom="12sp"
         android:layout_marginStart="18sp"
         android:layout_marginTop="8sp"
-        android:layout_width="wrap_content"
         android:text="@string/comment"
         android:textColor="@color/black"
         android:textSize="20sp"
+        android:maxLength="28"
+        android:maxEms="7"
+        android:maxLines="1"
+        android:ellipsize="end"
 
         android:textStyle="italic"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/event_category"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/event_expense"/>
 
     <TextView
         android:id="@+id/event_currency"

@@ -9,7 +9,6 @@ import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 import ru.maxstelmakh.mymoney.domain.usecases.SaveNewEventUseCase
 import javax.inject.Inject
 
-
 @HiltViewModel
 class AddNewEventViewModel @Inject constructor(
     private val saveNewEventUseCase: SaveNewEventUseCase

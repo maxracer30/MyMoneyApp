@@ -50,5 +50,8 @@
         android:name="ru.maxstelmakh.mymoney.presentation.details.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_add_new_event" >
+        <argument
+            android:name="eventToChange"
+            app:argType="ru.maxstelmakh.mymoney.domain.model.EventModelDomain" />
     </fragment>
 </navigation>

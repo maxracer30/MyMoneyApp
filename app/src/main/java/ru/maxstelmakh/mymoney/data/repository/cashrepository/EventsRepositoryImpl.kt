@@ -1,5 +1,6 @@
 package ru.maxstelmakh.mymoney.data.repository.cashrepository
 
+import android.util.Log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import ru.maxstelmakh.mymoney.data.models.EventMapper
@@ -29,6 +30,7 @@ class EventsRepositoryImpl @Inject constructor(
     }
 
     override suspend fun updateEvent(event: EventModelDomain) {
+        Log.d("StatesOfApp", "in repoImpl ${event.id.toString()}")
         eventsRepositoryDao.updateEvent(eventMapper.mapToEntity(event))
     }
 }

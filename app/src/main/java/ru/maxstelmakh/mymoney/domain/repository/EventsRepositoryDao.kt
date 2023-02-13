@@ -13,7 +13,7 @@ interface EventsRepositoryDao {
     @Delete
     suspend fun deleteEvent(event: EventModelData)
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateEvent(event: EventModelData)
 
     @Query("SELECT * FROM EventModelData ORDER BY datetime(joined_date)")

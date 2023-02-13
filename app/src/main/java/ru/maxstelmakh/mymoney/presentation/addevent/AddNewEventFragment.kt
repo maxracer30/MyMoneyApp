@@ -38,8 +38,8 @@ class AddNewEventFragment @Inject constructor(
                 viewModel.insert(
                     eventModelDomain = EventModelDomain(
                         expense = Integer.parseInt(expense.text.toString()),
-                        description = description.text.toString(),
-                        category = category.text.toString()
+                        description = description.text.toString().trim(),
+                        category = category.text.toString().trim()
                     )
                 )
                 findNavController().navigateUp()

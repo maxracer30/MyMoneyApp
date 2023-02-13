@@ -3,10 +3,12 @@ package ru.maxstelmakh.mymoney.presentation.main
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
@@ -102,8 +104,12 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                         }
 
                         ItemTouchHelper.RIGHT -> {
+                            Log.d("StatesOfApp", "in mainFrag ${eventModelDomain.id.toString()}")
+                            val bundle = bundleOf("eventToChange" to eventModelDomain)
                             findNavController().navigate(
-                                R.id.action_mainFragment_to_detailsFragment)
+                                R.id.action_mainFragment_to_detailsFragment,
+                                bundle
+                            )
                         }
                     }
                 } catch (e: Exception) {
