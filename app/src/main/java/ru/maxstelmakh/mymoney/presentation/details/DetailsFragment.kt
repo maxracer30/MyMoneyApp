@@ -50,6 +50,7 @@ class DetailsFragment : Fragment() {
         with(binding) {
 
             expense.setText(eventToChange.expense.toString() + "")
+            expense.setSelectAllOnFocus(true)
             category.setText(eventToChange.category)
             description.setText(eventToChange.description)
 
@@ -72,14 +73,14 @@ class DetailsFragment : Fragment() {
                         .background
                         .mutate()
                         .setColorFilter(
-                            resources.getColor(R.color.blue),
+                            resources.getColor(R.color.orangered),
                             PorterDuff.Mode.SRC_ATOP)
 
                     category
                         .background
                         .mutate()
                         .setColorFilter(
-                            resources.getColor(R.color.blue),
+                            resources.getColor(R.color.orangered),
                             PorterDuff.Mode.SRC_ATOP)
 
                 }

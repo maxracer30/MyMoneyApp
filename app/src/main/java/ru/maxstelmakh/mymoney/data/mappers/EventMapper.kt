@@ -1,13 +1,12 @@
-package ru.maxstelmakh.mymoney.data.models
+package ru.maxstelmakh.mymoney.data.mappers
 
-import android.util.Log
+import ru.maxstelmakh.mymoney.data.models.EventModelData
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 import ru.maxstelmakh.mymoney.domain.util.EntityMapper
 import javax.inject.Inject
 
 class EventMapper @Inject constructor(): EntityMapper<EventModelData, EventModelDomain> {
     override suspend fun mapFromEntity(entity: EventModelData): EventModelDomain {
-        Log.d("StatesOfApp", "in repoImpl ${entity.primaryKey.toString()}")
         return EventModelDomain(
             id = entity.primaryKey,
             expense = entity.expense,
@@ -18,7 +17,6 @@ class EventMapper @Inject constructor(): EntityMapper<EventModelData, EventModel
     }
 
     override fun mapToEntity(domainModel: EventModelDomain): EventModelData {
-        Log.d("StatesOfApp", "in repoImpl ${domainModel.id.toString()}")
         return EventModelData(
             primaryKey = domainModel.id,
             expense = domainModel.expense,
@@ -32,7 +30,7 @@ class EventMapper @Inject constructor(): EntityMapper<EventModelData, EventModel
         return initial.map { mapFromEntity(it) }
     }
 
-    fun mapToEntityList(initial: List<EventModelDomain>): List<EventModelData> {
+    suspend fun mapToEntityList(initial: List<EventModelDomain>): List<EventModelData> {
         return initial.map { mapToEntity(it) }
     }
 

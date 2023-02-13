@@ -3,7 +3,7 @@ package ru.maxstelmakh.mymoney.data.repository.cashrepository
 import android.util.Log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import ru.maxstelmakh.mymoney.data.models.EventMapper
+import ru.maxstelmakh.mymoney.data.mappers.EventMapper
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 import ru.maxstelmakh.mymoney.domain.repository.EventsRepositoryDao
 import javax.inject.Inject

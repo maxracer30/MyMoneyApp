@@ -1,4 +1,4 @@
-package ru.maxstelmakh.mymoney.data.models
+package ru.maxstelmakh.mymoney.data.repository.cashrepository
 
 import android.annotation.SuppressLint
 import androidx.room.TypeConverter
