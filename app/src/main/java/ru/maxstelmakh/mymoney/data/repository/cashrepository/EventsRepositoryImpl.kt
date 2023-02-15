@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import ru.maxstelmakh.mymoney.data.mappers.CategoryMapperImpl
 import ru.maxstelmakh.mymoney.data.mappers.EventMapper
+import ru.maxstelmakh.mymoney.data.relations.CategoriesWithEvents
 import ru.maxstelmakh.mymoney.domain.model.CategoryModelDomain
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 import ru.maxstelmakh.mymoney.domain.repository.EventsRepositoryDao
@@ -52,7 +53,7 @@ class EventsRepositoryImpl @Inject constructor(
         eventsRepositoryDao.insertCategory(categoryMapper.mapToData(category))
     }
 
-    override suspend fun getCategoryByName(category: String): CategoryModelDomain =
-        categoryMapper.mapFromData(eventsRepositoryDao.getCategoryByName(category))
+    override suspend fun getCategoryByName(category: String): Flow<List<CategoriesWithEvents>> =
+        eventsRepositoryDao.getCategoryOfEvents(category)
 
 }

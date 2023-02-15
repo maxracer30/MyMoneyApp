@@ -7,7 +7,7 @@ import java.time.OffsetDateTime
 @Entity
 data class EventModelData(
     @PrimaryKey(autoGenerate = true)
-    var primaryKey: Long = 0,
+    var eventId: Long = 0,
     var expense: Int,
     var description: String,
     var category: String,

@@ -4,7 +4,7 @@ import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 import ru.maxstelmakh.mymoney.data.models.CategoryModelData
 import ru.maxstelmakh.mymoney.data.models.EventModelData
-import ru.maxstelmakh.mymoney.data.relations.CategoriesAndEvents
+import ru.maxstelmakh.mymoney.data.relations.CategoriesWithEvents
 
 @Dao
 interface EventsRepositoryDao {
@@ -31,11 +31,11 @@ interface EventsRepositoryDao {
     fun getAllCategories(): Flow<List<CategoryModelData>>
 
     @Query("SELECT * FROM CategoryModelData WHERE category = :category")
-    fun getCategoryByName(category: String): CategoryModelData
+    fun getCategoryOfEvents(category: String): Flow<List<CategoriesWithEvents>>
 
     //----------------------------Transaction-------------------------------------------------------
     @Transaction
     @Query("SELECT * FROM CategoryModelData WHERE category = :category")
-    fun getAllEventsInCategory(category: String): List<CategoriesAndEvents>
+    fun getAllEventsInCategory(category: String): List<CategoriesWithEvents>
 
 }
