@@ -51,4 +51,8 @@ class EventsRepositoryImpl @Inject constructor(
     override suspend fun insertCategory(category: CategoryModelDomain) {
         eventsRepositoryDao.insertCategory(categoryMapper.mapToData(category))
     }
+
+    override suspend fun getCategoryByName(category: String): CategoryModelDomain =
+        categoryMapper.mapFromData(eventsRepositoryDao.getCategoryByName(category))
+
 }

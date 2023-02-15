@@ -53,13 +53,12 @@ class PieChartDiagram(
         for (color: Int in ColorTemplate.MATERIAL_COLORS) {
             colors.add(color)
         }
-
         for (color: Int in ColorTemplate.VORDIPLOM_COLORS) {
             colors.add(color)
         }
 
         val dataSet: PieDataSet = PieDataSet(entries, "Expense category")
-        dataSet.setColors(colors)
+        dataSet.colors = colors
 
         val data: PieData = PieData(dataSet)
 

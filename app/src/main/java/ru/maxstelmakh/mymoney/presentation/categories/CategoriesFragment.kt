@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
@@ -11,14 +12,18 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import ru.maxstelmakh.mymoney.R
 import ru.maxstelmakh.mymoney.databinding.FragmentCategoriesBinding
+import ru.maxstelmakh.mymoney.domain.model.CategoryModelDomain
 import ru.maxstelmakh.mymoney.presentation.adapter.categoriesadapter.CategoriesAdapter
+import ru.maxstelmakh.mymoney.presentation.adapter.listeners.AddCategoryListener
+import ru.maxstelmakh.mymoney.presentation.adapter.listeners.CategoryListener
 
 @AndroidEntryPoint
-class CategoriesFragment : Fragment(R.layout.fragment_categories) {
+class CategoriesFragment : Fragment(R.layout.fragment_categories), CategoryListener,
+    AddCategoryListener {
     private var _binding: FragmentCategoriesBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<CategoryViewModel>()
-    private val categoriesAdapter = CategoriesAdapter()
+    private val categoriesAdapter = CategoriesAdapter(this, this)
 
 
     override fun onCreateView(
@@ -37,18 +42,21 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
 
     private fun init() = with(binding) {
 
+
         categoriesRecyclerView.adapter = categoriesAdapter
 
         categoriesRecyclerView.setOnClickListener {
+//            categoriesAdapter.getItemViewType()
 //            findNavController().navigate(R.id.action_mainFragment_to_addNewEventFragment)
         }
+
+
 
         viewModel.categories.observe(viewLifecycleOwner) {
             viewModel.viewModelScope.launch {
                 categoriesAdapter.setList(it)
             }
         }
-
     }
 
 
@@ -56,4 +64,13 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
         super.onDestroy()
         _binding = null
     }
+
+    override fun onClick(categoryModelDomain: CategoryModelDomain) {
+        Toast.makeText(this.context, categoryModelDomain.category, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onAddClick() {
+        Toast.makeText(this.context, "Пока ничего", Toast.LENGTH_SHORT).show()
+    }
+
 }

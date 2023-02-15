@@ -1,4 +1,4 @@
-package ru.maxstelmakh.mymoney.presentation.myplans
+package ru.maxstelmakh.mymoney.presentation.statistics
 
 import android.os.Bundle
 import android.view.LayoutInflater

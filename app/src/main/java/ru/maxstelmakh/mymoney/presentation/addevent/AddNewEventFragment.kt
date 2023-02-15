@@ -7,27 +7,35 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import ru.maxstelmakh.mymoney.R
 import ru.maxstelmakh.mymoney.databinding.FragmentAddNewEventBinding
+import ru.maxstelmakh.mymoney.domain.model.CategoryModelDomain
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
+import ru.maxstelmakh.mymoney.presentation.adapter.categoriesinaddadapter.CategoriesInAddAdapter
+import ru.maxstelmakh.mymoney.presentation.adapter.listeners.CategoryListener
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class AddNewEventFragment @Inject constructor(
-) : Fragment() {
+) : Fragment(), CategoryListener {
 
 
     private var _binding: FragmentAddNewEventBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<AddNewEventViewModel>()
+    private lateinit var defCategory: String
+    private val categoriesInAddAdapter = CategoriesInAddAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAddNewEventBinding.inflate(layoutInflater, container, false)
+        defCategory = resources.getString(R.string.default_category)
         return _binding!!.root
     }
 
@@ -36,13 +44,22 @@ class AddNewEventFragment @Inject constructor(
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
+
+            category.adapter = categoriesInAddAdapter
+
+            viewModel.categories.observe(viewLifecycleOwner) {
+                viewModel.viewModelScope.launch {
+                    categoriesInAddAdapter.setList(it)
+                }
+            }
+
             btnSave.setOnClickListener {
-                if (expense.text.isNotBlank() && category.text.isNotBlank()) {
+                if (expense.text.isNotBlank()) {
                     viewModel.insert(
                         eventModelDomain = EventModelDomain(
                             expense = Integer.parseInt(expense.text.toString()),
                             description = description.text.toString().trim(),
-                            category = category.text.toString().trim()
+                            category = defCategory
                         )
                     )
                     findNavController().navigateUp()
@@ -68,8 +85,13 @@ class AddNewEventFragment @Inject constructor(
     }
 
 
-        override fun onDestroy() {
-            super.onDestroy()
-            _binding = null
-        }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
+
+    override fun onClick(categoryModelDomain: CategoryModelDomain) {
+        categoriesInAddAdapter
+        defCategory = categoryModelDomain.category
+    }
+}

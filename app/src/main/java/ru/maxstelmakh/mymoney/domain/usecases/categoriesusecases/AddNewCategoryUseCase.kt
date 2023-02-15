@@ -11,7 +11,8 @@ class AddNewCategoryUseCase @Inject constructor(
         eventsRepositoryImpl.insertCategory(
             CategoryModelDomain(
                 category = categoryModelDomain.category,
-                color = categoryModelDomain.color
+                color = categoryModelDomain.color,
+                image = categoryModelDomain.image
             )
         )
     }

@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/plansFragment"
-        android:name="ru.maxstelmakh.mymoney.presentation.myplans.StatisticFragment"
+        android:name="ru.maxstelmakh.mymoney.presentation.statistics.StatisticFragment"
         android:label="@string/statistic"
         tools:layout="@layout/fragment_statistic" />
     <fragment

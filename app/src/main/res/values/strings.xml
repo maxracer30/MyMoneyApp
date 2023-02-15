@@ -1,22 +1,22 @@
 <resources>
     <string name="app_name">My Money</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="plus" />
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="plus" translatable="false" />
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
+    <string name="messages_header" translatable="false">Messages</string>
+    <string name="sync_header" translatable="false">Sync</string>
 
     <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
+    <string name="signature_title" translatable="false">Your signature</string>
+    <string name="reply_title" translatable="false">Default reply action</string>
 
     <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    <string name="sync_title" translatable="false">Sync email periodically</string>
+    <string name="attachment_title" translatable="false">Download incoming attachments</string>
+    <string name="attachment_summary_on" translatable="false">Automatically download attachments for incoming emails
     </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="attachment_summary_off" translatable="false">Only download attachments when manually requested</string>
     <string name="settings">Settings</string>
     <string name="plans">Plans</string>
     <string name="home">Home</string>
@@ -30,29 +30,29 @@
     <string name="friday">FRI</string>
     <string name="saturday">SAT</string>
     <string name="new_event">New Event</string>
-    <string name="next"><![CDATA[->]]></string>
-    <string name="preview"><![CDATA[<-]]></string>
+    <string name="next" translatable="false"><![CDATA[->]]></string>
+    <string name="preview" translatable="false"><![CDATA[<-]]></string>
     <string name="choose_period">Choose period</string>
-    <string name="day"><u>Day</u>.</string>
+    <string name="day"><u>Day</u></string>
     <string name="week"><u>Week</u></string>
     <string name="month"><u>Month</u></string>
     <string name="year"><u>Year</u></string>
     <string name="period"><u>Period...</u></string>
     <string name="dayInfo">8 February, Sunday</string>
-    <string name="today">280 / 900</string>
+    <string name="today" translatable="false">280 / 900</string>
     <string name="main">Main</string>
     <string name="categories">Categories</string>
-    <string name="next_period">Next period</string>
-    <string name="preview_period">Preview period</string>
-    <string name="addnewevent">AddNewEvent</string>
+    <string name="next_period" translatable="false">Next period</string>
+    <string name="preview_period" translatable="false">Preview period</string>
+    <string name="addnewevent" translatable="false">AddNewEvent</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="statistic">Statistic</string>
     <string name="enter_comment">Enter comment</string>
-    <string name="enter_title_of_the_expense">Enter title of the expense</string>
+    <string name="enter_title_of_the_expense" translatable="false">Enter title of the expense</string>
     <string name="enter_expense">Enter expense</string>
     <string name="enter_category">Enter category</string>
-    <string name="prise_check">Prise check</string>
+    <string name="prise_check" translatable="false">Prise check</string>
     <string name="item_deleted">Item deleted</string>
     <string name="undo">UNDO</string>
     <string name="delete">Delete</string>
@@ -61,7 +61,16 @@
     <string name="spent">Spent</string>
     <string name="category">Category</string>
     <string name="comment">Comment</string>
-    <string name="RUB">₽</string>
-    <string name="_45">45</string>
-    <string name="image">image</string>
+    <string name="RUB" translatable="false">₽</string>
+    <string name="_45" translatable="false">45</string>
+    <string name="image" translatable="false">image</string>
+    <string name="add">Add..</string>
+    <string name="default_category">Another</string>
+    <string name="Food">Food</string>
+    <string name="House">House</string>
+    <string name="Education">Education</string>
+    <string name="Car">Car</string>
+    <string name="Health">Health</string>
+    <string name="Sport">Sport</string>
+    <string name="Fun">Fun</string>
 </resources>

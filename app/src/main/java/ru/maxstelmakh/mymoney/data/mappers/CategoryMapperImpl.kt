@@ -9,14 +9,16 @@ class CategoryMapperImpl @Inject constructor(): CategoryMapper<CategoryModelData
     override suspend fun mapFromData(dataCategory: CategoryModelData): CategoryModelDomain {
         return CategoryModelDomain(
             category = dataCategory.category,
-            color = dataCategory.color
+            color = dataCategory.color,
+            image = dataCategory.image
         )
     }
 
     override fun mapToData(domainCategory: CategoryModelDomain): CategoryModelData {
         return CategoryModelData(
             category = domainCategory.category,
-            color = domainCategory.color
+            color = domainCategory.color,
+            image = domainCategory.image
         )
     }
 
@@ -24,8 +26,9 @@ class CategoryMapperImpl @Inject constructor(): CategoryMapper<CategoryModelData
         return initial.map { mapFromData(it) }
     }
 
-    suspend fun mapToDataCategoriesList(initial: List<CategoryModelDomain>): List<CategoryModelData> {
-        return initial.map { mapToData(it) }
-    }
+//    Never used mapper
+//    fun mapToDataCategoriesList(initial: List<CategoryModelDomain>): List<CategoryModelData> {
+//        return initial.map { mapToData(it) }
+//    }
 
 }

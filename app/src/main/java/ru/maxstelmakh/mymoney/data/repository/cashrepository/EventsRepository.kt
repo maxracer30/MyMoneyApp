@@ -16,6 +16,8 @@ interface EventsRepository {
     suspend fun getAllEvents(): Flow<List<EventModelDomain>>
 
     //------------------------ Categories --------------------------
+    suspend fun getCategoryByName(category: String): CategoryModelDomain
+
     suspend fun insertCategory(category: CategoryModelDomain)
 
     suspend fun getAllCategories(): Flow<List<CategoryModelDomain>>

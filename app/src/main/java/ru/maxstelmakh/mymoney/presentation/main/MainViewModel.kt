@@ -63,7 +63,7 @@ class MainViewModel @Inject constructor(
     }
 
     @SuppressLint("NewApi")
-    fun firstStart(colors: List<String>) {
+    fun firstStart(titles: List<String>, colors: List<String>, images: List<Int>) {
         viewModelScope.launch(Dispatchers.IO) {
             val categories =
                 listOf("Food", "House", "Education", "Car", "Health", "Communications", "Fun")
@@ -71,8 +71,9 @@ class MainViewModel @Inject constructor(
                 addNewCategoryUseCase(
                     categoryModelDomain =
                     CategoryModelDomain(
-                        category = categories[i],
-                        color = colors[i]
+                        category = titles[i],
+                        color = colors[i],
+                        image = images[i]
                     )
                 )
             }

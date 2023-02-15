@@ -6,8 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import ru.maxstelmakh.mymoney.databinding.EventItemLayoutBinding
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
+import ru.maxstelmakh.mymoney.presentation.adapter.listeners.EventsListener
 
-class EventsAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class EventsAdapter(
+    private val listener: EventsListener
+): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var oldEventsList = emptyList<EventModelDomain>()
 
@@ -20,11 +23,10 @@ class EventsAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as EventsViewHolder).refreshList(oldEventsList[position])
+        (holder as EventsViewHolder).refreshList(oldEventsList[position], listener)
     }
 
     override fun getItemCount() = oldEventsList.size
-
     fun setList(newEventsList: List<EventModelDomain>) {
         val diffUtil = EventsDiffUtil(oldEventsList, newEventsList)
         val diffResults = DiffUtil.calculateDiff(diffUtil)

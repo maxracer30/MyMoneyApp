@@ -3,7 +3,6 @@ package ru.maxstelmakh.mymoney.presentation.details
 import android.annotation.SuppressLint
 import android.graphics.PorterDuff
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,21 +48,20 @@ class DetailsFragment : Fragment() {
 
         with(binding) {
 
+            tvNameOfOperation.text = resources.getString(R.string.change_operation)
             expense.setText(eventToChange.expense.toString() + "")
             expense.setSelectAllOnFocus(true)
-            category.setText(eventToChange.category)
+//            category.setText(eventToChange.category)
             description.setText(eventToChange.description)
 
-            Log.d("StatesOfApp", "in detFrag ${eventToChange.id.toString()}")
-
             btnSave.setOnClickListener {
-                if (expense.text.isNotBlank() && category.text.isNotBlank()) {
+                if (expense.text.isNotBlank()) {
                     viewModel.update(
                         eventModelDomain = EventModelDomain(
                             id = eventToChange.id,
                             expense = Integer.parseInt(expense.text.toString()),
                             description = description.text.toString().trim(),
-                            category = category.text.toString().trim(),
+                            category = "default",
                             joined_date = eventToChange.joined_date
                         )
                     )

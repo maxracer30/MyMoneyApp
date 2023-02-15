@@ -1,21 +1,23 @@
-package ru.maxstelmakh.mymoney.presentation.adapter.categoriesadapter
+package ru.maxstelmakh.mymoney.presentation.adapter.categoriesinaddadapter
 
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.PorterDuff
 import androidx.recyclerview.widget.RecyclerView
-import ru.maxstelmakh.mymoney.databinding.CategoryItemLayoutBinding
+import ru.maxstelmakh.mymoney.databinding.CategoryHorizontalItemLayoutBinding
 import ru.maxstelmakh.mymoney.domain.model.CategoryModelDomain
 import ru.maxstelmakh.mymoney.presentation.adapter.listeners.CategoryListener
 
-class CategoriesViewHolder(
-    private val categoryBinding: CategoryItemLayoutBinding
+class CategoryInAddViewHolder(
+    private val categoryBinding: CategoryHorizontalItemLayoutBinding
 ) : RecyclerView.ViewHolder(categoryBinding.root) {
 
     @Suppress("DEPRECATION")
     @SuppressLint("ResourceAsColor")
     fun refreshList(categoryModelDomain: CategoryModelDomain, listener: CategoryListener) {
         with (categoryBinding) {
+
+
 
             eventCategory.text = categoryModelDomain.category
 
@@ -29,6 +31,11 @@ class CategoriesViewHolder(
 
             itemView.setOnClickListener {
                 listener.onClick(categoryModelDomain)
+                categoryCard.background
+                    .mutate()
+                    .setColorFilter(
+                        Color.RED,
+                        PorterDuff.Mode.SRC_ATOP)
             }
         }
     }

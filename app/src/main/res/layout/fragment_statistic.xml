@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.myplans.StatisticFragment">
+    tools:context=".presentation.statistics.StatisticFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -50,6 +50,7 @@
         app:layout_constraintTop_toBottomOf="@id/linearLayout1"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="7dp"
+        android:lines="1"
         android:text="@string/choose_period"/>
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linLay2"

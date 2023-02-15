@@ -73,19 +73,18 @@
             android:textColor="@color/white"
             android:text="@string/category"/>
 
-        <EditText
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/category"
-            android:layout_marginHorizontal="30sp"
-            android:layout_width="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
             android:layout_height="50dp"
-            android:autofillHints="category"
-            android:hint="@string/enter_category"
-            android:inputType="textCapSentences"
-            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvCategory"
-            tools:ignore="LabelFor" />
+            tools:listitem="@layout/category_horizontal_item_layout"/>
 
         <TextView
             android:id="@+id/tvDescription"

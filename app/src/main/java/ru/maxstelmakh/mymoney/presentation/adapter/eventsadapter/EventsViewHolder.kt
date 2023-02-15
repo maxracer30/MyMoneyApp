@@ -1,21 +1,23 @@
 package ru.maxstelmakh.mymoney.presentation.adapter.eventsadapter
 
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ru.maxstelmakh.mymoney.databinding.EventItemLayoutBinding
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
+import ru.maxstelmakh.mymoney.presentation.adapter.listeners.EventsListener
 
 class EventsViewHolder(
-    private val eventBinding: EventItemLayoutBinding
+    private val eventBinding: EventItemLayoutBinding,
 ) : RecyclerView.ViewHolder(eventBinding.root) {
-    fun refreshList(event: EventModelDomain) {
-        eventBinding.apply {
+    fun refreshList(event: EventModelDomain, listener: EventsListener) {
+
+        with(eventBinding) {
+
             eventCategory.text = event.category
             eventDescription.text = event.description
             eventExpense.text = event.expense.toString()
 
             root.setOnClickListener {
-                Toast.makeText(it.context, "${event.id}", Toast.LENGTH_SHORT).show()
+                listener.onClick(event)
             }
         }
     }

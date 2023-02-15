@@ -4,15 +4,14 @@ import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 import ru.maxstelmakh.mymoney.data.models.CategoryModelData
 import ru.maxstelmakh.mymoney.data.models.EventModelData
+import ru.maxstelmakh.mymoney.data.relations.CategoriesAndEvents
 
 @Dao
 interface EventsRepositoryDao {
 
+    //------------------------Events----------------------------------------------------------------
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertEvent(event: EventModelData)
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertCategory(category: CategoryModelData)
 
     @Delete
     suspend fun deleteEvent(event: EventModelData)
@@ -20,14 +19,23 @@ interface EventsRepositoryDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateEvent(event: EventModelData)
 
-    @Query("SELECT * FROM EventModelData ORDER BY datetime(joined_date)")
+    @Query("SELECT * FROM EventModelData ORDER BY datetime(joined_date) DESC")
     fun getAllEvents(): Flow<List<EventModelData>>
 
-    @Query("SELECT * FROM category")
+    //----------------------------Categories--------------------------------------------------------
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertCategory(category: CategoryModelData)
+
+    @Query("SELECT * FROM CategoryModelData")
     fun getAllCategories(): Flow<List<CategoryModelData>>
 
+    @Query("SELECT * FROM CategoryModelData WHERE category = :category")
+    fun getCategoryByName(category: String): CategoryModelData
+
+    //----------------------------Transaction-------------------------------------------------------
     @Transaction
-    @Query("SELECT * FROM EventModelData WHERE category = :category")
-    fun getAllEventsInCategory(category: String): List<EventModelData>
+    @Query("SELECT * FROM CategoryModelData WHERE category = :category")
+    fun getAllEventsInCategory(category: String): List<CategoriesAndEvents>
 
 }
