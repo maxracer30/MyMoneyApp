@@ -11,7 +11,7 @@ import ru.maxstelmakh.mymoney.R
 import ru.maxstelmakh.mymoney.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity: AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

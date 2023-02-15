@@ -7,18 +7,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ru.maxstelmakh.mymoney.R
 import ru.maxstelmakh.mymoney.databinding.FragmentMainBinding
@@ -44,6 +45,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        firstStart()
 
         init()
     }
@@ -113,8 +116,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                         }
                     }
                 } catch (e: Exception) {
-                    Toast.makeText(this@MainFragment.context, "${e.message}", Toast.LENGTH_SHORT)
-                        .show()
+//                    Toast.makeText(context, "${e.message}", Toast.LENGTH_SHORT)
+//                        .show()
                 }
             }
         }
@@ -133,6 +136,37 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             parentFragmentManager.beginTransaction(),
             "date_range_picker"
         )
+
+    }
+
+    @SuppressLint("UseRequireInsteadOfGet", "ResourceType")
+    private fun firstStart() {
+
+
+        Log.d("StatesOfApp", resources.getString(R.color.orangered))
+        val getPrefs = PreferenceManager.getDefaultSharedPreferences(activity!!)
+        val editor = getPrefs.edit()
+        val isFirstStart = getPrefs.getBoolean("FIRST_START", true)
+
+        val colors =
+            listOf(
+                resources.getString(R.color.pastel_aqua_green),
+                resources.getString(R.color.pastel_brown),
+                resources.getString(R.color.pastel_pink),
+                resources.getString(R.color.pastel_orange),
+                resources.getString(R.color.pastel_red),
+                resources.getString(R.color.pastel_blue),
+                resources.getString(R.color.pastel_light_green)
+            )
+
+        if (isFirstStart) {
+            viewModel.viewModelScope.launch(Dispatchers.IO) {
+                viewModel.firstStart(colors)
+            }
+            editor
+                .putBoolean("FIRST_START", false)
+                .apply()
+        }
 
     }
 

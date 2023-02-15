@@ -1,6 +1,8 @@
 package ru.maxstelmakh.mymoney.presentation.main
 
+import android.annotation.SuppressLint
 import android.util.Log
+import androidx.core.graphics.*
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,17 +10,21 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import ru.maxstelmakh.mymoney.domain.model.CategoryModelDomain
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
-import ru.maxstelmakh.mymoney.domain.usecases.DeleteEventUseCase
-import ru.maxstelmakh.mymoney.domain.usecases.GetAllEventsUseCase
-import ru.maxstelmakh.mymoney.domain.usecases.SaveNewEventUseCase
+import ru.maxstelmakh.mymoney.domain.usecases.categoriesusecases.AddNewCategoryUseCase
+import ru.maxstelmakh.mymoney.domain.usecases.eventusecases.DeleteEventUseCase
+import ru.maxstelmakh.mymoney.domain.usecases.eventusecases.GetAllEventsUseCase
+import ru.maxstelmakh.mymoney.domain.usecases.eventusecases.SaveNewEventUseCase
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val getAllEventsUseCase: GetAllEventsUseCase,
     private val deleteEventUseCase: DeleteEventUseCase,
-    private val saveNewEventUseCase: SaveNewEventUseCase
+    private val saveNewEventUseCase: SaveNewEventUseCase,
+    private val addNewCategoryUseCase: AddNewCategoryUseCase
 ) : ViewModel() {
 
     private val _events = MutableLiveData<List<EventModelDomain>>()
@@ -56,4 +62,20 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    @SuppressLint("NewApi")
+    fun firstStart(colors: List<String>) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val categories =
+                listOf("Food", "House", "Education", "Car", "Health", "Communications", "Fun")
+            for (i in 0..6) {
+                addNewCategoryUseCase(
+                    categoryModelDomain =
+                    CategoryModelDomain(
+                        category = categories[i],
+                        color = colors[i]
+                    )
+                )
+            }
+        }
+    }
 }

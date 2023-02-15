@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.maxstelmakh.mymoney.databinding.EventItemLayoutBinding
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 
-class EventsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class EventsAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var oldEventsList = emptyList<EventModelDomain>()
 
@@ -25,17 +25,10 @@ class EventsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount() = oldEventsList.size
 
-    //    suspend fun setList(list: ArrayList<EventModelDomain>){
-//        eventsList.clear()
-//        eventsList.addAll(list)
-//
-//    }
     fun setList(newEventsList: List<EventModelDomain>) {
         val diffUtil = EventsDiffUtil(oldEventsList, newEventsList)
         val diffResults = DiffUtil.calculateDiff(diffUtil)
         oldEventsList = newEventsList
         diffResults.dispatchUpdatesTo(this)
     }
-
-
 }

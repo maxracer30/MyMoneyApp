@@ -7,7 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
-import ru.maxstelmakh.mymoney.domain.usecases.UpdateEventUseCase
+import ru.maxstelmakh.mymoney.domain.usecases.eventusecases.UpdateEventUseCase
 import javax.inject.Inject
 
 @HiltViewModel

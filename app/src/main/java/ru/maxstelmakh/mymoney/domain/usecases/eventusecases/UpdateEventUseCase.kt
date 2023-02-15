@@ -1,4 +1,4 @@
-package ru.maxstelmakh.mymoney.domain.usecases
+package ru.maxstelmakh.mymoney.domain.usecases.eventusecases
 
 import android.util.Log
 import ru.maxstelmakh.mymoney.data.repository.cashrepository.EventsRepositoryImpl

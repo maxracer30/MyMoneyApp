@@ -1,4 +1,4 @@
-package ru.maxstelmakh.mymoney.domain.usecases
+package ru.maxstelmakh.mymoney.domain.usecases.eventusecases
 
 import android.annotation.SuppressLint
 import ru.maxstelmakh.mymoney.data.repository.cashrepository.EventsRepositoryImpl

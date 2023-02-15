@@ -24,7 +24,7 @@ interface EventsRepositoryDao {
     fun getAllEvents(): Flow<List<EventModelData>>
 
     @Query("SELECT * FROM category")
-    fun getAllCategories(): List<CategoryModelData>
+    fun getAllCategories(): Flow<List<CategoryModelData>>
 
     @Transaction
     @Query("SELECT * FROM EventModelData WHERE category = :category")

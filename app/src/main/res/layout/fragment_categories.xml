@@ -7,7 +7,7 @@
     tools:context=".presentation.categories.CategoriesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/eventsRecyclerView"
+        android:id="@+id/categoriesRecyclerView"
         android:layout_marginTop="0dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
