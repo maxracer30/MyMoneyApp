@@ -15,7 +15,6 @@ class SaveNewEventUseCase @Inject constructor(
                 id = eventModelDomain.id,
                 expense = eventModelDomain.expense,
                 description = eventModelDomain.description,
-                category = eventModelDomain.category,
                 joined_date = eventModelDomain.joined_date
             )
         )

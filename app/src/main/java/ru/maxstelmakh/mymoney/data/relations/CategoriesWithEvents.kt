@@ -9,7 +9,7 @@ import ru.maxstelmakh.mymoney.data.models.EventModelData
 data class CategoriesWithEvents(
     @Embedded val categoryModelData: CategoryModelData,
     @Relation(
-        parentColumn = "category",
+        parentColumn = "categoryId",
         entityColumn = "eventId",
         associateBy = Junction(CategoryEventCrossRef::class)
     )

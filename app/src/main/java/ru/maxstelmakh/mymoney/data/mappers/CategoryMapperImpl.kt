@@ -8,6 +8,7 @@ import javax.inject.Inject
 class CategoryMapperImpl @Inject constructor(): CategoryMapper<CategoryModelData, CategoryModelDomain> {
     override suspend fun mapFromData(dataCategory: CategoryModelData): CategoryModelDomain {
         return CategoryModelDomain(
+            categoryId = dataCategory.categoryId,
             category = dataCategory.category,
             color = dataCategory.color,
             image = dataCategory.image
@@ -16,6 +17,7 @@ class CategoryMapperImpl @Inject constructor(): CategoryMapper<CategoryModelData
 
     override fun mapToData(domainCategory: CategoryModelDomain): CategoryModelData {
         return CategoryModelData(
+            categoryId = domainCategory.categoryId,
             category = domainCategory.category,
             color = domainCategory.color,
             image = domainCategory.image

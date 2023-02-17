@@ -2,8 +2,8 @@ package ru.maxstelmakh.mymoney.data.relations
 
 import androidx.room.Entity
 
-@Entity(primaryKeys = ["category", "eventId"])
+@Entity(primaryKeys = ["categoryId", "eventId"])
 data class CategoryEventCrossRef(
-    val category: String,
+    val categoryId: Long,
     val eventId: Long
 )

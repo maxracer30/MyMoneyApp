@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import ru.maxstelmakh.mymoney.data.models.CategoryModelData
 import ru.maxstelmakh.mymoney.data.models.EventModelData
 import ru.maxstelmakh.mymoney.data.relations.CategoriesWithEvents
+import ru.maxstelmakh.mymoney.data.relations.CategoryEventCrossRef
 
 @Dao
 interface EventsRepositoryDao {
@@ -22,6 +23,9 @@ interface EventsRepositoryDao {
     @Query("SELECT * FROM EventModelData ORDER BY datetime(joined_date) DESC")
     fun getAllEvents(): Flow<List<EventModelData>>
 
+    @Query("SELECT eventId FROM EventModelData ORDER BY datetime(joined_date) DESC")
+    fun getIdLastEvent(): Long
+
     //----------------------------Categories--------------------------------------------------------
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
@@ -34,6 +38,9 @@ interface EventsRepositoryDao {
     fun getCategoryOfEvents(category: String): Flow<List<CategoriesWithEvents>>
 
     //----------------------------Transaction-------------------------------------------------------
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertRef(ref: CategoryEventCrossRef)
     @Transaction
     @Query("SELECT * FROM CategoryModelData WHERE category = :category")
     fun getAllEventsInCategory(category: String): List<CategoriesWithEvents>

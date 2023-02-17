@@ -61,7 +61,7 @@ class DetailsFragment : Fragment() {
                             id = eventToChange.id,
                             expense = Integer.parseInt(expense.text.toString()),
                             description = description.text.toString().trim(),
-                            category = "default",
+//                            category = "default",
                             joined_date = eventToChange.joined_date
                         )
                     )

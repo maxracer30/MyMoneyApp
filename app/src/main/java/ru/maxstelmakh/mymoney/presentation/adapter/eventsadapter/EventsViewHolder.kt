@@ -12,7 +12,7 @@ class EventsViewHolder(
 
         with(eventBinding) {
 
-            eventCategory.text = event.category
+//            eventCategory.text = event.category
             eventDescription.text = event.description
             eventExpense.text = event.expense.toString()
 

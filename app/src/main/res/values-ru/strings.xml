@@ -46,4 +46,5 @@
     <string name="Health">Здоровье</string>
     <string name="Sport">Спорт</string>
     <string name="Fun">Развлечения</string>
+    <string name="Other">Другое</string>
 </resources>

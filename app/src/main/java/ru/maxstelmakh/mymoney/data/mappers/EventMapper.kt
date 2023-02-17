@@ -11,7 +11,6 @@ class EventMapper @Inject constructor(): EntityMapper<EventModelData, EventModel
             id = entity.eventId,
             expense = entity.expense,
             description = entity.description,
-            category = entity.category,
             joined_date = entity.joined_date
         )
     }
@@ -21,7 +20,6 @@ class EventMapper @Inject constructor(): EntityMapper<EventModelData, EventModel
             eventId = domainModel.id,
             expense = domainModel.expense,
             description = domainModel.description,
-            category = domainModel.category,
             joined_date = domainModel.joined_date
         )
     }

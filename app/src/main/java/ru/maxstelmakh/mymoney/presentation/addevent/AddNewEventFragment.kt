@@ -59,7 +59,7 @@ class AddNewEventFragment @Inject constructor(
                         eventModelDomain = EventModelDomain(
                             expense = Integer.parseInt(expense.text.toString()),
                             description = description.text.toString().trim(),
-                            category = defCategory
+//                            category = defCategory
                         )
                     )
                     findNavController().navigateUp()
