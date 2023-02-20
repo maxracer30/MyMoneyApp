@@ -12,5 +12,6 @@ data class EventsWithCategories(
         entityColumn = "categoryId",
         associateBy = Junction(CategoryEventCrossRef::class)
     )
+
     val events: List<CategoryModelData>
 )
