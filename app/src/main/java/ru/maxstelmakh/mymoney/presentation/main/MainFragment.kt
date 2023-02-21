@@ -148,46 +148,47 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
         val editor = getPrefs.edit()
         val isFirstStart = getPrefs.getBoolean("FIRST_START", true)
 
-        val colors =
-            listOf(
-                resources.getString(R.color.pastel_aqua_green),
-                resources.getString(R.color.pastel_brown),
-                resources.getString(R.color.pastel_pink),
-                resources.getString(R.color.pastel_orange),
-                resources.getString(R.color.pastel_red),
-                resources.getString(R.color.pastel_blue),
-                resources.getString(R.color.pastel_light_green)
-            )
-        val titles =
-            listOf(
-                resources.getString(R.string.Food),
-                resources.getString(R.string.House),
-                resources.getString(R.string.Education),
-                resources.getString(R.string.Car),
-                resources.getString(R.string.Health),
-                resources.getString(R.string.Sport),
-                resources.getString(R.string.Fun)
-            )
-
-        val images =
-            listOf(
-                resources
-                    .getIdentifier("eat", "drawable", activity!!.packageName),
-                resources
-                    .getIdentifier("home", "drawable", activity!!.packageName),
-                resources
-                    .getIdentifier("book", "drawable", activity!!.packageName),
-                resources
-                    .getIdentifier("car", "drawable", activity!!.packageName),
-                resources
-                    .getIdentifier("heart", "drawable", activity!!.packageName),
-                resources
-                    .getIdentifier("comms", "drawable", activity!!.packageName),
-                resources
-                    .getIdentifier("fun", "drawable", activity!!.packageName),
-
-            )
         if (isFirstStart) {
+            val colors =
+                listOf(
+                    resources.getString(R.color.pastel_aqua_green),
+                    resources.getString(R.color.pastel_brown),
+                    resources.getString(R.color.pastel_pink),
+                    resources.getString(R.color.pastel_orange),
+                    resources.getString(R.color.pastel_red),
+                    resources.getString(R.color.pastel_blue),
+                    resources.getString(R.color.pastel_light_green)
+                )
+            val titles =
+                listOf(
+                    resources.getString(R.string.Food),
+                    resources.getString(R.string.House),
+                    resources.getString(R.string.Education),
+                    resources.getString(R.string.Car),
+                    resources.getString(R.string.Health),
+                    resources.getString(R.string.Sport),
+                    resources.getString(R.string.Fun)
+                )
+
+            val images =
+                listOf(
+                    resources
+                        .getIdentifier("eat", "drawable", activity!!.packageName),
+                    resources
+                        .getIdentifier("home", "drawable", activity!!.packageName),
+                    resources
+                        .getIdentifier("book", "drawable", activity!!.packageName),
+                    resources
+                        .getIdentifier("car", "drawable", activity!!.packageName),
+                    resources
+                        .getIdentifier("heart", "drawable", activity!!.packageName),
+                    resources
+                        .getIdentifier("comms", "drawable", activity!!.packageName),
+                    resources
+                        .getIdentifier("fun", "drawable", activity!!.packageName),
+
+                    )
+
             viewModel.viewModelScope.launch(Dispatchers.IO) {
                 viewModel.firstStart(titles, colors, images)
             }
@@ -208,6 +209,7 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
         val bundle = bundleOf("eventToChange" to eventModelDomain)
         findNavController().navigate(
             R.id.action_mainFragment_to_detailsFragment,
-            bundle)
+            bundle
+        )
     }
 }

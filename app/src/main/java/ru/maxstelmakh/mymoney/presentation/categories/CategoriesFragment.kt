@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import ru.maxstelmakh.mymoney.R
@@ -70,7 +71,9 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories), CategoryListe
     }
 
     override fun onAddClick() {
-        Toast.makeText(this.context, "Пока ничего", Toast.LENGTH_SHORT).show()
+        findNavController().navigate(
+            R.id.action_categoriesFragment_to_addNewCategoryFragment
+        )
     }
 
 }

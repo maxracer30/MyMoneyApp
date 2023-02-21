@@ -6,7 +6,6 @@ import kotlinx.coroutines.flow.flow
 import ru.maxstelmakh.mymoney.data.mappers.CategoryMapperImpl
 import ru.maxstelmakh.mymoney.data.mappers.EventMapper
 import ru.maxstelmakh.mymoney.data.relations.CategoriesWithEvents
-import ru.maxstelmakh.mymoney.data.relations.CategoryEventCrossRef
 import ru.maxstelmakh.mymoney.domain.model.CategoryModelDomain
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 import ru.maxstelmakh.mymoney.domain.repository.EventsRepositoryDao
@@ -29,9 +28,9 @@ class EventsRepositoryImpl @Inject constructor(
 
     override suspend fun insertEvent(event: EventModelDomain) {
         eventsRepositoryDao.insertEvent(eventMapper.mapToEntity(event))
-        val id = eventsRepositoryDao.getIdLastEvent()
-        Log.d("StatesOfApp", "in repoImpl insert $id")
-        eventsRepositoryDao.insertRef(CategoryEventCrossRef(0, eventId = id))
+//        val id = eventsRepositoryDao.getIdLastEvent()
+//        Log.d("StatesOfApp", "in repoImpl insert $id")
+//        eventsRepositoryDao.insertRef(CategoryEventCrossRef(0, eventId = id))
     }
 
     override suspend fun deleteEvent(event: EventModelDomain) {

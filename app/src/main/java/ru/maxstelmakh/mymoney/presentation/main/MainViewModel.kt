@@ -52,7 +52,7 @@ class MainViewModel @Inject constructor(
                         id = event.id,
                         expense = event.expense,
                         description = event.description,
-//                        category = event.category,
+                        category = event.category,
                         joined_date = event.joined_date
                     )
                 )

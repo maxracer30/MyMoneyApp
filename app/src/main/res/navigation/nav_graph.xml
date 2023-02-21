@@ -34,7 +34,11 @@
         android:id="@+id/categoriesFragment"
         android:name="ru.maxstelmakh.mymoney.presentation.categories.CategoriesFragment"
         android:label="My categories"
-        tools:layout="@layout/fragment_categories" />
+        tools:layout="@layout/fragment_categories" >
+        <action
+            android:id="@+id/action_categoriesFragment_to_addNewCategoryFragment"
+            app:destination="@id/addNewCategoryFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="ru.maxstelmakh.mymoney.presentation.settings.SettingsFragment"
@@ -53,5 +57,19 @@
         <argument
             android:name="eventToChange"
             app:argType="ru.maxstelmakh.mymoney.domain.model.EventModelDomain" />
+    </fragment>
+    <fragment
+        android:id="@+id/iconsFragment"
+        android:name="ru.maxstelmakh.mymoney.presentation.chooseicons.IconsFragment"
+        android:label="fragment_icons"
+        tools:layout="@layout/fragment_icons" />
+    <fragment
+        android:id="@+id/addNewCategoryFragment"
+        android:name="ru.maxstelmakh.mymoney.presentation.addnewcategory.AddNewCategoryFragment"
+        android:label="fragment_add_new_category"
+        tools:layout="@layout/fragment_add_new_category" >
+        <action
+            android:id="@+id/action_addNewCategoryFragment_to_iconsFragment"
+            app:destination="@id/iconsFragment" />
     </fragment>
 </navigation>

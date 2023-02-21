@@ -74,4 +74,9 @@
     <string name="Sport">Sport</string>
     <string name="Fun">Fun</string>
     <string name="Other">Other</string>
+    <string name="setIcon">Set Icon</string>
+    <string name="chooseAColor">Choose a color</string>
+    <string name="enterNameCategory">Enter name category</string>
+    <string name="enterName">Name</string>
+    <string name="add_category">Add category</string>
 </resources>

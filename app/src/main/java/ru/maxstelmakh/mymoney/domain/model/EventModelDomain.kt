@@ -11,7 +11,8 @@ import java.time.OffsetDateTime
 @SuppressLint("NewApi")
 data class EventModelDomain(
     var id: Long = 0,
-    var expense: Int,
+    var expense: Long,
     var description: String,
+    var category: Int,
     var joined_date: OffsetDateTime? = OffsetDateTime.now()
 ) : Parcelable

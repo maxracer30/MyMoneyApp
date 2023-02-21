@@ -20,7 +20,7 @@ class EventsDiffUtil(
         return when {
             oldList[oldItemPosition].id != newList[newItemPosition].id -> false
             oldList[oldItemPosition].expense != newList[newItemPosition].expense -> false
-//            oldList[oldItemPosition].category != newList[newItemPosition].category -> false
+            oldList[oldItemPosition].category != newList[newItemPosition].category -> false
             oldList[oldItemPosition].description != newList[newItemPosition].description -> false
 //            oldList[oldItemPosition].joined_date != newList[newItemPosition].joined_date -> false
             else -> true

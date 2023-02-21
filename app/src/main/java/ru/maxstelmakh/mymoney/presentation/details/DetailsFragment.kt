@@ -59,9 +59,9 @@ class DetailsFragment : Fragment() {
                     viewModel.update(
                         eventModelDomain = EventModelDomain(
                             id = eventToChange.id,
-                            expense = Integer.parseInt(expense.text.toString()),
+                            expense = expense.text.toString().toLong(),
                             description = description.text.toString().trim(),
-//                            category = "default",
+                            category = eventToChange.category,
                             joined_date = eventToChange.joined_date
                         )
                     )

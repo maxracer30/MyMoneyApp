@@ -27,7 +27,7 @@ class AddNewEventFragment @Inject constructor(
     private var _binding: FragmentAddNewEventBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<AddNewEventViewModel>()
-    private lateinit var defCategory: String
+    private var defCategory: Int = 1
     private val categoriesInAddAdapter = CategoriesInAddAdapter(this)
 
     override fun onCreateView(
@@ -35,7 +35,6 @@ class AddNewEventFragment @Inject constructor(
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAddNewEventBinding.inflate(layoutInflater, container, false)
-        defCategory = resources.getString(R.string.default_category)
         return _binding!!.root
     }
 
@@ -57,9 +56,9 @@ class AddNewEventFragment @Inject constructor(
                 if (expense.text.isNotBlank()) {
                     viewModel.insert(
                         eventModelDomain = EventModelDomain(
-                            expense = Integer.parseInt(expense.text.toString()),
+                            expense = expense.text.toString().toLong(),
                             description = description.text.toString().trim(),
-//                            category = defCategory
+                            category = defCategory
                         )
                     )
                     findNavController().navigateUp()
@@ -92,6 +91,6 @@ class AddNewEventFragment @Inject constructor(
 
     override fun onClick(categoryModelDomain: CategoryModelDomain) {
         categoriesInAddAdapter
-        defCategory = categoryModelDomain.category
+        defCategory = categoryModelDomain.categoryId
     }
 }

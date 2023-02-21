@@ -47,4 +47,9 @@
     <string name="Sport">Спорт</string>
     <string name="Fun">Развлечения</string>
     <string name="Other">Другое</string>
+    <string name="setIcon">Выберите иконку</string>
+    <string name="chooseAColor">Подберите цвет</string>
+    <string name="enterNameCategory">Придумайте название категории</string>
+    <string name="enterName">Название</string>
+    <string name="add_category">Создание категории</string>
 </resources>
