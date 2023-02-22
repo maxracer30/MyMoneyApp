@@ -37,7 +37,11 @@
         tools:layout="@layout/fragment_categories" >
         <action
             android:id="@+id/action_categoriesFragment_to_addNewCategoryFragment"
-            app:destination="@id/addNewCategoryFragment" />
+            app:destination="@id/addNewCategoryFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"/>
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -60,16 +64,20 @@
     </fragment>
     <fragment
         android:id="@+id/iconsFragment"
-        android:name="ru.maxstelmakh.mymoney.presentation.chooseicons.IconsFragment"
+        android:name="ru.maxstelmakh.mymoney.presentation.categories.chooseicons.IconsFragment"
         android:label="fragment_icons"
         tools:layout="@layout/fragment_icons" />
     <fragment
         android:id="@+id/addNewCategoryFragment"
-        android:name="ru.maxstelmakh.mymoney.presentation.addnewcategory.AddNewCategoryFragment"
+        android:name="ru.maxstelmakh.mymoney.presentation.categories.addnewcategory.AddNewCategoryFragment"
         android:label="fragment_add_new_category"
         tools:layout="@layout/fragment_add_new_category" >
         <action
             android:id="@+id/action_addNewCategoryFragment_to_iconsFragment"
-            app:destination="@id/iconsFragment" />
+            app:destination="@id/iconsFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"/>
     </fragment>
 </navigation>

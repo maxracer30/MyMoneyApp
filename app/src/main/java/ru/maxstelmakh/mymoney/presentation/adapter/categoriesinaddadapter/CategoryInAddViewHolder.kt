@@ -3,6 +3,7 @@ package ru.maxstelmakh.mymoney.presentation.adapter.categoriesinaddadapter
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.PorterDuff
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import ru.maxstelmakh.mymoney.databinding.CategoryHorizontalItemLayoutBinding
 import ru.maxstelmakh.mymoney.domain.model.CategoryModelDomain
@@ -31,12 +32,20 @@ class CategoryInAddViewHolder(
 
             itemView.setOnClickListener {
                 listener.onClick(categoryModelDomain)
-                categoryCard.background
-                    .mutate()
-                    .setColorFilter(
-                        Color.RED,
-                        PorterDuff.Mode.SRC_ATOP)
+//                categoryCard.background
+//                    .mutate()
+//                    .setColorFilter(
+//                        Color.RED,
+//                        PorterDuff.Mode.SRC_ATOP)
             }
         }
+    }
+
+    fun setCheck() {
+        categoryBinding.checkerCategory.visibility = View.VISIBLE
+    }
+
+    fun setUnCheck() {
+        categoryBinding.checkerCategory.visibility = View.GONE
     }
 }

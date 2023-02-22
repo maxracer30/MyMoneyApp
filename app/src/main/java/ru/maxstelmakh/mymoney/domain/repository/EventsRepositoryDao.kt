@@ -30,7 +30,7 @@ interface EventsRepositoryDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertCategory(category: CategoryModelData)
 
-    @Query("SELECT * FROM CategoryModelData")
+    @Query("SELECT * FROM CategoryModelData ORDER BY categoryId DESC")
     fun getAllCategories(): Flow<List<CategoryModelData>>
 
     @Query("SELECT * FROM CategoryModelData WHERE category = :category")

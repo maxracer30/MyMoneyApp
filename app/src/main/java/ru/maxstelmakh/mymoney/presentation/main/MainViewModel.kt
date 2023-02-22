@@ -65,7 +65,7 @@ class MainViewModel @Inject constructor(
     @SuppressLint("NewApi")
     fun firstStart(titles: List<String>, colors: List<String>, images: List<Int>) {
         viewModelScope.launch(Dispatchers.IO) {
-            for (i in 0..6) {
+            for (i in 0..7) {
                 addNewCategoryUseCase(
                     categoryModelDomain =
                     CategoryModelDomain(

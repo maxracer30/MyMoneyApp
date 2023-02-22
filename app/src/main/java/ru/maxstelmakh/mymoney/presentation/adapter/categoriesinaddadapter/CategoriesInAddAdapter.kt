@@ -14,6 +14,7 @@ class CategoriesInAddAdapter(
 
     private var categoriesList = emptyList<CategoryModelDomain>()
 
+    private var selectedPosition = -1
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view =
             CategoryHorizontalItemLayoutBinding.inflate(
@@ -27,6 +28,20 @@ class CategoriesInAddAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as CategoryInAddViewHolder).refreshList(categoriesList[position], listener)
+
+        if (selectedPosition == position) {
+            holder.itemView.isSelected = true //using selector drawable
+            holder.setCheck()
+        } else {
+            holder.itemView.isSelected = false
+            holder.setUnCheck()
+        }
+
+        holder.itemView.setOnClickListener { v ->
+            if (selectedPosition >= 0) notifyItemChanged(selectedPosition)
+            selectedPosition = holder.bindingAdapterPosition
+            notifyItemChanged(selectedPosition)
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")

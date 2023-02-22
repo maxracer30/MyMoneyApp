@@ -151,16 +151,18 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
         if (isFirstStart) {
             val colors =
                 listOf(
+                    resources.getString(R.color.pastel_yellow),
                     resources.getString(R.color.pastel_aqua_green),
                     resources.getString(R.color.pastel_brown),
                     resources.getString(R.color.pastel_pink),
                     resources.getString(R.color.pastel_orange),
                     resources.getString(R.color.pastel_red),
                     resources.getString(R.color.pastel_blue),
-                    resources.getString(R.color.pastel_light_green)
+                    resources.getString(R.color.pastel_light_green),
                 )
             val titles =
                 listOf(
+                    getString(R.string.other),
                     resources.getString(R.string.Food),
                     resources.getString(R.string.House),
                     resources.getString(R.string.Education),
@@ -172,6 +174,8 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
 
             val images =
                 listOf(
+                    resources
+                        .getIdentifier("storefront", "drawable", activity!!.packageName),
                     resources
                         .getIdentifier("eat", "drawable", activity!!.packageName),
                     resources
@@ -186,7 +190,6 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
                         .getIdentifier("comms", "drawable", activity!!.packageName),
                     resources
                         .getIdentifier("fun", "drawable", activity!!.packageName),
-
                     )
 
             viewModel.viewModelScope.launch(Dispatchers.IO) {

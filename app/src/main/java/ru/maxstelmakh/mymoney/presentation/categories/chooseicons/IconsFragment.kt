@@ -1,4 +1,4 @@
-package ru.maxstelmakh.mymoney.presentation.chooseicons
+package ru.maxstelmakh.mymoney.presentation.categories.chooseicons
 
 import android.os.Bundle
 import android.view.LayoutInflater

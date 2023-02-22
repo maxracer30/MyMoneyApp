@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.chooseicons.IconsFragment">
+    tools:context=".presentation.categories.chooseicons.IconsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/iconsRecyclerView"
@@ -24,41 +24,32 @@
         tools:listitem="@layout/icon_item_layout" />
 
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:background="@drawable/my_custom_shape_soft"
 
         android:backgroundTint="@color/pastel_orange"
-        android:paddingHorizontal="50dp"
-        android:paddingVertical="25dp"
 
-        android:shadowColor="@color/pastel_red"
-        android:shadowRadius="7"
-
-        android:text="@string/cancel"
+        android:src="@drawable/baseline_clear_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btnOk"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ContentDescription" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnOk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:background="@drawable/my_custom_shape_soft"
 
         android:backgroundTint="@color/green7"
-        android:paddingHorizontal="50dp"
-        android:paddingVertical="25dp"
 
-        android:shadowColor="@color/green4"
-        android:shadowRadius="7"
-
+        android:src="@drawable/baseline_check_24"
         android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnCancel"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>
