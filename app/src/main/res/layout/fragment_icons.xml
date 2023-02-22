@@ -31,6 +31,7 @@
         android:layout_margin="30dp"
 
         android:backgroundTint="@color/pastel_orange"
+        app:backgroundTint="@color/pastel_red"
 
         android:src="@drawable/baseline_clear_24"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,6 +46,7 @@
         android:layout_margin="30dp"
 
         android:backgroundTint="@color/green7"
+        app:backgroundTint="@color/green8"
 
         android:src="@drawable/baseline_check_24"
         android:text="@string/save"

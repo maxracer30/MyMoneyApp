@@ -14,6 +14,7 @@
         app:layout_constraintBottom_toTopOf="@id/internalConstrainLayout1"
         app:layout_constraintStart_toStartOf="@id/internalConstrainLayout1"
         android:backgroundTint="@color/lightgray"
+        app:backgroundTint="@color/gray"
         android:src="@drawable/baseline_clear_24"
         tools:ignore="ContentDescription" />
 
@@ -59,11 +60,15 @@
             android:textSize="14sp" />
 
 
+
+
         <ImageView
             android:id="@id/image_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_margin="10dp"
+            android:padding="15dp"
+            android:background="@drawable/rounded_corners_ui"
             android:src="@drawable/car"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvSetIcon"
@@ -130,6 +135,7 @@
         app:layout_constraintBottom_toBottomOf="@id/internalConstrainLayout1"
         app:layout_constraintEnd_toEndOf="@id/internalConstrainLayout1"
         android:backgroundTint="@color/pastel_yellow"
+        app:backgroundTint="@color/pastel_light_yellow"
         android:src="@drawable/baseline_check_24"
         tools:ignore="ContentDescription" />
 

@@ -1,21 +1,27 @@
 package ru.maxstelmakh.mymoney.presentation.categories.addnewcategory
 
 import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import ru.maxstelmakh.mymoney.R
 import ru.maxstelmakh.mymoney.databinding.FragmentAddNewCategoryBinding
 import ru.maxstelmakh.mymoney.presentation.adapter.colorsadapter.ColorsAdapter
+import ru.maxstelmakh.mymoney.presentation.adapter.listeners.ColorListener
 
-class AddNewCategoryFragment : Fragment() {
+@AndroidEntryPoint
+class AddNewCategoryFragment : Fragment(), ColorListener {
     private var _binding: FragmentAddNewCategoryBinding? = null
     private val binding get() = _binding!!
-    private val colorsAdapter = ColorsAdapter()
+    private val colorsAdapter = ColorsAdapter(this)
     private val viewModel by viewModels<AddNewCategoryViewModel>()
 
     private var colors = emptyList<String>()
@@ -34,6 +40,8 @@ class AddNewCategoryFragment : Fragment() {
 
         starting()
 
+        setImageToImageView()
+
         with(binding) {
 
             categoryColor.adapter = colorsAdapter
@@ -44,10 +52,7 @@ class AddNewCategoryFragment : Fragment() {
                 )
             }
 
-            categoryColor.setOnClickListener {
-                imageCategory.background.mutate().colorFilter
 
-            }
 
             btnEscape.setOnClickListener {
                 findNavController().navigateUp()
@@ -55,12 +60,16 @@ class AddNewCategoryFragment : Fragment() {
 
             btnSave.setOnClickListener {
                 viewModel.addNewCategory(
-                    icon = resources.getInteger(imageCategory.id),
+                    icon = viewModel.selectedImage,
                     categoryColor = colors[colorsAdapter.selectedPosition],
                     name = tvEnterNameCategory.text.toString()
                 )
             }
         }
+    }
+
+    fun setImageToImageView() {
+        binding.imageCategory.setImageResource(viewModel.selectedImage)
     }
 
     private fun starting() {
@@ -80,6 +89,8 @@ class AddNewCategoryFragment : Fragment() {
                 resources.getString(R.color.pastel_red),
             )
         colorsAdapter.colors = colors
+        colorsAdapter.selectedPosition = 1
+
     }
 
 
@@ -88,4 +99,15 @@ class AddNewCategoryFragment : Fragment() {
         _binding = null
     }
 
+    @Suppress("DEPRECATION")
+    override fun onColorSelected(color: String) {
+        Log.d("StatesOfApp", color)
+        binding.imageCategory
+            .background
+            .mutate()
+            .setColorFilter(
+                Color.parseColor(color),
+                PorterDuff.Mode.SRC_ATOP
+            )
+    }
 }

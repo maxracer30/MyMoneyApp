@@ -4,9 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.maxstelmakh.mymoney.databinding.ColorsHorizontalItemLayoutBinding
+import ru.maxstelmakh.mymoney.presentation.adapter.listeners.ColorListener
 
 
-class ColorsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ColorsAdapter(
+    private val listener: ColorListener
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var colors = emptyList<String>()
 
@@ -30,6 +33,7 @@ class ColorsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         if (selectedPosition == position) {
             holder.itemView.isSelected = true //using selector drawable
             holder.setCheck()
+            listener.onColorSelected(colors[position])
         } else {
             holder.itemView.isSelected = false
             holder.setUnCheck()
