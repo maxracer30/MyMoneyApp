@@ -114,7 +114,7 @@
 
 
         <EditText
-            android:id="@+id/tvEnterNameCategory"
+            android:id="@+id/edit_name_category"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvEnterName"

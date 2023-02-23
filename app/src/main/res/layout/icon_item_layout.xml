@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    android:id="@+id/view"
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/view"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="100dp"
-    android:layout_height="100dp"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
     android:layout_margin="10dp"
-    android:elevation="12dp"
-    app:cardCornerRadius="50dp"
-    android:layout_centerHorizontal="true"
-    android:innerRadius="0dp"
-    android:shape="ring"
-    android:thicknessRatio="1.9"
-    >
+    android:background="@drawable/rounded_corners_ui"
+    android:backgroundTint="@color/lightgray"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView
-        android:layout_height="70dp"
-        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:layout_width="60dp"
+        android:backgroundTint="@color/lightgray"
         android:id="@+id/imageView1"
-        android:src="@drawable/airplane"
+        android:src="@drawable/book"
         android:layout_gravity="center_horizontal|center_vertical"
-        tools:ignore="ContentDescription">
+        tools:ignore="ContentDescription"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
     </ImageView>
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

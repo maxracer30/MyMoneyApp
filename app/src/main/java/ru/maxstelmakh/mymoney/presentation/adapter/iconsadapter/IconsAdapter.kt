@@ -1,37 +1,37 @@
-package ru.maxstelmakh.mymoney.presentation.adapter.colorsadapter
+package ru.maxstelmakh.mymoney.presentation.adapter.iconsadapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ru.maxstelmakh.mymoney.databinding.ColorsHorizontalItemLayoutBinding
-import ru.maxstelmakh.mymoney.presentation.adapter.listeners.ColorListener
+import ru.maxstelmakh.mymoney.databinding.IconItemLayoutBinding
+import ru.maxstelmakh.mymoney.presentation.adapter.listeners.IconsListener
 
-
-class ColorsAdapter(
-    private val listener: ColorListener
+class IconsAdapter(
+    private val listener: IconsListener
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var colors = emptyList<String>()
+    var icons = emptyList<Int>()
 
     var selectedPosition = -1
+    var color = "#ff957fef"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = ColorsHorizontalItemLayoutBinding.inflate(
+        val view = IconItemLayoutBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
 
-        return ColorsViewHolder(view)
+        return IconsViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ColorsViewHolder).showColors(colors[position])
+        (holder as IconsViewHolder).showIcons(icons[position])
 
         if (selectedPosition == position) {
             holder.itemView.isSelected = true //using selector drawable
-            holder.setCheck()
-            listener.onColorSelected(colors[position], position)
+            holder.setCheck(color)
+            listener.onIconSelected(icons[position])
         } else {
             holder.itemView.isSelected = false
             holder.setUnCheck()
@@ -44,5 +44,6 @@ class ColorsAdapter(
         }
     }
 
-    override fun getItemCount() = colors.size
+    override fun getItemCount() = icons.size
+
 }

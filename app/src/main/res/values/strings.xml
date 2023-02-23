@@ -80,4 +80,5 @@
     <string name="enterName">Name</string>
     <string name="add_category">Add category</string>
     <string name="other">Other</string>
+    <string name="icon_error">First select the icon</string>
 </resources>

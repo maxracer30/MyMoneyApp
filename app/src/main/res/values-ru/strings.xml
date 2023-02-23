@@ -53,4 +53,5 @@
     <string name="enterName">Название</string>
     <string name="add_category">Создание категории</string>
     <string name="other">Другое</string>
+    <string name="icon_error">Сначала выберите иконку</string>
 </resources>

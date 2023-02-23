@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.CycleInterpolator
+import android.view.animation.TranslateAnimation
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
@@ -63,15 +65,26 @@ class AddNewEventFragment @Inject constructor(
                     )
                     findNavController().navigateUp()
                 } else {
-                    expense
-                        .background
-                        .mutate()
-                        .setColorFilter(
-                            resources.getColor(R.color.orangered),
-                            PorterDuff.Mode.SRC_ATOP
-                        )
 
-                    category
+                    tvExpense.setTextColor(resources.getColor(R.color.pastel_red))
+
+                    val shake =
+                        TranslateAnimation(
+                            0f,
+                            10f,
+                            0f,
+                            0f
+                        )
+                    with(shake) {
+                        duration = 300
+                        interpolator = CycleInterpolator(7f)
+                    }
+
+                    tvExpense.startAnimation(shake)
+
+                    expense.startAnimation(shake)
+
+                    expense
                         .background
                         .mutate()
                         .setColorFilter(
