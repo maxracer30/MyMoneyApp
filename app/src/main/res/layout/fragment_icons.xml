@@ -12,6 +12,9 @@
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+
+        android:background="@drawable/my_custom_shape_soft_recycler"
+        android:backgroundTint="@color/green7"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="3"
         android:padding="10dp"
@@ -21,6 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:itemCount="13"
         tools:listitem="@layout/icon_item_layout" />
 
 
