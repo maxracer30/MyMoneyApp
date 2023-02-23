@@ -103,7 +103,6 @@ class AddNewEventFragment @Inject constructor(
     }
 
     override fun onClick(categoryModelDomain: CategoryModelDomain) {
-        categoriesInAddAdapter
         defCategory = categoryModelDomain.categoryId
     }
 }

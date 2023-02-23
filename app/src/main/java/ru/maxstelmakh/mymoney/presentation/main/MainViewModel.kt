@@ -69,7 +69,7 @@ class MainViewModel @Inject constructor(
                 addNewCategoryUseCase(
                     categoryModelDomain =
                     CategoryModelDomain(
-                        category = titles[i],
+                        categoryName = titles[i],
                         color = colors[i],
                         image = images[i]
                     )

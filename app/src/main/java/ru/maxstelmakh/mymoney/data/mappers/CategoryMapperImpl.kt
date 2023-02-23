@@ -9,7 +9,7 @@ class CategoryMapperImpl @Inject constructor(): CategoryMapper<CategoryModelData
     override suspend fun mapFromData(dataCategory: CategoryModelData): CategoryModelDomain {
         return CategoryModelDomain(
             categoryId = dataCategory.categoryId,
-            category = dataCategory.category,
+            categoryName = dataCategory.categoryName,
             color = dataCategory.color,
             image = dataCategory.image
         )
@@ -18,7 +18,7 @@ class CategoryMapperImpl @Inject constructor(): CategoryMapper<CategoryModelData
     override fun mapToData(domainCategory: CategoryModelDomain): CategoryModelData {
         return CategoryModelData(
             categoryId = domainCategory.categoryId,
-            category = domainCategory.category,
+            categoryName = domainCategory.categoryName,
             color = domainCategory.color,
             image = domainCategory.image
         )

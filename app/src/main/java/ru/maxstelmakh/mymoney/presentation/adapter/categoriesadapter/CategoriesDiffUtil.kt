@@ -12,12 +12,12 @@ class CategoriesDiffUtil(
     override fun getNewListSize() = newList.size
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].category == newList[newItemPosition].category
+        return oldList[oldItemPosition].categoryName == newList[newItemPosition].categoryName
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         return when {
-            oldList[oldItemPosition].category != newList[newItemPosition].category -> false
+            oldList[oldItemPosition].categoryName != newList[newItemPosition].categoryName -> false
             else -> true
         }
     }

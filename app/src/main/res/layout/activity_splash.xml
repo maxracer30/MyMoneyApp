@@ -7,6 +7,18 @@
     android:background="#70A28E"
     tools:context=".presentation.splashscreen.SplashActivity">
 
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/rounded_corners_ui"
+        android:backgroundTint="#70A28E"
+        android:layout_marginBottom="-20dp"
+        android:elevation="1dp"
+        app:layout_constraintBottom_toTopOf="@id/image_splash"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/image_splash"
         android:layout_width="match_parent"

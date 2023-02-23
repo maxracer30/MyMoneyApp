@@ -10,7 +10,7 @@ class AddNewCategoryUseCase @Inject constructor(
     suspend operator fun invoke(categoryModelDomain: CategoryModelDomain) {
         eventsRepositoryImpl.insertCategory(
             CategoryModelDomain(
-                category = categoryModelDomain.category,
+                categoryName = categoryModelDomain.categoryName,
                 color = categoryModelDomain.color,
                 image = categoryModelDomain.image
             )

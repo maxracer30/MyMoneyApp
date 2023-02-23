@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class CategoryModelData(
     @PrimaryKey(autoGenerate = true)
     var categoryId: Int = 0,
-    var category: String,
+    var categoryName: String,
     var color: String,
     var image: Int
 )

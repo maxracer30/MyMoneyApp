@@ -27,7 +27,7 @@ class CategoriesInAddAdapter(
     override fun getItemCount() = categoriesList.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as CategoryInAddViewHolder).refreshList(categoriesList[position], listener)
+        (holder as CategoryInAddViewHolder).refreshList(categoriesList[position])
 
         if (selectedPosition == position) {
             holder.itemView.isSelected = true //using selector drawable
@@ -40,6 +40,7 @@ class CategoriesInAddAdapter(
         holder.itemView.setOnClickListener { v ->
             if (selectedPosition >= 0) notifyItemChanged(selectedPosition)
             selectedPosition = holder.bindingAdapterPosition
+            listener.onClick(categoriesList[position])
             notifyItemChanged(selectedPosition)
         }
     }

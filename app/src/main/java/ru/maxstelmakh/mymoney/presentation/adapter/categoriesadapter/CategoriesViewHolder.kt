@@ -17,7 +17,7 @@ class CategoriesViewHolder(
     fun refreshList(categoryModelDomain: CategoryModelDomain, listener: CategoryListener) {
         with (categoryBinding) {
 
-            eventCategory.text = categoryModelDomain.category
+            eventCategory.text = categoryModelDomain.categoryName
 
             categoryCard.background
                 .mutate()

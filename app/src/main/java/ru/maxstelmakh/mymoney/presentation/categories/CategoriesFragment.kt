@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
@@ -46,12 +45,6 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories), CategoryListe
 
         categoriesRecyclerView.adapter = categoriesAdapter
 
-        categoriesRecyclerView.setOnClickListener {
-//            categoriesAdapter.getItemViewType()
-//            findNavController().navigate(R.id.action_mainFragment_to_addNewEventFragment)
-        }
-
-
 
         viewModel.categories.observe(viewLifecycleOwner) {
             viewModel.viewModelScope.launch {
@@ -61,19 +54,23 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories), CategoryListe
     }
 
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
     override fun onClick(categoryModelDomain: CategoryModelDomain) {
-        Toast.makeText(this.context, categoryModelDomain.category, Toast.LENGTH_SHORT).show()
+//        val bundle = bundleOf("categoryModel" to categoryModelDomain)
+//        findNavController().navigate(
+//            R.id.action_categoriesFragment_to_addNewCategoryFragment,
+//            bundle
+//        )
     }
 
     override fun onAddClick() {
         findNavController().navigate(
             R.id.action_categoriesFragment_to_addNewCategoryFragment
         )
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

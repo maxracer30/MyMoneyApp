@@ -22,7 +22,7 @@ class AddNewCategoryViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             addNewCategoryUseCase(
                 categoryModelDomain = CategoryModelDomain(
-                    category = name,
+                    categoryName = name,
                     color = categoryColor,
                     image = icon
                 )

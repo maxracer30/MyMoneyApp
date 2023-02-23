@@ -15,8 +15,10 @@ class PieChartDiagram(
     private var pieChart: PieChart?
 ) {
     fun getChart() {
-        pieChart?.let { loadPieChartData(it) }
-        pieChart?.let { setupPieChart(it) }
+        pieChart?.let {
+            loadPieChartData(it)
+            setupPieChart(it)
+        }
     }
 
     private fun setupPieChart(pieChart: PieChart) {

@@ -7,7 +7,6 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import ru.maxstelmakh.mymoney.databinding.CategoryHorizontalItemLayoutBinding
 import ru.maxstelmakh.mymoney.domain.model.CategoryModelDomain
-import ru.maxstelmakh.mymoney.presentation.adapter.listeners.CategoryListener
 
 class CategoryInAddViewHolder(
     private val categoryBinding: CategoryHorizontalItemLayoutBinding
@@ -15,12 +14,12 @@ class CategoryInAddViewHolder(
 
     @Suppress("DEPRECATION")
     @SuppressLint("ResourceAsColor")
-    fun refreshList(categoryModelDomain: CategoryModelDomain, listener: CategoryListener) {
+    fun refreshList(categoryModelDomain: CategoryModelDomain) {
         with (categoryBinding) {
 
 
 
-            eventCategory.text = categoryModelDomain.category
+            eventCategory.text = categoryModelDomain.categoryName
 
             categoryCard.background
                 .mutate()
@@ -30,14 +29,6 @@ class CategoryInAddViewHolder(
 
             imageCategory.setImageResource(categoryModelDomain.image)
 
-            itemView.setOnClickListener {
-                listener.onClick(categoryModelDomain)
-//                categoryCard.background
-//                    .mutate()
-//                    .setColorFilter(
-//                        Color.RED,
-//                        PorterDuff.Mode.SRC_ATOP)
-            }
         }
     }
 
