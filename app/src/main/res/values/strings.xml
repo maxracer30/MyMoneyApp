@@ -81,4 +81,6 @@
     <string name="add_category">Add category</string>
     <string name="other">Other</string>
     <string name="icon_error">First select the icon</string>
+    <string name="_42">42%</string>
+    <string name="total_spent_pie">Total was spent</string>
 </resources>

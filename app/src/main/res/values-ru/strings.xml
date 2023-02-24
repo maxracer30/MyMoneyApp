@@ -54,4 +54,6 @@
     <string name="add_category">Создание категории</string>
     <string name="other">Другое</string>
     <string name="icon_error">Сначала выберите иконку</string>
+    <string name="_42">42%</string>
+    <string name="total_spent_pie">Всего потрачено</string>
 </resources>

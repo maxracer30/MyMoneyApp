@@ -2,30 +2,30 @@ package ru.maxstelmakh.mymoney.data.mappers
 
 import ru.maxstelmakh.mymoney.data.models.CategoryModelData
 import ru.maxstelmakh.mymoney.domain.model.CategoryModelDomain
-import ru.maxstelmakh.mymoney.domain.util.CategoryMapper
+import ru.maxstelmakh.mymoney.domain.util.EntityMapper
 import javax.inject.Inject
 
-class CategoryMapperImpl @Inject constructor(): CategoryMapper<CategoryModelData, CategoryModelDomain> {
-    override suspend fun mapFromData(dataCategory: CategoryModelData): CategoryModelDomain {
+class CategoryMapperImpl @Inject constructor(): EntityMapper<CategoryModelData, CategoryModelDomain> {
+    override suspend fun mapFromEntity(entity: CategoryModelData): CategoryModelDomain {
         return CategoryModelDomain(
-            categoryId = dataCategory.categoryId,
-            categoryName = dataCategory.categoryName,
-            color = dataCategory.color,
-            image = dataCategory.image
+            categoryId = entity.categoryId,
+            categoryName = entity.categoryName,
+            color = entity.color,
+            image = entity.image
         )
     }
 
-    override fun mapToData(domainCategory: CategoryModelDomain): CategoryModelData {
+    override fun mapToEntity(domainModel: CategoryModelDomain): CategoryModelData {
         return CategoryModelData(
-            categoryId = domainCategory.categoryId,
-            categoryName = domainCategory.categoryName,
-            color = domainCategory.color,
-            image = domainCategory.image
+            categoryId = domainModel.categoryId,
+            categoryName = domainModel.categoryName,
+            color = domainModel.color,
+            image = domainModel.image
         )
     }
 
     suspend fun mapFromDataCategoriesList(initial: List<CategoryModelData>): List<CategoryModelDomain> {
-        return initial.map { mapFromData(it) }
+        return initial.map { mapFromEntity(it) }
     }
 
 //    Never used mapper

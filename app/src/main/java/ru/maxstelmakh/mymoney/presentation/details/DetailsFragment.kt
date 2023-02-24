@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ru.maxstelmakh.mymoney.R
 import ru.maxstelmakh.mymoney.databinding.FragmentAddNewEventBinding
+import ru.maxstelmakh.mymoney.domain.model.EventInDetailModelDomain
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 
 @Suppress("DEPRECATION")
@@ -22,7 +23,7 @@ class DetailsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel by viewModels<DetailsViewModel>()
-    private lateinit var eventToChange: EventModelDomain
+    private lateinit var eventToChange: EventInDetailModelDomain
 
     override fun onCreate(savedInstanceState: Bundle?) {
         arguments?.let { bundle ->
@@ -58,10 +59,10 @@ class DetailsFragment : Fragment() {
                 if (expense.text.isNotBlank()) {
                     viewModel.update(
                         eventModelDomain = EventModelDomain(
-                            id = eventToChange.id,
+                            id = eventToChange.eventId,
                             expense = expense.text.toString().toLong(),
                             description = description.text.toString().trim(),
-                            category = eventToChange.category,
+                            category = eventToChange.categoryId,
                             joined_date = eventToChange.joined_date
                         )
                     )
@@ -72,14 +73,16 @@ class DetailsFragment : Fragment() {
                         .mutate()
                         .setColorFilter(
                             resources.getColor(R.color.orangered),
-                            PorterDuff.Mode.SRC_ATOP)
+                            PorterDuff.Mode.SRC_ATOP
+                        )
 
                     category
                         .background
                         .mutate()
                         .setColorFilter(
                             resources.getColor(R.color.orangered),
-                            PorterDuff.Mode.SRC_ATOP)
+                            PorterDuff.Mode.SRC_ATOP
+                        )
 
                 }
             }

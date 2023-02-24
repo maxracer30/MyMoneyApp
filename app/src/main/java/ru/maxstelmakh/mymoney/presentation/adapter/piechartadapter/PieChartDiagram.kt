@@ -8,13 +8,18 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
-import com.github.mikephil.charting.utils.ColorTemplate
+import ru.maxstelmakh.mymoney.R
+import ru.maxstelmakh.mymoney.domain.model.StatisticModelDomain
 
 
 class PieChartDiagram(
     private var pieChart: PieChart?
 ) {
-    fun getChart() {
+
+    private var statisticData = emptyList<StatisticModelDomain>()
+
+    fun getChart(statistic: List<StatisticModelDomain>) {
+        statisticData = statistic
         pieChart?.let {
             loadPieChartData(it)
             setupPieChart(it)
@@ -22,12 +27,20 @@ class PieChartDiagram(
     }
 
     private fun setupPieChart(pieChart: PieChart) {
+
+        var totalSum = 0L
+        statisticData.forEach {
+            totalSum += it.total
+        }
+
         pieChart.apply {
             isDrawHoleEnabled = true
             setUsePercentValues(true)
             setEntryLabelTextSize(9F)
             setEntryLabelColor(Color.BLACK)
-            centerText = ""
+
+            centerText = context.getString(R.string.total_spent_pie) +
+                    "\n${(Math.round(totalSum * 1.0))}" + context.getString(R.string.RUB)
             setCenterTextSize(20f)
             isHighlightPerTapEnabled = true
             description.isEnabled = false
@@ -44,20 +57,12 @@ class PieChartDiagram(
 
     private fun loadPieChartData(pieChart: PieChart) {
         val entries: ArrayList<PieEntry> = arrayListOf()
-        entries.add(PieEntry(0.2f, "Food"))
-        entries.add(PieEntry(0.1f, "Medical"))
-        entries.add(PieEntry(0.45f, "Old BMW"))
-        entries.add(PieEntry(0.15f, "Housing"))
-        entries.add(PieEntry(0.05f, "Entertainment"))
-        entries.add(PieEntry(0.05f, "Gas"))
-
         val colors: ArrayList<Int> = arrayListOf()
-        for (color: Int in ColorTemplate.MATERIAL_COLORS) {
-            colors.add(color)
+        statisticData.forEach {
+            entries.add(PieEntry(it.percent, it.categoryName))
+            colors.add(Color.parseColor(it.color))
         }
-        for (color: Int in ColorTemplate.VORDIPLOM_COLORS) {
-            colors.add(color)
-        }
+
 
         val dataSet: PieDataSet = PieDataSet(entries, "Expense category")
         dataSet.colors = colors

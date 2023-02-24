@@ -3,7 +3,9 @@ package ru.maxstelmakh.mymoney.domain.repository
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 import ru.maxstelmakh.mymoney.data.models.CategoryModelData
+import ru.maxstelmakh.mymoney.data.models.EventInDetailModelData
 import ru.maxstelmakh.mymoney.data.models.EventModelData
+import ru.maxstelmakh.mymoney.data.models.StatisticModelData
 import ru.maxstelmakh.mymoney.data.relations.CategoriesWithEvents
 
 @Dao
@@ -41,13 +43,27 @@ interface EventsRepositoryDao {
                     categoryName, 
                     color, 
                     image, 
-                    SUM(expense),
+                    SUM(expense) AS total,
                     (ROUND((SELECT SUM(expense) * 1.0)/(SELECT SUM(expense) FROM EventModelData), 5)) AS percent
                 FROM CategoryModelData JOIN EventModelData
                 ON CategoryModelData.categoryId = EventModelData.category
                 WHERE eventId NOT NULL
-                GROUP BY category""")
-    fun getCategoriesForStatistic()
+                GROUP BY category
+                ORDER BY categoryId DESC""")
+    fun getCategoriesForStatistic(): Flow<List<StatisticModelData>>
+
+    @Query("""  SELECT
+                    eventId,
+                    expense,
+                    categoryName, 
+                    color,
+                    description,
+                    categoryId,
+                    joined_date
+                FROM EventModelData JOIN CategoryModelData
+                ON CategoryModelData.categoryId = EventModelData.category
+                ORDER BY datetime(joined_date) DESC""")
+    fun getAllEventsInDetail(): Flow<List<EventInDetailModelData>>
 
     //----------------------------Transaction-------------------------------------------------------
 

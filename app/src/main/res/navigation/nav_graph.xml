@@ -60,7 +60,7 @@
         tools:layout="@layout/fragment_add_new_event" >
         <argument
             android:name="eventToChange"
-            app:argType="ru.maxstelmakh.mymoney.domain.model.EventModelDomain" />
+            app:argType="ru.maxstelmakh.mymoney.domain.model.EventInDetailModelDomain" />
     </fragment>
     <fragment
         android:id="@+id/iconsFragment"

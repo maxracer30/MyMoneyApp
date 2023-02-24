@@ -23,6 +23,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ru.maxstelmakh.mymoney.R
 import ru.maxstelmakh.mymoney.databinding.FragmentMainBinding
+import ru.maxstelmakh.mymoney.domain.model.EventInDetailModelDomain
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 import ru.maxstelmakh.mymoney.presentation.adapter.eventsadapter.EventsAdapter
 import ru.maxstelmakh.mymoney.presentation.adapter.listeners.EventsListener
@@ -75,7 +76,14 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
             @SuppressLint("ResourceType", "ShowToast")
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.bindingAdapterPosition
-                val eventModelDomain = eventsAdapter.oldEventsList[position]
+                val eventInDetailsModelDomain = eventsAdapter.oldEventsList[position]
+                val eventModelDomain = EventModelDomain(
+                    id = eventInDetailsModelDomain.eventId,
+                    expense = eventInDetailsModelDomain.expense,
+                    description = eventInDetailsModelDomain.description,
+                    category = eventInDetailsModelDomain.categoryId,
+                    joined_date = eventInDetailsModelDomain.joined_date
+                )
                 try {
 
                     when (direction) {
@@ -109,11 +117,7 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
                         }
 
                         ItemTouchHelper.RIGHT -> {
-                            val bundle = bundleOf("eventToChange" to eventModelDomain)
-                            findNavController().navigate(
-                                R.id.action_mainFragment_to_detailsFragment,
-                                bundle
-                            )
+                            onClick(eventInDetailsModelDomain)
                         }
                     }
                 } catch (e: Exception) {
@@ -208,7 +212,7 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
         _binding = null
     }
 
-    override fun onClick(eventModelDomain: EventModelDomain) {
+    override fun onClick(eventModelDomain: EventInDetailModelDomain) {
         val bundle = bundleOf("eventToChange" to eventModelDomain)
         findNavController().navigate(
             R.id.action_mainFragment_to_detailsFragment,

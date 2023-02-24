@@ -1,7 +1,7 @@
 package ru.maxstelmakh.mymoney.presentation.adapter.listeners
 
-import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
+import ru.maxstelmakh.mymoney.domain.model.EventInDetailModelDomain
 
 interface EventsListener {
-    fun onClick(eventModelDomain: EventModelDomain)
+    fun onClick(eventModelDomain: EventInDetailModelDomain)
 }

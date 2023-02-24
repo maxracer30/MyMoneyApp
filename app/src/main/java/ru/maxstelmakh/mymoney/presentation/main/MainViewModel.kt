@@ -11,6 +11,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ru.maxstelmakh.mymoney.domain.model.CategoryModelDomain
+import ru.maxstelmakh.mymoney.domain.model.EventInDetailModelDomain
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 import ru.maxstelmakh.mymoney.domain.usecases.categoriesusecases.AddNewCategoryUseCase
 import ru.maxstelmakh.mymoney.domain.usecases.eventusecases.DeleteEventUseCase
@@ -27,8 +28,8 @@ class MainViewModel @Inject constructor(
     private val addNewCategoryUseCase: AddNewCategoryUseCase
 ) : ViewModel() {
 
-    private val _events = MutableLiveData<List<EventModelDomain>>()
-    val events: LiveData<List<EventModelDomain>> = _events
+    private val _events = MutableLiveData<List<EventInDetailModelDomain>>()
+    val events: LiveData<List<EventInDetailModelDomain>> = _events
 
     init {
         viewModelScope.launch {
