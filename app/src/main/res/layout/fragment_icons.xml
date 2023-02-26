@@ -17,14 +17,14 @@
         android:backgroundTint="@color/green7"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="3"
-        android:padding="10dp"
+        android:padding="15dp"
         android:layout_marginBottom="20dp"
 
         app:layout_constraintBottom_toTopOf="@id/btnCancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:itemCount="13"
+        tools:itemCount="16"
         tools:listitem="@layout/icon_item_layout" />
 
 

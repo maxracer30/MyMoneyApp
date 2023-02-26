@@ -30,6 +30,7 @@ class IconsFragment : Fragment(), IconsListener {
         }
         super.onCreate(savedInstanceState)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -71,8 +72,8 @@ class IconsFragment : Fragment(), IconsListener {
     @SuppressLint("DiscouragedApi", "UseRequireInsteadOfGet")
     private fun starting() {
         val icons = listOf(
-            resources
-                .getIdentifier("storefront", "drawable", activity!!.packageName),
+//            resources
+//                .getIdentifier("storefront", "drawable", activity!!.packageName),
             resources
                 .getIdentifier("eat", "drawable", activity!!.packageName),
             resources
@@ -87,7 +88,127 @@ class IconsFragment : Fragment(), IconsListener {
                 .getIdentifier("comms", "drawable", activity!!.packageName),
             resources
                 .getIdentifier("fun", "drawable", activity!!.packageName),
-        )
+            resources
+                .getIdentifier("bank", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("airplane", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("pets", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("shuttle", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("apartment", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("money", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("attractions", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("audio", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("croissant", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("beach", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("horse", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("bike", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("blind", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("brush", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("business", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("repair", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("camera", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("carpenter", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("celebration", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("chair", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("child", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("church", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("cloud", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("coffee", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("palette", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("computer", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("construction", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("cottage", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("crop", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("bunny", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("bitcoin", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("delivery", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("diamond", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("directions_bike", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("boat", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("bus", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("train", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("skiing", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("dry", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("elderly", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("nature", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("objects", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("forest", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("paint", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("ice_skating", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("kayaking", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("liquor", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("gas_station", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("burger", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("mouse", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("sell", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("shopping_basket", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("smoking", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("hockey", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("sports_kabaddi", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("motorsports", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("soccer", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("store", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("theater", "drawable", activity!!.packageName),
+            resources
+                .getIdentifier("two_wheeler", "drawable", activity!!.packageName),
+            )
 
         iconsAdapter.color = color
 
