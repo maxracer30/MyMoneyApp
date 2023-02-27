@@ -52,7 +52,7 @@
         android:layout_margin="7dp"
         android:lines="1"
         android:text="@string/choose_period"/>
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <RadioGroup
         android:id="@+id/linLay2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,38 +60,44 @@
         app:layout_constraintStart_toStartOf="parent"
         android:padding="5dp"
         android:orientation="horizontal">
-        <TextView
+        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/day"
             android:gravity="center"
+            android:button="@null"
             android:layout_weight="1"/>
-        <TextView
+        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/week"
             android:gravity="center"
+            android:button="@null"
             android:layout_weight="1"/>
-        <TextView
+        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/month"
+            android:checked="true"
             android:gravity="center"
+            android:button="@null"
             android:layout_weight="1"/>
-        <TextView
+        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/year"
             android:gravity="center"
+            android:button="@null"
             android:layout_weight="1"/>
-        <TextView
+        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/period"
             android:gravity="center"
+            android:button="@null"
             android:layout_weight="1"/>
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </RadioGroup>
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/statistic_piechart"
