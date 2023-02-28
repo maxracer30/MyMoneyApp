@@ -38,19 +38,20 @@ interface EventsRepositoryDao {
     @Query("SELECT * FROM CategoryModelData WHERE categoryName = :category")
     fun getCategoryOfEvents(category: String): Flow<List<CategoriesWithEvents>>
 
-    @Query("""  SELECT 
-                    categoryId, 
-                    categoryName, 
-                    color, 
-                    image, 
-                    SUM(expense) AS total,
-                    (ROUND((SELECT SUM(expense) * 1.0)/(SELECT SUM(expense) FROM EventModelData), 5)) AS percent
-                FROM CategoryModelData JOIN EventModelData
-                ON CategoryModelData.categoryId = EventModelData.category
-                WHERE eventId NOT NULL
-                GROUP BY category
-                ORDER BY categoryId DESC""")
-    fun getCategoriesForStatistic(): Flow<List<StatisticModelData>>
+    @Query("""  
+SELECT
+    categoryId,
+    categoryName, 
+    color, 
+    image, 
+    SUM(expense) AS total,
+    (ROUND((SELECT SUM(expense) * 1.0)/(SELECT SUM(expense) FROM EventModelData WHERE joined_date BETWEEN date(:startPeriod) AND date(:endPeriod)), 5)) AS percent
+FROM CategoryModelData JOIN EventModelData
+ON CategoryModelData.categoryId = EventModelData.category
+WHERE joined_date BETWEEN date(:startPeriod) AND date(:endPeriod)
+GROUP BY category
+ORDER BY categoryId DESC""")
+    fun getCategoriesForStatistic(startPeriod: String, endPeriod: String): Flow<List<StatisticModelData>>
 
     @Query("""  SELECT
                     eventId,

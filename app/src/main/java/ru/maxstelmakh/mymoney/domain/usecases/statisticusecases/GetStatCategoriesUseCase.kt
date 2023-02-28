@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetStatCategoriesUseCase @Inject constructor(
     private val eventsRepository: EventsRepository
 ){
-    suspend operator fun invoke(): Flow<List<StatisticModelDomain>> {
-        return  eventsRepository.getCategoriesForStatistic()
+    suspend operator fun invoke(startPeriod: String, endPeriod: String): Flow<List<StatisticModelDomain>> {
+        return  eventsRepository.getCategoriesForStatistic(startPeriod, endPeriod)
     }
 }

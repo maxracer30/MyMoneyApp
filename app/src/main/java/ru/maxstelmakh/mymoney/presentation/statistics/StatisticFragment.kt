@@ -43,42 +43,34 @@ class StatisticFragment : Fragment(R.layout.fragment_statistic) {
     @SuppressLint("NewApi")
     private fun init() = with(binding) {
 
-        weekInfo.text = viewModel.dateInfo
-        periodGroup.check(R.id.weekPeriod)
         periodGroup.setOnCheckedChangeListener { _, checkedId ->
-            run {
 
-                viewModel.startPeriod = LocalDate.now()
-                viewModel.endPeriod = LocalDate.now()
+            viewModel.startPeriod = LocalDate.now()
+            viewModel.endPeriod = LocalDate.now()
 
-                when (checkedId) {
-                    R.id.dayPeriod -> {
-
-                        btnPreviewPeriod.setOnClickListener {
-
-                        }
-                        btnNextPeriod.setOnClickListener {
-
-                        }
-                        weekInfo.text = viewModel.dateInfo
+            when (checkedId) {
+                R.id.dayPeriod -> {
+                    btnPreviewPeriod.setOnClickListener {
+                        dateInfo.text = viewModel.changeDay(-1)
                     }
-                    R.id.weekPeriod -> {
-                        weekInfo.text = viewModel.dateInfo
-                        btnPreviewPeriod.setOnClickListener {
-                            viewModel.minusWeek()
-                            weekInfo.text = viewModel.dateInfo
-                        }
-                        btnNextPeriod.setOnClickListener {
-                            viewModel.plusWeek()
-                            weekInfo.text = viewModel.dateInfo
-                        }
+                    btnNextPeriod.setOnClickListener {
+                        dateInfo.text = viewModel.changeDay(1)
                     }
-                    R.id.monthPeriod -> Toast.makeText(context, "m", Toast.LENGTH_SHORT).show()
-                    R.id.yearPeriod -> Toast.makeText(context, "y", Toast.LENGTH_SHORT).show()
-                    R.id.randomPeriod -> Toast.makeText(context, "p", Toast.LENGTH_SHORT).show()
                 }
+                R.id.weekPeriod -> {
+                    btnPreviewPeriod.setOnClickListener {
+                        dateInfo.text = viewModel.changeWeek(-1)
+                    }
+                    btnNextPeriod.setOnClickListener {
+                        dateInfo.text = viewModel.changeWeek(1)
+                    }
+                }
+                R.id.monthPeriod -> Toast.makeText(context, "m", Toast.LENGTH_SHORT).show()
+                R.id.yearPeriod -> Toast.makeText(context, "y", Toast.LENGTH_SHORT).show()
+                R.id.randomPeriod -> Toast.makeText(context, "p", Toast.LENGTH_SHORT).show()
             }
         }
+        periodGroup.check(R.id.weekPeriod)
 
         statisticsRecyclerView.adapter = statAdapter
 

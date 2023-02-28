@@ -22,7 +22,7 @@
             android:contentDescription="@string/preview_period"
             app:iconGravity="textStart"/>
         <TextView
-            android:id="@+id/weekInfo"
+            android:id="@+id/date_info"
             android:layout_margin="10dp"
             android:text="@string/dayInfo"
             android:gravity="center_horizontal|center_vertical"

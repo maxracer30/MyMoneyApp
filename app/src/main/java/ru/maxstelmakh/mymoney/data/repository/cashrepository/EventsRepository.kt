@@ -29,5 +29,5 @@ interface EventsRepository {
 
 //    --------------------------- Statistics --------------------------
 
-    suspend fun getCategoriesForStatistic(): Flow<List<StatisticModelDomain>>
+    suspend fun getCategoriesForStatistic(startPeriod: String, endPeriod: String): Flow<List<StatisticModelDomain>>
 }

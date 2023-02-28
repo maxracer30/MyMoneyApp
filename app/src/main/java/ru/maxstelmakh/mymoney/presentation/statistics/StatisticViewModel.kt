@@ -28,14 +28,17 @@ class StatisticViewModel @Inject constructor(
     var startPeriod = LocalDate.now()
     var endPeriod = LocalDate.now()
 
-
     init {
+        getDatesOfWeek()
+
+        val start = startPeriod.toString()
+        val end = startPeriod.toString()
+
         viewModelScope.launch {
-            getStatCategoriesUseCase().collect {
+            getStatCategoriesUseCase(start, end).collect {
                 _statistic.postValue(it)
             }
         }
-        getDatesOfWeek()
     }
 
     fun getDatesOfWeek() {
@@ -50,19 +53,28 @@ class StatisticViewModel @Inject constructor(
         }
     }
 
-    val dateInfo: String
-        get() {
-            getDatesOfWeek()
-            return StringBuilder()
-                .append(startPeriod.dayOfMonth)
-                .append(" ")
-                .append(monthToRu(startPeriod))
-                .append(" - ")
-                .append(endPeriod.dayOfMonth)
-                .append(" ")
-                .append(monthToRu(endPeriod))
-                .toString()
+    fun dateInfo(period: String): String {
+        var result = ""
+        when (period) {
+            "day" -> {}
+            "week" -> {
+                getDatesOfWeek()
+                result = StringBuilder()
+                    .append(startPeriod.dayOfMonth)
+                    .append(" ")
+                    .append(monthToRu(startPeriod))
+                    .append(" - ")
+                    .append(endPeriod.dayOfMonth)
+                    .append(" ")
+                    .append(monthToRu(endPeriod))
+                    .toString()
+            }
+            "month" -> {}
+            "year" -> {}
+            "period" -> {}
         }
+        return result
+    }
 
     @SuppressLint("NewApi")
     private fun monthToRu(date: LocalDate): String {
@@ -71,13 +83,15 @@ class StatisticViewModel @Inject constructor(
             .getDisplayName(TextStyle.FULL_STANDALONE, Locale("ru"))
     }
 
-    fun minusWeek() {
-        startPeriod = startPeriod.minusWeeks(1)
-        endPeriod = endPeriod.minusWeeks(1)
+    fun changeWeek(weeks: Long): String {
+        startPeriod = startPeriod.plusWeeks(weeks)
+        endPeriod = endPeriod.plusWeeks(weeks)
+        return dateInfo("week")
     }
 
-    fun plusWeek() {
-        startPeriod = startPeriod.plusWeeks(1)
-        endPeriod = endPeriod.plusWeeks(1)
+    fun changeDay(day: Long): String {
+        startPeriod = startPeriod.plusDays(day)
+        endPeriod = endPeriod.plusDays(day)
+        return dateInfo("week")
     }
 }

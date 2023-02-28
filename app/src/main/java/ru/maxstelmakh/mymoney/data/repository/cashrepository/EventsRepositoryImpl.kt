@@ -75,8 +75,8 @@ class EventsRepositoryImpl @Inject constructor(
 
 
 //    -------------------------------- Statistic --------------------------------
-    override suspend fun getCategoriesForStatistic(): Flow<List<StatisticModelDomain>> = flow {
-        eventsRepositoryDao.getCategoriesForStatistic().collect { listStatisticData ->
+    override suspend fun getCategoriesForStatistic(startPeriod: String, endPeriod: String): Flow<List<StatisticModelDomain>> = flow {
+        eventsRepositoryDao.getCategoriesForStatistic(startPeriod, endPeriod).collect { listStatisticData ->
             val listStatisticDomain =
                 statisticMapper
                     .mapFromDataStatisticList(listStatisticData)
