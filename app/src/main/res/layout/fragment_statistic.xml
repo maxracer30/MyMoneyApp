@@ -13,34 +13,32 @@
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="horizontal">
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnPreviewWeek"
+            android:id="@+id/btnPreviewPeriod"
             android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:textSize="20sp"
             android:layout_height="match_parent"
             app:icon="@drawable/baseline_navigate_before_24"
             android:contentDescription="@string/preview_period"
-            app:iconGravity="start"/>
+            app:iconGravity="textStart"/>
         <TextView
             android:id="@+id/weekInfo"
             android:layout_margin="10dp"
             android:text="@string/dayInfo"
-            android:gravity="center"
+            android:gravity="center_horizontal|center_vertical"
             android:textSize="20sp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="10"/>
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnPriseCheck"
-            android:layout_width="wrap_content"
+            android:id="@+id/btnNextPeriod"
+            android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:textSize="20sp"
-            android:layout_weight="1"
             android:contentDescription="@string/next_period"
             app:icon="@drawable/baseline_navigate_next_24"
-            app:iconGravity="end"/>
+            app:iconGravity="textEnd"/>
     </LinearLayout>
 
     <TextView
@@ -53,48 +51,72 @@
         android:lines="1"
         android:text="@string/choose_period"/>
     <RadioGroup
-        android:id="@+id/linLay2"
+        android:id="@+id/periodGroup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         app:layout_constraintTop_toBottomOf="@id/textViewChoose"
         app:layout_constraintStart_toStartOf="parent"
-        android:padding="5dp"
+        android:layout_margin="3dp"
         android:orientation="horizontal">
         <RadioButton
+            android:id="@+id/dayPeriod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="@string/day"
             android:gravity="center"
-            android:button="@null"
+            android:textColor="@color/radio_flat_text_selector"
+
+            android:background="@drawable/radio_flat_selector"
+            android:button="@android:color/transparent"
             android:layout_weight="1"/>
         <RadioButton
+            android:id="@+id/weekPeriod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="@string/week"
             android:gravity="center"
-            android:button="@null"
+            android:textColor="@color/radio_flat_text_selector"
+
+            android:background="@drawable/radio_flat_selector"
+            android:button="@android:color/transparent"
             android:layout_weight="1"/>
         <RadioButton
+            android:id="@+id/monthPeriod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="@string/month"
-            android:checked="true"
             android:gravity="center"
-            android:button="@null"
+            android:textColor="@color/radio_flat_text_selector"
+
+            android:background="@drawable/radio_flat_selector"
+            android:button="@android:color/transparent"
             android:layout_weight="1"/>
         <RadioButton
+            android:id="@+id/yearPeriod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="@string/year"
             android:gravity="center"
-            android:button="@null"
+            android:textColor="@color/radio_flat_text_selector"
+
+            android:background="@drawable/radio_flat_selector"
+            android:button="@android:color/transparent"
             android:layout_weight="1"/>
         <RadioButton
+            android:id="@+id/randomPeriod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="@string/period"
             android:gravity="center"
-            android:button="@null"
+            android:textColor="@color/radio_flat_text_selector"
+
+            android:background="@drawable/radio_flat_selector"
+            android:button="@android:color/transparent"
             android:layout_weight="1"/>
 
     </RadioGroup>
@@ -106,7 +128,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_margin="7dp"
-        app:layout_constraintTop_toBottomOf="@id/linLay2" />
+        app:layout_constraintTop_toBottomOf="@id/periodGroup" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/statisticsRecyclerView"

@@ -1,9 +1,11 @@
 package ru.maxstelmakh.mymoney.presentation.statistics
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
@@ -13,6 +15,8 @@ import ru.maxstelmakh.mymoney.R
 import ru.maxstelmakh.mymoney.databinding.FragmentStatisticBinding
 import ru.maxstelmakh.mymoney.presentation.adapter.piechartadapter.PieChartDiagram
 import ru.maxstelmakh.mymoney.presentation.adapter.statisticadapter.MainStatisticAdapter
+import java.time.LocalDate
+import java.util.*
 
 @AndroidEntryPoint
 class StatisticFragment : Fragment(R.layout.fragment_statistic) {
@@ -36,7 +40,45 @@ class StatisticFragment : Fragment(R.layout.fragment_statistic) {
         init()
     }
 
+    @SuppressLint("NewApi")
     private fun init() = with(binding) {
+
+        weekInfo.text = viewModel.dateInfo
+        periodGroup.check(R.id.weekPeriod)
+        periodGroup.setOnCheckedChangeListener { _, checkedId ->
+            run {
+
+                viewModel.startPeriod = LocalDate.now()
+                viewModel.endPeriod = LocalDate.now()
+
+                when (checkedId) {
+                    R.id.dayPeriod -> {
+
+                        btnPreviewPeriod.setOnClickListener {
+
+                        }
+                        btnNextPeriod.setOnClickListener {
+
+                        }
+                        weekInfo.text = viewModel.dateInfo
+                    }
+                    R.id.weekPeriod -> {
+                        weekInfo.text = viewModel.dateInfo
+                        btnPreviewPeriod.setOnClickListener {
+                            viewModel.minusWeek()
+                            weekInfo.text = viewModel.dateInfo
+                        }
+                        btnNextPeriod.setOnClickListener {
+                            viewModel.plusWeek()
+                            weekInfo.text = viewModel.dateInfo
+                        }
+                    }
+                    R.id.monthPeriod -> Toast.makeText(context, "m", Toast.LENGTH_SHORT).show()
+                    R.id.yearPeriod -> Toast.makeText(context, "y", Toast.LENGTH_SHORT).show()
+                    R.id.randomPeriod -> Toast.makeText(context, "p", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
 
         statisticsRecyclerView.adapter = statAdapter
 

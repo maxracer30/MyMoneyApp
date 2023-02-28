@@ -33,11 +33,11 @@
     <string name="next" translatable="false"><![CDATA[->]]></string>
     <string name="preview" translatable="false"><![CDATA[<-]]></string>
     <string name="choose_period">Choose period</string>
-    <string name="day"><u>Day</u></string>
-    <string name="week"><u>Week</u></string>
-    <string name="month"><u>Month</u></string>
-    <string name="year"><u>Year</u></string>
-    <string name="period"><u>Period...</u></string>
+    <string name="day">Day</string>
+    <string name="week">Week</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="period">Period…</string>
     <string name="dayInfo">8 February, Sunday</string>
     <string name="today" translatable="false">280 / 900</string>
     <string name="main">Main</string>

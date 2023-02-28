@@ -15,11 +15,11 @@
     <string name="saturday">Сб</string>
     <string name="new_event">Новая запись</string>
     <string name="choose_period">Интервал:</string>
-    <string name="day"><u>День</u></string>
-    <string name="week"><u>Неделя</u></string>
-    <string name="month"><u>Месяц</u></string>
-    <string name="year"><u>Год</u></string>
-    <string name="period"><u>Выбрать..</u></string>
+    <string name="day">День</string>
+    <string name="week">Неделя</string>
+    <string name="month">Месяц</string>
+    <string name="year">Год</string>
+    <string name="period">Выбрать..</string>
     <string name="dayInfo">15 Февряля, Среда</string>
     <string name="main">Сегодня</string>
     <string name="categories">Категории</string>
