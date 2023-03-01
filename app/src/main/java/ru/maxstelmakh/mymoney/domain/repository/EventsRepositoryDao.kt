@@ -51,7 +51,7 @@ ON CategoryModelData.categoryId = EventModelData.category
 WHERE joined_date BETWEEN date(:startPeriod) AND date(:endPeriod)
 GROUP BY category
 ORDER BY categoryId DESC""")
-    fun getCategoriesForStatistic(startPeriod: String, endPeriod: String): Flow<List<StatisticModelData>>
+    fun getCategoriesForStatistic(startPeriod: String, endPeriod: String): List<StatisticModelData>
 
     @Query("""  SELECT
                     eventId,

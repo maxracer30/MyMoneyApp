@@ -15,7 +15,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -130,18 +129,6 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
         val touchHelper = ItemTouchHelper(swipeGesture)
 
         touchHelper.attachToRecyclerView(binding.eventsRecyclerView)
-    }
-
-    private fun showDataRangePicker() {
-        val datePicker = MaterialDatePicker.Builder
-            .dateRangePicker()
-            .setTitleText("Select date")
-            .build()
-        datePicker.show(
-            parentFragmentManager.beginTransaction(),
-            "date_range_picker"
-        )
-
     }
 
     @SuppressLint("UseRequireInsteadOfGet", "ResourceType")
