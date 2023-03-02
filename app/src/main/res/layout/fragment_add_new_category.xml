@@ -46,7 +46,8 @@
         android:layout_marginTop="35dp"
         android:background="@drawable/my_custom_shape_soft"
         android:backgroundTint="@color/green7"
-        android:padding="20dp">
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
 
 
         <TextView
