@@ -51,6 +51,7 @@ class StatisticFragment : Fragment(R.layout.fragment_statistic) {
 
             when (checkedId) {
                 R.id.dayPeriod -> {
+                    showButtons(true)
                     viewModel.setNowDate()
                     viewModel.getDatesOfDay()
                     viewModel.updateData()
@@ -64,6 +65,7 @@ class StatisticFragment : Fragment(R.layout.fragment_statistic) {
                     }
                 }
                 R.id.weekPeriod -> {
+                    showButtons(true)
                     viewModel.updateData()
                     dateInfo.text = viewModel.dateInfo("week")
 
@@ -75,6 +77,7 @@ class StatisticFragment : Fragment(R.layout.fragment_statistic) {
                     }
                 }
                 R.id.monthPeriod -> {
+                    showButtons(true)
                     viewModel.setNowDate()
                     viewModel.getDatesOfMonth()
                     viewModel.updateData()
@@ -88,6 +91,7 @@ class StatisticFragment : Fragment(R.layout.fragment_statistic) {
                     }
                 }
                 R.id.yearPeriod -> {
+                    showButtons(true)
                     viewModel.setNowDate()
                     viewModel.getDatesOfYear()
                     viewModel.updateData()
@@ -103,6 +107,7 @@ class StatisticFragment : Fragment(R.layout.fragment_statistic) {
                 R.id.randomPeriod -> {
                     var startDate = 0L
                     var endDate = 0L
+                    showButtons(false)
                     randomPeriod.setOnClickListener {
                         startDate = 0L
                         endDate = 0L
@@ -136,10 +141,17 @@ class StatisticFragment : Fragment(R.layout.fragment_statistic) {
         }
     }
 
-    @SuppressLint("SimpleDateFormat")
-    private fun showDataRangePicker() {
-
-
+    private fun showButtons(case: Boolean) {
+        when (case) {
+            true -> {
+                binding.btnPreviewPeriod.visibility = View.VISIBLE
+                binding.btnNextPeriod.visibility = View.VISIBLE
+            }
+            else -> {
+                binding.btnPreviewPeriod.visibility = View.GONE
+                binding.btnNextPeriod.visibility = View.GONE
+            }
+        }
     }
 
     override fun onDestroy() {
