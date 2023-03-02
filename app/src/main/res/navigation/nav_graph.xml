@@ -34,20 +34,30 @@
         android:id="@+id/categoriesFragment"
         android:name="ru.maxstelmakh.mymoney.presentation.categories.CategoriesFragment"
         android:label="My categories"
-        tools:layout="@layout/fragment_categories" >
+        tools:layout="@layout/fragment_categories">
         <action
             android:id="@+id/action_categoriesFragment_to_addNewCategoryFragment"
             app:destination="@id/addNewCategoryFragment"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"/>
+            app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_changeCategoryFragment"
+            app:destination="@id/changeCategoryFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+        <argument
+            android:name="categoryModel"
+            app:argType="ru.maxstelmakh.mymoney.domain.model.CategoryModelDomain" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="ru.maxstelmakh.mymoney.presentation.settings.SettingsFragment"
         android:label="SettingsFragment"
-        tools:layout="@xml/root_preferences"/>
+        tools:layout="@xml/root_preferences" />
     <fragment
         android:id="@+id/addNewEventFragment"
         android:name="ru.maxstelmakh.mymoney.presentation.addevent.AddNewEventFragment"
@@ -57,7 +67,7 @@
         android:id="@+id/detailsFragment"
         android:name="ru.maxstelmakh.mymoney.presentation.details.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_add_new_event" >
+        tools:layout="@layout/fragment_add_new_event">
         <argument
             android:name="eventToChange"
             app:argType="ru.maxstelmakh.mymoney.domain.model.EventInDetailModelDomain" />
@@ -66,31 +76,58 @@
         android:id="@+id/iconsFragment"
         android:name="ru.maxstelmakh.mymoney.presentation.categories.chooseicons.IconsFragment"
         android:label="fragment_icons"
-        tools:layout="@layout/fragment_icons" >
+        tools:layout="@layout/fragment_icons">
         <action
             android:id="@+id/action_iconsFragment_to_addNewCategoryFragment"
             app:destination="@id/addNewCategoryFragment" />
         <argument
             android:name="icon"
-            app:argType="integer"
-            android:defaultValue="2131230857"/>
+            android:defaultValue="2131230857"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_iconsFragment_to_changeCategoryFragment"
+            app:destination="@id/changeCategoryFragment" />
+        <argument
+            android:name="icon"
+            android:defaultValue="2131230857"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/addNewCategoryFragment"
         android:name="ru.maxstelmakh.mymoney.presentation.categories.addnewcategory.AddNewCategoryFragment"
         android:label="fragment_add_new_category"
-        tools:layout="@layout/fragment_add_new_category" >
+        tools:layout="@layout/fragment_add_new_category">
         <action
             android:id="@+id/action_addNewCategoryFragment_to_iconsFragment"
             app:destination="@id/iconsFragment"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"/>
+            app:popExitAnim="@anim/slide_out_left" />
         <argument
             android:name="colorPosition"
-            app:argType="integer"
-            android:defaultValue="1" />
+            android:defaultValue="1"
+            app:argType="integer" />
+        <argument
+            android:name="color"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/changeCategoryFragment"
+        android:name="ru.maxstelmakh.mymoney.presentation.categories.changecategory.ChangeCategoryFragment"
+        android:label="fragment_change_category"
+        tools:layout="@layout/fragment_add_new_category">
+        <action
+            android:id="@+id/action_changeCategoryFragment_to_iconsFragment"
+            app:destination="@id/iconsFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+        <argument
+            android:name="colorPosition"
+            android:defaultValue="1"
+            app:argType="integer" />
         <argument
             android:name="color"
             app:argType="string" />

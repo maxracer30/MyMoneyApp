@@ -25,29 +25,4 @@ class CategoryViewModel @Inject constructor(
             }
         }
     }
-
-//    fun deleteEvent(eventModelDomain: EventModelDomain) {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            deleteEventUseCase(eventModelDomain = eventModelDomain)
-//        }
-//    }
-
-//    fun addEvent(event: EventModelDomain) {
-//        try {
-//            viewModelScope.launch(Dispatchers.IO) {
-//                saveNewEventUseCase(
-//                    eventModelDomain = EventModelDomain(
-//                        id = event.id,
-//                        expense = event.expense,
-//                        description = event.description,
-//                        category = event.category,
-//                        joined_date = event.joined_date
-//                    )
-//                )
-//            }
-//        } catch (nullPointerException: NullPointerException) {
-//            Log.d("StatesOfApp", "$nullPointerException")
-//        }
-//    }
-
 }

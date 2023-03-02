@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
@@ -37,29 +38,29 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories), CategoryListe
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        init()
-    }
-
-    private fun init() = with(binding) {
+        with(binding) {
 
 
-        categoriesRecyclerView.adapter = categoriesAdapter
+            categoriesRecyclerView.adapter = categoriesAdapter
 
 
-        viewModel.categories.observe(viewLifecycleOwner) {
-            viewModel.viewModelScope.launch {
-                categoriesAdapter.setList(it)
+            viewModel.categories.observe(viewLifecycleOwner) {
+                viewModel.viewModelScope.launch {
+                    categoriesAdapter.setList(it)
+                }
             }
+
         }
     }
 
 
+
     override fun onClick(categoryModelDomain: CategoryModelDomain) {
-//        val bundle = bundleOf("categoryModel" to categoryModelDomain)
-//        findNavController().navigate(
-//            R.id.action_categoriesFragment_to_addNewCategoryFragment,
-//            bundle
-//        )
+        val bundle = bundleOf("categoryModel" to categoryModelDomain)
+        findNavController().navigate(
+            R.id.action_categoriesFragment_to_changeCategoryFragment,
+            bundle
+        )
     }
 
     override fun onAddClick() {

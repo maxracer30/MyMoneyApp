@@ -69,6 +69,14 @@ class EventsRepositoryImpl @Inject constructor(
         eventsRepositoryDao.insertCategory(categoryMapper.mapToEntity(category))
     }
 
+    override suspend fun updateCategory(category: CategoryModelDomain) {
+        eventsRepositoryDao.updateCategory(categoryMapper.mapToEntity(category))
+    }
+
+    override suspend fun deleteCategory(category: CategoryModelDomain) {
+        eventsRepositoryDao.deleteCategory(categoryMapper.mapToEntity(category))
+    }
+
     override suspend fun getCategoryByName(category: String): Flow<List<CategoriesWithEvents>> =
         eventsRepositoryDao.getCategoryOfEvents(category)
 

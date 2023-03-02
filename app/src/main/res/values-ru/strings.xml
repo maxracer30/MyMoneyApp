@@ -56,4 +56,12 @@
     <string name="icon_error">Сначала выберите иконку</string>
     <string name="_42">42%</string>
     <string name="total_spent_pie">Всего потрачено</string>
+    <string name="todayyy">Сегодня</string>
+    <string name="change_category">Изменение категории</string>
+    <string name="color">Цвет</string>
+    <string name="icon">Иконка</string>
+    <string name="a_u_sure">Вы уверены?</string>
+    <string name="a_u_sure_message">Это действие нельзя отменить. \nВсе записи этой категории будут перенесены в категорию \"Другое\"</string>
+    <string name="sure">Да, удалить</string>
+    <string name="not_sure">Отмена</string>
 </resources>

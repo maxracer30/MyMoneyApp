@@ -18,6 +18,8 @@ class CategoriesDiffUtil(
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         return when {
             oldList[oldItemPosition].categoryName != newList[newItemPosition].categoryName -> false
+            oldList[oldItemPosition].color != newList[newItemPosition].color -> false
+            oldList[oldItemPosition].image != newList[newItemPosition].image -> false
             else -> true
         }
     }

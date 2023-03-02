@@ -28,7 +28,9 @@ class CategoriesViewHolder(
             imageCategory.setImageResource(categoryModelDomain.image)
 
             itemView.setOnClickListener {
-                listener.onClick(categoryModelDomain)
+                if (categoryModelDomain.categoryId != 1) {
+                    listener.onClick(categoryModelDomain)
+                }
             }
         }
     }

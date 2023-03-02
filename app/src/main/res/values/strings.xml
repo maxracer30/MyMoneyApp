@@ -83,5 +83,13 @@
     <string name="icon_error">First select the icon</string>
     <string name="_42">42%</string>
     <string name="total_spent_pie">Total was spent</string>
-    <string name="todayyy">Сегодня</string>
+    <string name="todayyy">Today</string>
+    <string name="change_category">Change category</string>
+    <string name="color">Color</string>
+    <string name="icon">Icon</string>
+    <string name="a_u_sure">Are you sure?</string>
+    <string name="a_u_sure_message">This action cannot be undone. All entries related to this category will be moved to the "Other" category</string>
+    <string name="sure">Delete</string>
+    <string name="not_sure">Cancel</string>
+
 </resources>

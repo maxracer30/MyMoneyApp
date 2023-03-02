@@ -25,6 +25,10 @@ interface EventsRepository {
 
     suspend fun insertCategory(category: CategoryModelDomain)
 
+    suspend fun updateCategory(category: CategoryModelDomain)
+
+    suspend fun deleteCategory(category: CategoryModelDomain)
+
     suspend fun getAllCategories(): Flow<List<CategoryModelDomain>>
 
 //    --------------------------- Statistics --------------------------
