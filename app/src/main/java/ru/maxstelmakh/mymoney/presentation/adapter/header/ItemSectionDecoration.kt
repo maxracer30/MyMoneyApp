@@ -147,6 +147,40 @@ class ItemSectionDecoration(
         }
     }
 
+    override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+        super.onDrawOver(c, parent, state)
+
+        val list = getItemList()
+
+        if (list.isEmpty()) {
+            return
+        }
+
+        val childCount = parent.childCount
+        if (childCount == 0) {
+            return
+        }
+
+        val firstView = parent.getChildAt(0)
+
+        val position = parent.getChildAdapterPosition(firstView)
+        val text = getDisplayDate(list[position].joined_date)
+        val itemModel = list[position]
+
+        val condition:Boolean = if (list.size == 1) {
+            true
+        } else {
+            dateHandler(itemModel.joined_date) != dateHandler(list[position+1].joined_date)
+        }
+
+        drawSectionView(c, text, if (firstView.bottom <= sectionItemHeight && condition) {
+            firstView.bottom - sectionItemHeight
+        }
+        else {
+            0
+        })
+    }
+
     private fun dipToPx(context: Context, dipValue: Float): Int {
         return (dipValue * context.resources.displayMetrics.density).toInt()
     }

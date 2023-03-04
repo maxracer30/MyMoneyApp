@@ -161,6 +161,8 @@ class IconsFragment : Fragment(), IconsListener {
             resources
                 .getIdentifier("boat", "drawable", activity!!.packageName),
             resources
+                .getIdentifier("sports", "drawable", activity!!.packageName),
+            resources
                 .getIdentifier("bus", "drawable", activity!!.packageName),
             resources
                 .getIdentifier("train", "drawable", activity!!.packageName),

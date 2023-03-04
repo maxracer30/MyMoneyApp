@@ -39,8 +39,12 @@ class PieChartDiagram(
             setEntryLabelTextSize(9F)
             setEntryLabelColor(Color.BLACK)
 
-            centerText = context.getString(R.string.total_spent_pie) +
-                    "\n${(Math.round(totalSum * 1.0))}" + context.getString(R.string.RUB)
+            centerText = if (totalSum == 0L) {
+                context.getString(R.string.total_spent_pie_zero)
+            } else {
+                context.getString(R.string.total_spent_pie) +
+                        "\n${(Math.round(totalSum * 1.0))}" + context.getString(R.string.RUB)
+            }
             setCenterTextSize(20f)
             isHighlightPerTapEnabled = false
             description.isEnabled = false

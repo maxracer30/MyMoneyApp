@@ -21,6 +21,7 @@ import ru.maxstelmakh.mymoney.presentation.adapter.colorsadapter.ColorsAdapter
 import ru.maxstelmakh.mymoney.presentation.adapter.listeners.ColorListener
 import ru.maxstelmakh.mymoney.presentation.adapter.listeners.IconsListener
 
+@Suppress("DEPRECATION")
 @AndroidEntryPoint
 class AddNewCategoryFragment : Fragment(), ColorListener, IconsListener {
     private var _binding: FragmentAddNewCategoryBinding? = null

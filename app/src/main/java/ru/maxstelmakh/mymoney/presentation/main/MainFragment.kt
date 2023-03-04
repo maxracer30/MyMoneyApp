@@ -99,23 +99,38 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
 
     @SuppressLint("ResourceType")
     private fun setBar(summary: List<Int>) = with(binding) {
-        todayInfo.text = StringBuilder()
-            .append(summary[0])
-            .append(" / ")
-            .append(target)
+        if (summary[0]==null) {
+            todayInfo.text = StringBuilder()
+                .append(0)
+                .append(" / ")
+                .append(target)
 
 
-        with(progressBar) {
-            max = target
-            setProgress(summary[0], true)
+            with(progressBar) {
+                max = target
+                setProgress(0, true)
+            }
+            eventsRecyclerView.scrollToPosition(0)
+        } else {
+
+            todayInfo.text = StringBuilder()
+                .append(summary[0])
+                .append(" / ")
+                .append(target)
+
+
+            with(progressBar) {
+                max = target
+                setProgress(summary[0], true)
+            }
+            eventsRecyclerView.scrollToPosition(0)
         }
-        eventsRecyclerView.scrollToPosition(0)
     }
 
 
     private fun swipeToGesture() {
         val swipeGesture = object : SwipeGesture(context = binding.root.context) {
-            @SuppressLint("ResourceType", "ShowToast")
+            @SuppressLint("ResourceType", "ShowToast", "UseCompatLoadingForDrawables")
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.bindingAdapterPosition
                 val eventInDetailsModelDomain = eventsAdapter.oldEventsList[position]
@@ -152,9 +167,11 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
                                     super.onShown(transientBottomBar)
                                 }
                             }).apply {
+                                view.background = resources.getDrawable(R.drawable.rounded_corners_snackbar, null)
                                 animationMode = Snackbar.ANIMATION_MODE_SLIDE
 
                             }
+                                .setTextColor(Color.WHITE)
                                 .setActionTextColor(Color.RED)
                                 .show()
                         }
@@ -196,14 +213,14 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
                 )
             val titles =
                 listOf(
-                    getString(R.string.other),
-                    resources.getString(R.string.Food),
-                    resources.getString(R.string.House),
+                    resources.getString(R.string.other),
+                    resources.getString(R.string.Fun) ,
                     resources.getString(R.string.Education),
-                    resources.getString(R.string.Car),
-                    resources.getString(R.string.Health),
                     resources.getString(R.string.Sport),
-                    resources.getString(R.string.Fun)
+                    resources.getString(R.string.Health),
+                    resources.getString(R.string.Car),
+                    resources.getString(R.string.House),
+                    resources.getString(R.string.Food)
                 )
 
             val images =
@@ -211,20 +228,20 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
                     resources
                         .getIdentifier("storefront", "drawable", activity!!.packageName),
                     resources
-                        .getIdentifier("eat", "drawable", activity!!.packageName),
-                    resources
-                        .getIdentifier("home", "drawable", activity!!.packageName),
+                        .getIdentifier("fun", "drawable", activity!!.packageName),
                     resources
                         .getIdentifier("book", "drawable", activity!!.packageName),
                     resources
-                        .getIdentifier("car", "drawable", activity!!.packageName),
+                        .getIdentifier("sports", "drawable", activity!!.packageName),
                     resources
                         .getIdentifier("heart", "drawable", activity!!.packageName),
                     resources
-                        .getIdentifier("comms", "drawable", activity!!.packageName),
+                        .getIdentifier("bus", "drawable", activity!!.packageName),
                     resources
-                        .getIdentifier("fun", "drawable", activity!!.packageName),
-                    )
+                        .getIdentifier("home", "drawable", activity!!.packageName),
+                    resources
+                        .getIdentifier("eat", "drawable", activity!!.packageName),
+                )
 
             viewModel.viewModelScope.launch(Dispatchers.IO) {
                 viewModel.firstStart(titles, colors, images)

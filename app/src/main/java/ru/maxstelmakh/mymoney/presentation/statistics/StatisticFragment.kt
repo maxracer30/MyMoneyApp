@@ -54,31 +54,38 @@ class StatisticFragment : Fragment(R.layout.fragment_statistic) {
                 startStatistic()
             }
 
+            dateInfo.setInAnimation(context, R.anim.slide_in_left)
+            dateInfo.setOutAnimation(context, R.anim.slide_out_right)
+
             when (checkedId) {
                 R.id.dayPeriod -> {
                     showButtons(true)
                     viewModel.setNowDate()
                     viewModel.getDatesOfDay()
                     viewModel.updateData()
-                    dateInfo.text = viewModel.dateInfo("day")
+                    dateInfo.setText(viewModel.dateInfo("day"))
 
                     btnPreviewPeriod.setOnClickListener {
-                        dateInfo.text = viewModel.changeDay(-1)
+                        animatedPrevious()
+                        dateInfo.setText(viewModel.changeDay(-1))
                     }
                     btnNextPeriod.setOnClickListener {
-                        dateInfo.text = viewModel.changeDay(1)
+                        animatedNext()
+                        dateInfo.setText(viewModel.changeDay(1))
                     }
                 }
                 R.id.weekPeriod -> {
                     showButtons(true)
                     viewModel.updateData()
-                    dateInfo.text = viewModel.dateInfo("week")
+                    dateInfo.setText(viewModel.dateInfo("week"))
 
                     btnPreviewPeriod.setOnClickListener {
-                        dateInfo.text = viewModel.changeWeek(-1)
+                        animatedPrevious()
+                        dateInfo.setText(viewModel.changeWeek(-1))
                     }
                     btnNextPeriod.setOnClickListener {
-                        dateInfo.text = viewModel.changeWeek(1)
+                        animatedNext()
+                        dateInfo.setText(viewModel.changeWeek(1))
                     }
                 }
                 R.id.monthPeriod -> {
@@ -86,13 +93,15 @@ class StatisticFragment : Fragment(R.layout.fragment_statistic) {
                     viewModel.setNowDate()
                     viewModel.getDatesOfMonth()
                     viewModel.updateData()
-                    dateInfo.text = viewModel.dateInfo("month")
+                    dateInfo.setText(viewModel.dateInfo("month"))
 
                     btnPreviewPeriod.setOnClickListener {
-                        dateInfo.text = viewModel.changeMonth(-1)
+                        animatedPrevious()
+                        dateInfo.setText(viewModel.changeMonth(-1))
                     }
                     btnNextPeriod.setOnClickListener {
-                        dateInfo.text = viewModel.changeMonth(1)
+                        animatedNext()
+                        dateInfo.setText(viewModel.changeMonth(1))
                     }
                 }
                 R.id.yearPeriod -> {
@@ -100,18 +109,20 @@ class StatisticFragment : Fragment(R.layout.fragment_statistic) {
                     viewModel.setNowDate()
                     viewModel.getDatesOfYear()
                     viewModel.updateData()
-                    dateInfo.text = viewModel.dateInfo("year")
+                    dateInfo.setText(viewModel.dateInfo("year"))
 
                     btnPreviewPeriod.setOnClickListener {
-                        dateInfo.text = viewModel.changeYear(-1)
+                        animatedPrevious()
+                        dateInfo.setText(viewModel.changeYear(-1))
                     }
                     btnNextPeriod.setOnClickListener {
-                        dateInfo.text = viewModel.changeYear(1)
+                        animatedNext()
+                        dateInfo.setText(viewModel.changeYear(1))
                     }
                 }
                 R.id.randomPeriod -> {
-                    var startDate = 0L
-                    var endDate = 0L
+                    var startDate: Long
+                    var endDate: Long
                     showButtons(false)
                     randomPeriod.setOnClickListener {
                         startDate = 0L
@@ -123,7 +134,7 @@ class StatisticFragment : Fragment(R.layout.fragment_statistic) {
                         datePicker.addOnPositiveButtonClickListener {
                             startDate = it.first
                             endDate = it.second
-                            dateInfo.text = viewModel.periodDates(startDate, endDate)
+                            dateInfo.setText(viewModel.periodDates(startDate, endDate))
                             viewModel.updateData()
                         }
                         datePicker.show(
@@ -157,6 +168,16 @@ class StatisticFragment : Fragment(R.layout.fragment_statistic) {
                 binding.btnNextPeriod.visibility = View.GONE
             }
         }
+    }
+
+    fun animatedPrevious() {
+        binding.dateInfo.setInAnimation(context, R.anim.slide_in_left)
+        binding.dateInfo.setOutAnimation(context, R.anim.slide_out_right)
+    }
+
+    fun animatedNext() {
+        binding.dateInfo.setInAnimation(context, R.anim.slide_in_right)
+        binding.dateInfo.setOutAnimation(context, R.anim.slide_out_left)
     }
 
     override fun onDestroy() {

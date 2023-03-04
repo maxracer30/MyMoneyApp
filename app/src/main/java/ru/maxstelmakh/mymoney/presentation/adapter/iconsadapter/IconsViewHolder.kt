@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
 import ru.maxstelmakh.mymoney.databinding.IconItemLayoutBinding
 
+@Suppress("DEPRECATION")
 class IconsViewHolder(
     private val binding: IconItemLayoutBinding
 ) : RecyclerView.ViewHolder(binding.root) {

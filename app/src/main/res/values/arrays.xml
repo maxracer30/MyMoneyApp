@@ -1,12 +1,29 @@
 <resources>
-    <!-- Reply Preference -->
-    <string-array name="reply_entries">
-        <item>Reply</item>
-        <item>Reply to all</item>
+    <!-- Dark Mode Preference -->
+    <string-array name="dark_mode_entries">
+        <item>@string/entry_system_dark_mode</item>
+        <item>@string/entry_dark_mode</item>
+        <item>@string/entry_light_mode</item>
+        <item>@string/entry_battery_dark_mode</item>
+    </string-array>
+    <string-array name="dark_mode_entries_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
     </string-array>
 
-    <string-array name="reply_values">
-        <item>reply</item>
-        <item>reply_all</item>
+    <!-- Icon Preference -->
+    <string-array name="icon_entries">
+        <item>@string/classic_icon</item>
+        <item>@string/emerald_icon</item>
+        <item>@string/purple_icon</item>
+        <item>@string/patina_green_icon</item>
+    </string-array>
+    <string-array name="icon_entries_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
     </string-array>
 </resources>

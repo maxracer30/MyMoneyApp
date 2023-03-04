@@ -68,7 +68,7 @@
     <string name="Food">Food</string>
     <string name="House">House</string>
     <string name="Education">Education</string>
-    <string name="Car">Car</string>
+    <string name="Car">Transport</string>
     <string name="Health">Health</string>
     <string name="Sport">Sport</string>
     <string name="Fun">Fun</string>
@@ -93,5 +93,18 @@
     <string name="helper">Enter the amount that you do not plan to spend more than within one month.</string>
     <string name="helper1">The scale on the main page will display your spending relative to this goal. This will give you a visual idea of how much you are spending.</string>
     <string name="yesterday">Yesterday</string>
+    <string name="dark_mode_preference">Dark Mode Settings</string>
+    <string name="entry_system_dark_mode">Follow System Dark Mode</string>
+    <string name="entry_light_mode">Light Mode Selected</string>
+    <string name="entry_dark_mode">Dark Mode Selected</string>
+    <string name="entry_battery_dark_mode">Auto Battery Dark Mode</string>
+    <string name="preferences">Basic settings</string>
+    <string name="icon_preference">Icon Settings</string>
+    <string name="classic_icon">Classic</string>
+    <string name="emerald_icon">Emerald</string>
+    <string name="purple_icon">Purple</string>
+    <string name="patina_green_icon">Patina-Green</string>
+    <string name="total_spent_pie_zero">There were no expenses</string>
+
 
 </resources>

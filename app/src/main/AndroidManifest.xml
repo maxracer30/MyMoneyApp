@@ -11,10 +11,12 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyMoney"
+        android:roundIcon="@mipmap/ic_launcher_round"
         tools:targetApi="31">
         <activity
             android:name=".presentation.splashscreen.SplashActivity"
             android:screenOrientation="portrait"
+            android:enabled="true"
             android:exported="true" android:launchMode="singleInstance"
             tools:ignore="LockedOrientationActivity">
         <intent-filter>
@@ -32,6 +34,48 @@
             tools:ignore="LockedOrientationActivity">
 
         </activity>
+        <activity-alias
+            android:name="presentation.second"
+            android:targetActivity=".presentation.splashscreen.SplashActivity"
+            android:icon="@mipmap/ic_launcher1"
+            android:enabled="false"
+            android:exported="true"
+            android:roundIcon="@mipmap/ic_launcher1_round"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name="presentation.third"
+            android:targetActivity=".presentation.splashscreen.SplashActivity"
+            android:icon="@mipmap/ic_launcher2"
+            android:enabled="false"
+            android:exported="true"
+            android:roundIcon="@mipmap/ic_launcher2_round"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name="presentation.four"
+            android:targetActivity=".presentation.splashscreen.SplashActivity"
+            android:icon="@mipmap/ic_launcher3"
+            android:enabled="false"
+            android:exported="true"
+            android:roundIcon="@mipmap/ic_launcher3_round"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
     </application>
 
 </manifest>

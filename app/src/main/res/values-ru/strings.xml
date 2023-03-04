@@ -42,7 +42,7 @@
     <string name="Food">Продукты</string>
     <string name="House">Дом</string>
     <string name="Education">Образование</string>
-    <string name="Car">Машина</string>
+    <string name="Car">Транспорт</string>
     <string name="Health">Здоровье</string>
     <string name="Sport">Спорт</string>
     <string name="Fun">Развлечения</string>
@@ -67,4 +67,17 @@
     <string name="helper">Введите сумму, больше которой не планируете тратить в течение одного месяца</string>
     <string name="helper1">Шкала на главной странице отобразит ваши траты относительно этой цели.  Это даст вам визуальное представление о ваших расходах</string>
     <string name="yesterday">Вчера</string>
+    <string name="dark_mode_preference">Настройка темы</string>
+    <string name="entry_system_dark_mode">Как в системе</string>
+    <string name="entry_light_mode">Светлая тема</string>
+    <string name="entry_dark_mode">Тёмная тема</string>
+    <string name="entry_battery_dark_mode">Тёмная - если режим экономии батареи</string>
+    <string name="preferences">Основные настройки</string>
+    <string name="icon_preference">Преобразование иконки</string>
+    <string name="classic_icon">Классическая</string>
+    <string name="emerald_icon">Изумрудная</string>
+    <string name="purple_icon">Лиловая</string>
+    <string name="patina_green_icon">Патиново-зелёная</string>
+    <string name="total_spent_pie_zero">Трат нет</string>
+
 </resources>

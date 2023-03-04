@@ -37,7 +37,7 @@ class IconsAdapter(
             holder.setUnCheck()
         }
 
-        holder.itemView.setOnClickListener { v ->
+        holder.itemView.setOnClickListener {
             if (selectedPosition >= 0) notifyItemChanged(selectedPosition)
             selectedPosition = holder.bindingAdapterPosition
             notifyItemChanged(selectedPosition)
