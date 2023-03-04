@@ -16,6 +16,7 @@ import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 import ru.maxstelmakh.mymoney.domain.usecases.categoriesusecases.AddNewCategoryUseCase
 import ru.maxstelmakh.mymoney.domain.usecases.eventusecases.DeleteEventUseCase
 import ru.maxstelmakh.mymoney.domain.usecases.eventusecases.GetAllEventsUseCase
+import ru.maxstelmakh.mymoney.domain.usecases.eventusecases.GetSummaryUseCase
 import ru.maxstelmakh.mymoney.domain.usecases.eventusecases.SaveNewEventUseCase
 import java.util.*
 import javax.inject.Inject
@@ -25,19 +26,33 @@ class MainViewModel @Inject constructor(
     private val getAllEventsUseCase: GetAllEventsUseCase,
     private val deleteEventUseCase: DeleteEventUseCase,
     private val saveNewEventUseCase: SaveNewEventUseCase,
-    private val addNewCategoryUseCase: AddNewCategoryUseCase
+    private val addNewCategoryUseCase: AddNewCategoryUseCase,
+    private val getSummaryUseCase: GetSummaryUseCase
 ) : ViewModel() {
 
     private val _events = MutableLiveData<List<EventInDetailModelDomain>>()
     val events: LiveData<List<EventInDetailModelDomain>> = _events
 
+    private val _summary = MutableLiveData<List<Int>>()
+    val summary: LiveData<List<Int>> = _summary
+
+    var target = 0
+
     init {
+        println(1)
         viewModelScope.launch {
             getAllEventsUseCase().collect {
                 _events.postValue(it)
             }
         }
+
+        viewModelScope.launch {
+            getSummaryUseCase().collect{
+                _summary.postValue(listOf(it[0], target))
+            }
+        }
     }
+
 
     fun deleteEvent(eventModelDomain: EventModelDomain) {
         viewModelScope.launch(Dispatchers.IO) {

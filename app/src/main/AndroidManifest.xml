@@ -14,7 +14,9 @@
         tools:targetApi="31">
         <activity
             android:name=".presentation.splashscreen.SplashActivity"
-            android:exported="true" android:launchMode="singleInstance">
+            android:screenOrientation="portrait"
+            android:exported="true" android:launchMode="singleInstance"
+            tools:ignore="LockedOrientationActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -24,8 +26,10 @@
 
         <activity
             android:name=".presentation.MainActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
-            android:exported="false">
+            android:exported="false"
+            tools:ignore="LockedOrientationActivity">
 
         </activity>
     </application>

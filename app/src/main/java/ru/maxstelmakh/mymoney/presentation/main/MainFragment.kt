@@ -25,6 +25,7 @@ import ru.maxstelmakh.mymoney.databinding.FragmentMainBinding
 import ru.maxstelmakh.mymoney.domain.model.EventInDetailModelDomain
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 import ru.maxstelmakh.mymoney.presentation.adapter.eventsadapter.EventsAdapter
+import ru.maxstelmakh.mymoney.presentation.adapter.header.ItemSectionDecoration
 import ru.maxstelmakh.mymoney.presentation.adapter.listeners.EventsListener
 import ru.maxstelmakh.mymoney.presentation.adapter.swipegesture.SwipeGesture
 
@@ -35,7 +36,9 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
     private val binding get() = _binding!!
     private val viewModel by viewModels<MainViewModel>()
     private val eventsAdapter = EventsAdapter(this)
+    private lateinit var itemSectionDecoration: ItemSectionDecoration
 
+    private var target = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +48,7 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
         return _binding!!.root
     }
 
+    @SuppressLint("UseRequireInsteadOfGet")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -53,12 +57,30 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
         init()
     }
 
+    @SuppressLint("UseRequireInsteadOfGet")
     private fun init() = with(binding) {
+
+        val getPrefs = PreferenceManager.getDefaultSharedPreferences(activity!!)
+        target = getPrefs.getInt("TARGET", 25000)
+        viewModel.target = target
 
         eventsRecyclerView.adapter = eventsAdapter
 
+
+        itemSectionDecoration = ItemSectionDecoration(context!!) {
+            eventsAdapter.oldEventsList
+        }
+        eventsRecyclerView.addItemDecoration(itemSectionDecoration)
+
+
         btnAdd.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_addNewEventFragment)
+        }
+
+        viewModel.summary.observe(viewLifecycleOwner) {
+            viewModel.viewModelScope.launch {
+                setBar(it)
+            }
         }
 
         viewModel.events.observe(viewLifecycleOwner) {
@@ -67,8 +89,29 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
             }
         }
 
+
+        btnPriseCheck.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_targetFragment)
+        }
+
         swipeToGesture()
     }
+
+    @SuppressLint("ResourceType")
+    private fun setBar(summary: List<Int>) = with(binding) {
+        todayInfo.text = StringBuilder()
+            .append(summary[0])
+            .append(" / ")
+            .append(target)
+
+
+        with(progressBar) {
+            max = target
+            setProgress(summary[0], true)
+        }
+        eventsRecyclerView.scrollToPosition(0)
+    }
+
 
     private fun swipeToGesture() {
         val swipeGesture = object : SwipeGesture(context = binding.root.context) {
@@ -110,6 +153,7 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
                                 }
                             }).apply {
                                 animationMode = Snackbar.ANIMATION_MODE_SLIDE
+
                             }
                                 .setActionTextColor(Color.RED)
                                 .show()
@@ -133,7 +177,6 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
 
     @SuppressLint("UseRequireInsteadOfGet", "ResourceType")
     private fun firstStart() {
-
 
         val getPrefs = PreferenceManager.getDefaultSharedPreferences(activity!!)
         val editor = getPrefs.edit()
@@ -188,10 +231,13 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
             }
             editor
                 .putBoolean("FIRST_START", false)
+                .putInt("TARGET", 25000)
                 .apply()
         }
 
     }
+
+
 
 
     override fun onDestroyView() {

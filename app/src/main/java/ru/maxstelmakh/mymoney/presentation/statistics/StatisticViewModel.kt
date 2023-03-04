@@ -73,15 +73,27 @@ class StatisticViewModel @Inject constructor(
                 }
             }
             "week" -> {
-                StringBuilder()
-                    .append(startPeriod.dayOfMonth)
-                    .append(" ")
-                    .append(monthToRu(startPeriod, 1))
-                    .append(" - ")
-                    .append(endPeriod.dayOfMonth)
-                    .append(" ")
-                    .append(monthToRu(endPeriod, 1))
-                    .toString()
+                return when (startPeriod.month) {
+                    endPeriod.month -> {
+                        StringBuilder()
+                            .append(startPeriod.dayOfMonth)
+                            .append(" - ")
+                            .append(endPeriod.dayOfMonth)
+                            .append(" ")
+                            .append(monthToRu(endPeriod, 1))
+                            .toString()
+                    } else -> {
+                        StringBuilder()
+                            .append(startPeriod.dayOfMonth)
+                            .append(" ")
+                            .append(monthToRu(startPeriod, 1))
+                            .append(" - ")
+                            .append(endPeriod.dayOfMonth)
+                            .append(" ")
+                            .append(monthToRu(endPeriod, 1))
+                            .toString()
+                    }
+                }
             }
             "month" -> {
                 StringBuilder()
@@ -220,14 +232,14 @@ class StatisticViewModel @Inject constructor(
     fun periodDates(startDate: Long, endDate: Long) : String {
         val startDateDate = Date(startDate)
         val endDateDate = Date(endDate)
-        Log.d("StatesOfApp", "$startDateDate, $endDateDate")
+
         val format = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val start = format.format(startDateDate)
         val end = format.format(endDateDate)
-        Log.d("StatesOfApp", "$start, $end")
+
         startPeriod = LocalDate.parse(start)
         endPeriod = LocalDate.parse(end).plusDays(1)
-        Log.d("StatesOfApp", "$startPeriod, $endPeriod")
+
         return dateInfo("period")
     }
 }

@@ -27,6 +27,14 @@ interface EventsRepositoryDao {
     @Query("SELECT eventId FROM EventModelData ORDER BY datetime(joined_date) DESC")
     fun getIdLastEvent(): Long
 
+    @Query("""
+        SELECT
+    SUM(expense)
+FROM EventModelData
+WHERE joined_date BETWEEN date('now', 'start of month') AND date('now', 'start of month', '+1 month')
+    """)
+    fun getSumInMonth(): Flow<List<Int>>
+
     //----------------------------Categories--------------------------------------------------------
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

@@ -1,6 +1,5 @@
 package ru.maxstelmakh.mymoney.data.repository.cashrepository
 
-import android.util.Log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import ru.maxstelmakh.mymoney.data.mappers.CategoryMapperImpl
@@ -39,6 +38,10 @@ class EventsRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getSumInMonth(): Flow<List<Int>> {
+        return eventsRepositoryDao.getSumInMonth()
+    }
+
     override suspend fun insertEvent(event: EventModelDomain) {
         eventsRepositoryDao.insertEvent(eventMapper.mapToEntity(event))
 //        val id = eventsRepositoryDao.getIdLastEvent()
@@ -51,7 +54,6 @@ class EventsRepositoryImpl @Inject constructor(
     }
 
     override suspend fun updateEvent(event: EventModelDomain) {
-        Log.d("StatesOfApp", "in repoImpl ${event.id}")
         eventsRepositoryDao.updateEvent(eventMapper.mapToEntity(event))
     }
 

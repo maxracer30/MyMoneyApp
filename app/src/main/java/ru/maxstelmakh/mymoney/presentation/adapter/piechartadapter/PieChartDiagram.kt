@@ -42,7 +42,7 @@ class PieChartDiagram(
             centerText = context.getString(R.string.total_spent_pie) +
                     "\n${(Math.round(totalSum * 1.0))}" + context.getString(R.string.RUB)
             setCenterTextSize(20f)
-            isHighlightPerTapEnabled = true
+            isHighlightPerTapEnabled = false
             description.isEnabled = false
         }
 

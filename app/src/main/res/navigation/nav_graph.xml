@@ -24,6 +24,13 @@
             app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_mainFragment_to_targetFragment"
+            app:destination="@id/targetFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"/>
     </fragment>
     <fragment
         android:id="@+id/plansFragment"
@@ -132,4 +139,9 @@
             android:name="color"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/targetFragment"
+        android:name="ru.maxstelmakh.mymoney.presentation.target.TargetFragment"
+        android:label="fragment_target"
+        tools:layout="@layout/fragment_target" />
 </navigation>

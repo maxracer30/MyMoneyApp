@@ -19,12 +19,9 @@ import ru.maxstelmakh.mymoney.domain.model.CategoryModelDomain
 import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 import ru.maxstelmakh.mymoney.presentation.adapter.categoriesinaddadapter.CategoriesInAddAdapter
 import ru.maxstelmakh.mymoney.presentation.adapter.listeners.CategoryListener
-import javax.inject.Inject
 
 @AndroidEntryPoint
-class AddNewEventFragment @Inject constructor(
-) : Fragment(), CategoryListener {
-
+class AddNewEventFragment : Fragment(), CategoryListener {
 
     private var _binding: FragmentAddNewEventBinding? = null
     private val binding get() = _binding!!
@@ -54,6 +51,9 @@ class AddNewEventFragment @Inject constructor(
                 }
             }
 
+            btnEscape.setOnClickListener {
+                findNavController().navigateUp()
+            }
             btnSave.setOnClickListener {
                 if (expense.text.isNotBlank()) {
                     viewModel.insert(

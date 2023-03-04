@@ -44,8 +44,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginTop="35dp"
-        android:background="@drawable/my_custom_shape_soft"
-        android:backgroundTint="@color/green7"
+        android:background="@drawable/add_my_custom_shape_soft_recycler_hard_green"
         android:paddingTop="20dp"
         android:paddingBottom="20dp">
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.datepicker.MaterialDatePicker
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -25,11 +26,13 @@ class StatisticFragment : Fragment(R.layout.fragment_statistic) {
     private val statAdapter = MainStatisticAdapter()
     private val viewModel by viewModels<StatisticViewModel>()
 
+    private val mLinearLayoutManager = LinearLayoutManager(context)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentStatisticBinding.inflate(layoutInflater, container, false)
+        binding.statisticsRecyclerView.layoutManager = mLinearLayoutManager
         return _binding!!.root
     }
 
@@ -39,8 +42,10 @@ class StatisticFragment : Fragment(R.layout.fragment_statistic) {
         init()
     }
 
+
     @SuppressLint("NewApi")
     private fun init() = with(binding) {
+
 
         periodGroup.setOnCheckedChangeListener { _, checkedId ->
 

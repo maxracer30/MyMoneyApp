@@ -64,4 +64,7 @@
     <string name="a_u_sure_message">Это действие нельзя отменить. \nВсе записи этой категории будут перенесены в категорию \"Другое\"</string>
     <string name="sure">Да, удалить</string>
     <string name="not_sure">Отмена</string>
+    <string name="helper">Введите сумму, больше которой не планируете тратить в течение одного месяца</string>
+    <string name="helper1">Шкала на главной странице отобразит ваши траты относительно этой цели.  Это даст вам визуальное представление о ваших расходах</string>
+    <string name="yesterday">Вчера</string>
 </resources>

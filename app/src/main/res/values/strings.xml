@@ -39,7 +39,6 @@
     <string name="year">Year</string>
     <string name="period">Period…</string>
     <string name="dayInfo">8 February, Sunday</string>
-    <string name="today" translatable="false">280 / 900</string>
     <string name="main">Main</string>
     <string name="categories">Categories</string>
     <string name="next_period" translatable="false">Next period</string>
@@ -91,5 +90,8 @@
     <string name="a_u_sure_message">This action cannot be undone. All entries related to this category will be moved to the "Other" category</string>
     <string name="sure">Delete</string>
     <string name="not_sure">Cancel</string>
+    <string name="helper">Enter the amount that you do not plan to spend more than within one month.</string>
+    <string name="helper1">The scale on the main page will display your spending relative to this goal. This will give you a visual idea of how much you are spending.</string>
+    <string name="yesterday">Yesterday</string>
 
 </resources>

@@ -20,6 +20,8 @@ interface EventsRepository {
 
     suspend fun getAllEventsInDetail(): Flow<List<EventInDetailModelDomain>>
 
+    suspend fun getSumInMonth(): Flow<List<Int>>
+
     //------------------------ Categories --------------------------
     suspend fun getCategoryByName(category: String): Flow<List<CategoriesWithEvents>>
 
