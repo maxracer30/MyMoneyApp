@@ -20,6 +20,7 @@ import ru.maxstelmakh.mymoney.domain.model.EventModelDomain
 import ru.maxstelmakh.mymoney.presentation.adapter.categoriesinaddadapter.CategoriesInAddAdapter
 import ru.maxstelmakh.mymoney.presentation.adapter.listeners.CategoryListener
 
+@Suppress("DEPRECATION")
 @AndroidEntryPoint
 class AddNewEventFragment : Fragment(), CategoryListener {
 
@@ -37,7 +38,6 @@ class AddNewEventFragment : Fragment(), CategoryListener {
         return _binding!!.root
     }
 
-    @Suppress("DEPRECATION")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
