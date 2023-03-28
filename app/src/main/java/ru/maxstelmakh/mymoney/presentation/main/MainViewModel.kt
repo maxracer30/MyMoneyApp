@@ -39,7 +39,6 @@ class MainViewModel @Inject constructor(
     var target = 0
 
     init {
-        println(1)
         viewModelScope.launch {
             getAllEventsUseCase().collect {
                 _events.postValue(it)
