@@ -170,12 +170,12 @@ class StatisticFragment : Fragment(R.layout.fragment_statistic) {
         }
     }
 
-    fun animatedPrevious() {
+    private fun animatedPrevious() {
         binding.dateInfo.setInAnimation(context, R.anim.slide_in_left)
         binding.dateInfo.setOutAnimation(context, R.anim.slide_out_right)
     }
 
-    fun animatedNext() {
+    private fun animatedNext() {
         binding.dateInfo.setInAnimation(context, R.anim.slide_in_right)
         binding.dateInfo.setOutAnimation(context, R.anim.slide_out_left)
     }
