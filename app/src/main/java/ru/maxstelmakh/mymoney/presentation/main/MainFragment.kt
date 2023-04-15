@@ -99,7 +99,7 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
 
     @SuppressLint("ResourceType")
     private fun setBar(summary: List<Int>) = with(binding) {
-        if (summary[0]==null) {
+        if (summary[0] == null) {
             todayInfo.text = StringBuilder()
                 .append(0)
                 .append(" / ")
@@ -126,7 +126,6 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
             eventsRecyclerView.scrollToPosition(0)
         }
     }
-
 
     private fun swipeToGesture() {
         val swipeGesture = object : SwipeGesture(context = binding.root.context) {
@@ -167,7 +166,8 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
                                     super.onShown(transientBottomBar)
                                 }
                             }).apply {
-                                view.background = resources.getDrawable(R.drawable.rounded_corners_snackbar, null)
+                                view.background =
+                                    resources.getDrawable(R.drawable.rounded_corners_snackbar, null)
                                 animationMode = Snackbar.ANIMATION_MODE_SLIDE
 
                             }
@@ -214,7 +214,7 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
             val titles =
                 listOf(
                     resources.getString(R.string.other),
-                    resources.getString(R.string.Fun) ,
+                    resources.getString(R.string.Fun),
                     resources.getString(R.string.Education),
                     resources.getString(R.string.Sport),
                     resources.getString(R.string.Health),
@@ -253,9 +253,6 @@ class MainFragment : Fragment(R.layout.fragment_main), EventsListener {
         }
 
     }
-
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()
