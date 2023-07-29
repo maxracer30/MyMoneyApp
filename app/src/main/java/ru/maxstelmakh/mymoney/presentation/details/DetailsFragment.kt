@@ -69,7 +69,7 @@ class DetailsFragment : Fragment(), CategoryListener {
             changeCategory = eventToChange.categoryId
             viewModel.categories.observe(viewLifecycleOwner) {
                 viewModel.viewModelScope.launch {
-                    categoriesInAddAdapter.setList(it)
+                    categoriesInAddAdapter.submitList(it)
                 }
             }
 

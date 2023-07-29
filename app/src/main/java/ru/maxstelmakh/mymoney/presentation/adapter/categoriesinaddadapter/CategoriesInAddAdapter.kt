@@ -1,8 +1,9 @@
 package ru.maxstelmakh.mymoney.presentation.adapter.categoriesinaddadapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.maxstelmakh.mymoney.databinding.CategoryHorizontalItemLayoutBinding
 import ru.maxstelmakh.mymoney.domain.model.CategoryModelDomain
@@ -10,9 +11,7 @@ import ru.maxstelmakh.mymoney.presentation.adapter.listeners.CategoryListener
 
 class CategoriesInAddAdapter(
     private val listener: CategoryListener,
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    private var categoriesList = emptyList<CategoryModelDomain>()
+) : ListAdapter<CategoryModelDomain, RecyclerView.ViewHolder>(DiffCallback()) {
 
     private var selectedPosition = -1
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -24,10 +23,10 @@ class CategoriesInAddAdapter(
         return CategoryInAddViewHolder(view)
     }
 
-    override fun getItemCount() = categoriesList.size
+    override fun getItemCount() = currentList.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as CategoryInAddViewHolder).refreshList(categoriesList[position])
+        (holder as CategoryInAddViewHolder).refreshList(currentList[position])
 
         if (selectedPosition == position) {
             holder.itemView.isSelected = true //using selector drawable
@@ -38,17 +37,22 @@ class CategoriesInAddAdapter(
         }
 
         holder.itemView.setOnClickListener {
-            if (selectedPosition >= 0) notifyItemChanged(selectedPosition)
-            selectedPosition = holder.bindingAdapterPosition
-            listener.onClick(categoriesList[position])
-            notifyItemChanged(selectedPosition)
+            if (selectedPosition >= 0)
+                selectedPosition = holder.bindingAdapterPosition
+            listener.onClick(currentList[position])
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun setList(it: List<CategoryModelDomain>) {
-        categoriesList = it
-        notifyDataSetChanged()
+    class DiffCallback : DiffUtil.ItemCallback<CategoryModelDomain>() {
+        override fun areItemsTheSame(
+            oldItem: CategoryModelDomain, newItem: CategoryModelDomain
+        ) = oldItem.categoryId == newItem.categoryId
+
+
+        override fun areContentsTheSame(
+            oldItem: CategoryModelDomain,
+            newItem: CategoryModelDomain
+        ) = oldItem == newItem
     }
 
 }
